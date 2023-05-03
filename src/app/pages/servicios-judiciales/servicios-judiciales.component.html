@@ -1,0 +1,23 @@
+<div class="w-full p-20 pt-40 max-width mx-auto">
+
+	<h2 class="font-bold mb-20 m-0 display-block text-center">Servicios Judiciales</h2>
+
+	<div class="w-full grid">
+
+		<div class="grid-col-12">
+			<p class="display-block m-0 mb-7">Búsqueda de lugar</p>
+
+			<input nz-input [(ngModel)]="busqueda" nzSize="large" class="w-full" type="text">
+		</div>
+
+		<ng-container *ngIf="busqueda && busqueda.length > 0">
+			<div class="grid-col-12">
+				<p class="display-block text-center text-theme-primary m-0">
+					Mostrando resultados para {{ busqueda }}
+				</p>
+			</div>
+		</ng-container>
+
+	</div>
+
+</div>

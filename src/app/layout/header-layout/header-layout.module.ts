@@ -6,7 +6,7 @@ import { HeaderModule } from 'src/app/shared/components/header/header.module';
 
 const routes: Routes = [
 	{ path: '', component: HeaderLayoutComponent, children: [
-		// { path: 'configuracion/dispositivos', loadChildren: () => import('../../pages/configuracion/dispositivos/dispositivos.module').then(m => m.DispositivosModule) },
+		{ path: 'servicios-judiciales', loadChildren: () => import('../../pages/servicios-judiciales/servicios-judiciales.module').then(m => m.ServiciosJudicialesModule) },
 	] }
 ]
 
