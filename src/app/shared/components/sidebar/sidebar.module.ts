@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 	imports: [
 		CommonModule,
 		NzIconModule,
+		RouterModule,
 	]
 })
 export class SidebarModule { }

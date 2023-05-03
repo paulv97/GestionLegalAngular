@@ -10,11 +10,13 @@
 
 		<div class="w-full">
 			<ng-container *ngFor="let m of MENU">
-				<a class="h-45 hover:bg-purple-200 bg-white cursor-pointer rounded flex flex-no-wrap items-center mb-10"
+				<a class="h-45 hover:bg-purple-200 cursor-pointer rounded flex flex-no-wrap items-center mb-10"
 					[ngClass]="{
 						'w-45': !isOpen,
 						'w-full': isOpen
-					}">
+					}"
+					[routerLink]="m.route"
+					routerLinkActive="bg-purple-200">
 					<span nz-icon class="w-45 text-center text-black text-lg h-20 display-block m-0" [nzType]="m.icon" nzTheme="outline"></span>
 
 					<ng-container *ngIf="isOpen">
