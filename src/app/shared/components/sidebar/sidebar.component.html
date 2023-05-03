@@ -1,0 +1,43 @@
+<div class="h-full bg-white px-12 py-15 border-r-1 border-solid border-gray-300 overflow-y-auto flex justify-between"
+	style="flex-direction: column;"
+	[style.width]="isOpen ? '20rem' : 'calc(4.5rem + 2.6rem)'">
+	<div>
+		<div class="w-45 h-45 relative mb-15">
+			<img src="https://randomuser.me/api/portraits/men/40.jpg" class="display-block w-45 h-45 rounded-full bg-gray-200">
+
+			<div class="absolute w-15 h-15 rounded-full border-2 border-solid border-white bg-purple-500 right-0 bottom-0"></div>
+		</div>
+
+		<div class="w-full">
+			<ng-container *ngFor="let m of MENU">
+				<a class="h-45 hover:bg-purple-200 bg-white cursor-pointer rounded flex flex-no-wrap items-center mb-10"
+					[ngClass]="{
+						'w-45': !isOpen,
+						'w-full': isOpen
+					}">
+					<span nz-icon class="w-45 text-center text-black text-lg h-20 display-block m-0" [nzType]="m.icon" nzTheme="outline"></span>
+
+					<ng-container *ngIf="isOpen">
+						<p class="text-purple-500 display-block m-0">{{ m.label }}</p>
+					</ng-container>
+				</a>
+			</ng-container>
+		</div>
+	</div>
+
+	<div>
+		<ng-container *ngFor="let m of BOTTOM">
+			<a (click)="m.click()" class="h-45 hover:bg-purple-200 bg-white cursor-pointer rounded flex flex-no-wrap items-center mb-10"
+				[ngClass]="{
+					'w-45': !isOpen,
+					'w-full': isOpen
+				}">
+				<span nz-icon class="w-45 text-purple-600 text-center text-lg h-20 display-block m-0" [nzType]="m.icon" nzTheme="outline"></span>
+
+				<ng-container *ngIf="isOpen">
+					<p class="text-purple-500 display-block m-0">{{ m.label }}</p>
+				</ng-container>
+			</a>
+		</ng-container>
+	</div>
+</div>

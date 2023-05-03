@@ -1,16 +1,10 @@
-<div class="bg-theme-default-page w-screen h-screen">
-
-	<div class="w-full">
-		<!-- <app-header [(showMenu)]="showMenu" [showMenuButton]="showMenuButton"></app-header> -->
-	</div>
-
-	<div class="pl-20 content w-full flex flex-no-wrap mx-auto"
-		style="max-width: 117rem;">
-		<div class="sidebar-space relative overflow-auto" style="z-index: 20; width: 23rem">
-			<!-- <app-sidebar width="23rem" [(showMenu)]="showMenu" [type]="menuType"></app-sidebar> -->
+<div class="w-screen h-screen">
+	<div class="content h-full w-full flex flex-no-wrap mx-auto">
+		<div class="sidebar-space h-full relative overflow-auto" style="z-index: 20;">
+			<app-sidebar></app-sidebar>
 		</div>
 
-		<div class="p-20 main-content h-full overflow-auto" style="z-index: 1">
+		<div class="main-content h-full overflow-auto" style="z-index: 1">
 			<router-outlet></router-outlet>
 		</div>
 	</div>
