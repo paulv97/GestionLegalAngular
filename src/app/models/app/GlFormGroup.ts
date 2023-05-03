@@ -1,6 +1,6 @@
 import { FormGroup } from "@angular/forms";
 
-export class VsFormGroup extends FormGroup {
+export class GlFormGroup extends FormGroup {
 
 	markAllAsDirty() {
 		Object.keys(this.controls).forEach(key => {
