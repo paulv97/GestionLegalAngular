@@ -15,8 +15,9 @@
 						'w-45': !isOpen,
 						'w-full': isOpen
 					}"
-					[routerLink]="m.route"
-					routerLinkActive="bg-purple-200">
+					routerLinkActive="bg-purple-200"
+					[routerLinkActiveOptions]="{exact: true}"
+					[routerLink]="m.route">
 					<span nz-icon class="w-45 text-center text-black text-lg h-20 display-block m-0" [nzType]="m.icon" nzTheme="outline"></span>
 
 					<ng-container *ngIf="isOpen">

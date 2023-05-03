@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-sidebar',
@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-	isOpen = false
+	@Input('toggle') isOpen = false
+	@Output('toggleChange') onToggleEmitter = new EventEmitter<boolean>()
 
 	public readonly MENU = [
 		{
 			icon: 'search',
 			label: 'Buscar',
-			route: ''
+			route: 'busqueda'
 		},
 		{
 			icon: 'apartment',
@@ -37,7 +38,6 @@ export class SidebarComponent implements OnInit {
 		},
 	]
 
-
 	public readonly BOTTOM = [
 		{
 			icon: 'question-circle',
@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit {
 		{
 			icon: 'menu',
 			label: 'Cerrar menú',
-			click: () => { this.isOpen = !this.isOpen }
+			click: () => { this.toggleMenu() }
 		},
 	]
 
@@ -61,4 +61,8 @@ export class SidebarComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	toggleMenu() {
+		this.isOpen = !this.isOpen
+		this.onToggleEmitter.emit(this.isOpen)
+	}
 }

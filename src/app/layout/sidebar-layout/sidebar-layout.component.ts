@@ -11,6 +11,8 @@ export class SidebarLayoutComponent implements OnInit {
 	showMenu: boolean = false
 	showMenuButton: boolean = false
 
+	isOpen = false
+
 	constructor() { }
 
 	ngOnInit(): void {
