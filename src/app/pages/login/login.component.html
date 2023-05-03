@@ -1,0 +1,65 @@
+<div class="mt-40 mx-auto" style="max-width: 40rem">
+	<h2 class="font-bold mb-20 m-0 display-block text-center">
+		Iniciar Sesión
+	</h2>
+	<div class="w-full grid justify-center">
+		<div class="grid-col-12 justify-center">
+			<p class="display-block m-0">Correo electrónico</p>
+
+			<input
+				nz-input
+				placeholder="Correo electrónico"
+				[(ngModel)]="email"
+				class="text-md rounded px-15 py-12"
+				type="text"
+			/>
+		</div>
+
+		<div class="grid-col-12 justify-center">
+			<p class="display-block m-0">Contraseña</p>
+
+			<input
+				nz-input
+				placeholder="Contraseña"
+				[(ngModel)]="password"
+				class="text-md rounded px-15 py-12"
+				type="text"
+			/>
+		</div>
+
+		<div class="grid-col-12 justify-center">
+			<!-- add facebook login -->
+			<button
+				nz-button
+				nzType="primary"
+				class="text-md rounded px-15 py-12 mb-20"
+				type="button"
+				style="width: 100%"
+			>
+				Iniciar sesión con Facebook
+			</button>
+
+			<!-- add google login -->
+			<button
+				nz-button
+				nzType="primary"
+				class="text-md rounded px-15 py-12"
+				type="button"
+				style="width: 100%"
+			>
+				Iniciar sesión con Google
+			</button>
+		</div>
+
+		<!-- signup link -->
+		<div class="grid-col-12 justify-center text-center">
+			<a
+				class="text-md rounded px-15 py-12"
+				[routerLink]="['/signup']"
+				style="width: 100%"
+			>
+				Regístrate
+			</a>
+		</div>
+	</div>
+</div>
