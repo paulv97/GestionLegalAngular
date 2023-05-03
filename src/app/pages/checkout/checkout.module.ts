@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 		NzInputModule,
 		NzButtonModule,
 		NzIconModule,
+		NzMessageModule,
 	]
 })
 export class CheckoutModule { }

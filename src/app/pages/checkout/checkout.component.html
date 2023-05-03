@@ -12,7 +12,7 @@
 
 	<div class="grid-col-7 h-full overflow-auto p-20 flex items-center justify-center">
 
-		<div class="w-full grid" style="max-width: 42rem;">
+		<form [formGroup]="form" class="w-full grid" style="max-width: 42rem;">
 			<div class="grid-col-12">
 				<a href="../../" class="display-block">
 					<span nz-icon nzType="arrow-left" nzTheme="outline"></span>
@@ -39,30 +39,30 @@
 				<p class="display-block m-0 text-black mb-7">Detalles de la tarjeta</p>
 
 				<div class="w-full grid" style="gap: 0.7rem">
-					<input placeholder="1234 1234 1234 1234" nz-input type="text" class="grid-col-12">
+					<input formControlName="numeroTarjeta" placeholder="1234 1234 1234 1234" nz-input type="text" class="grid-col-12">
 
-					<input placeholder="MM / YY" nz-input type="text" class="grid-col-6">
+					<input formControlName="expiracionTarjeta" placeholder="MM / YY" nz-input type="text" class="grid-col-6">
 
-					<input placeholder="CVV" nz-input type="text" class="grid-col-6">
+					<input formControlName="cvvTarjeta" placeholder="CVV" nz-input type="text" class="grid-col-6">
 				</div>
 			</div>
 
 			<div class="grid-col-12">
 				<p class="display-block m-0 text-black mb-7">Titular de la tarjeta</p>
 
-				<input nz-input type="text" class="w-full">
+				<input nz-input formControlName="titularTarjeta" type="text" class="w-full">
 			</div>
 
 			<div class="grid-col-12">
 				<p class="display-block m-0 text-black mb-7">Tipo de suscripción</p>
 
-				<input nz-input disabled type="text" class="w-full" value="Anual">
+				<input nz-input formControlName="subscripcion" type="text" class="w-full" value="Anual">
 			</div>
 
 			<div class="grid-col-12">
-				<button nz-button nzType="primary" class="w-full">Pagar {{ 97.50 | currency }}</button>
+				<button nz-button (click)="realizarPago()" nzType="primary" class="w-full">Pagar {{ 97.50 | currency }}</button>
 			</div>
-		</div>
+		</form>
 
 	</div>
 </div>
