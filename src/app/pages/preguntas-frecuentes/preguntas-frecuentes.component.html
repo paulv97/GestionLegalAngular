@@ -1,0 +1,39 @@
+<div class="w-full p-20 pt-40 max-width mx-auto" style="max-width: 80rem;">
+
+	<h2 class="font-bold mb-20 m-0 display-block text-center">Preguntas Frecuentes</h2>
+
+	<div class="w-full grid">
+
+		<div class="grid-col-12">
+			<p class="display-block m-0 mb-7">Filtro de preguntas frecuentes</p>
+
+			<input nz-input placeholder="Filtro de preguntas" [(ngModel)]="busqueda" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
+		</div>
+
+		<ng-container *ngIf="busqueda && busqueda.length > 0">
+
+			<div @fadeInOut class="grid-col-12 rounded border-1 border-solid border-gray-400">
+				<div class="w-full border-b-1 border-solid border-gray-400 p-15">
+					<h4 class="font-bold display-block m-0 mb-10">Pregunta 1</h4>
+
+					<p class="display-block m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto praesentium sed voluptas error corporis dicta natus saepe dignissimos, ullam quae alias. Quod exercitationem quidem quaerat delectus, repellat explicabo excepturi consequuntur quia, id reiciendis ducimus?</p>
+				</div>
+
+				<div class="w-full border-b-1 border-solid border-gray-400 p-15">
+					<h4 class="font-bold display-block m-0 mb-10">Pregunta 2</h4>
+
+					<p class="display-block m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto praesentium sed voluptas error corporis dicta natus saepe dignissimos, ullam quae alias. Quod exercitationem quidem quaerat delectus, repellat explicabo excepturi consequuntur quia, id reiciendis ducimus?</p>
+				</div>
+
+				<div class="w-full p-15">
+					<h4 class="font-bold display-block m-0 mb-10">Pregunta 3</h4>
+
+					<p class="display-block m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto praesentium sed voluptas error corporis dicta natus saepe dignissimos, ullam quae alias. Quod exercitationem quidem quaerat delectus, repellat explicabo excepturi consequuntur quia, id reiciendis ducimus?</p>
+				</div>
+			</div>
+
+		</ng-container>
+
+	</div>
+
+</div>
