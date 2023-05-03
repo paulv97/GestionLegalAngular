@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarLayoutModule } from './layout/sidebar-layout/sidebar-layout.module';
 import { AuthInterceptorsService } from './shared/services/interceptors/auth-interceptor.service';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-// import { LoginComponent } from './pages/login/login.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 registerLocaleData(es);
 
@@ -30,6 +30,7 @@ registerLocaleData(es);
 		BrowserAnimationsModule,
 		SidebarLayoutModule,
 		NzModalModule,
+		LeafletModule,
 	],
 	providers: [
 		{ provide: LOCALE_ID, useValue: 'en-US' },

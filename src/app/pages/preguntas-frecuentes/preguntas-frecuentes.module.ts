@@ -4,6 +4,7 @@ import { PreguntasFrecuentesComponent } from './preguntas-frecuentes.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
 
 @NgModule({
 	declarations: [
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
 		FormsModule,
 		RouterModule.forChild([{ path: '', component: PreguntasFrecuentesComponent },]),
 		NzInputModule,
+		SearchPipeModule,
 	]
 })
 export class PreguntasFrecuentesModule { }
