@@ -1,0 +1,38 @@
+<div class="w-full h-full p-25">
+
+	<div class="grid w-full h-full">
+
+		<div class="grid-col-4 h-full overflow-y-auto pr-20 border-r-1 border-solid border-gray-400">
+			<div class="w-full grid">
+				<div class="grid-col-12">
+					<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
+				</div>
+
+				<ng-container *ngFor="let i of ['Leyes', 'Reglamentos', 'Decretos Ejecutivos', 'Acuerdos', 'Resoluciones'] | search:busqueda">
+					<div class="grid-col-12 cursor-pointer rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
+						<p class="display-block text-center m-0">{{ i }}</p>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+
+		<div class="grid-col-8 h-full overflow-y-auto">
+			<div class="w-full grid">
+				<div class="grid-col-12">
+					<p class="text-lg font-semibold display-block m-0 text-center">Leyes</p>
+				</div>
+
+				<ng-container *ngFor="let i of RECURSOS | search:busqueda">
+					<div class="grid-col-12 flex items-center flex-no-wrap cursor-pointer rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
+						<span nz-icon class="display-block mr-7 m-0 text-red-700" nzType="file-pdf" nzTheme="outline"></span>
+						<p class="display-block m-0">{{ i }}</p>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+
+	</div>
+
+
+
+</div>

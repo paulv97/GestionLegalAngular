@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
 		{
 			icon: 'book',
 			label: 'Recursos',
-			route: ''
+			route: 'recursos'
 		},
 		{
 			icon: 'pie-chart',

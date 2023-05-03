@@ -7,6 +7,7 @@ import { SidebarModule } from 'src/app/shared/components/sidebar/sidebar.module'
 const routes: Routes = [
 	{ path: '', component: SidebarLayoutComponent, children: [
 		{ path: 'busqueda', loadChildren: () => import('../../pages/app/busqueda/busqueda.module').then(m => m.BusquedaModule) },
+		{ path: 'recursos', loadChildren: () => import('../../pages/app/recursos/recursos.module').then(m => m.RecursosModule) },
 	] }
 ]
 
