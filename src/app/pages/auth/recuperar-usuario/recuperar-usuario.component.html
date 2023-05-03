@@ -1,0 +1,124 @@
+<div class="w-screen h-screen grid">
+
+	<div class="grid-col-2 sm:display-none bg-theme-primary"></div>
+
+	<div class="grid-col-12 sm:display-block display-none bg-theme-primary"></div>
+
+	<div class="grid-col-9 sm:grid-col-15 flex sm:display-block items-center">
+		<form [formGroup]="form" class="p-20 w-full mx-auto grid" style="max-width: 47rem;">
+			<div class="grid-col-12 mb-10">
+				<a routerLink="../login" class="mb-5 text-lightblue-600 display-inlineblock m-0">< Iniciar Sesión</a>
+
+				<h3 class="grid-col-12 m-0 display-block font-bold">Recuperar usuario</h3>
+
+				<p class="grid-col-12 display-block m-0 text-gray-900">
+					Estimado socio, para recuperar su usuario requerimos ingrese la siguiente información con el fin de validar su identidad.
+				</p>
+			</div>
+
+			<ng-container *ngIf="!recuperacionSocio">
+				<div class="grid-col-12">
+					<p class="text-md m-0 font-bold pb-10 display-block border-b-1 border-solid border-gray-500">
+						Información del usuario
+					</p>
+				</div>
+			</ng-container>
+
+			<div class="grid-col-12">
+				<p class="display-block mb-5 m-0 text-black">Nro. Identificación</p>
+				<nz-input-group nzAddOnBeforeIcon="idcard">
+					<input nz-input formControlName="NumeroIdentificacion" placeholder="Nro. Identificación" type="text" class="w-full py-5">
+				</nz-input-group>
+
+				<ng-container *ngIf="form.get('NumeroIdentificacion')?.errors && form.get('NumeroIdentificacion')?.dirty"
+					[ngTemplateOutlet]="formErrorTemplate"
+					[ngTemplateOutletContext]="{field: form.get('NumeroIdentificacion')}">
+				</ng-container>
+			</div>
+
+			<div class="grid-col-12">
+				<p class="display-block mb-5 m-0 text-black">Correo electrónico (registrado en la institución)</p>
+				<nz-input-group nzAddOnBeforeIcon="mail">
+					<input nz-input formControlName="Correo" placeholder="Correo electrónico" type="text" class="w-full py-5">
+				</nz-input-group>
+
+				<ng-container *ngIf="form.get('Correo')?.errors && form.get('Correo')?.dirty"
+					[ngTemplateOutlet]="formErrorTemplate"
+					[ngTemplateOutletContext]="{field: form.get('Correo'), dictionary: {pattern: 'Debe ingresar un formato de correo válido'}}">
+				</ng-container>
+			</div>
+
+			<ng-container *ngIf="!recuperacionSocio">
+				<div class="grid-col-12 mt-7">
+					<p class="text-md m-0 font-bold pb-10 display-block border-b-1 border-solid border-gray-500">
+						Información del socio representante
+					</p>
+				</div>
+
+				<div class="grid-col-12">
+					<p class="display-block mb-5 m-0 text-black">Nro. Identificación</p>
+					<nz-input-group nzAddOnBeforeIcon="idcard">
+						<input nz-input formControlName="NumeroIdentificacionSocio" placeholder="Nro. Identificación" type="text" class="w-full py-5">
+					</nz-input-group>
+
+					<ng-container *ngIf="form.get('NumeroIdentificacionSocio')?.errors && form.get('NumeroIdentificacionSocio')?.dirty"
+						[ngTemplateOutlet]="formErrorTemplate"
+						[ngTemplateOutletContext]="{field: form.get('NumeroIdentificacionSocio')}">
+					</ng-container>
+				</div>
+			</ng-container>
+
+			<div class="grid-col-12">
+				<p class="display-block mb-5 m-0 text-black">Fecha Nacimiento</p>
+				<nz-input-group nzAddOnBeforeIcon="calendar">
+					<nz-date-picker [nzFormat]="env.dateFormat" formControlName="FechaNacimiento"
+						nzPlaceHolder="Fecha Nacimiento" class="custom-element"
+						[nzDisabledDate]="disabledDate"></nz-date-picker>
+				</nz-input-group>
+
+				<ng-container *ngIf="form.get('FechaNacimiento')?.errors && form.get('FechaNacimiento')?.dirty"
+					[ngTemplateOutlet]="formErrorTemplate"
+					[ngTemplateOutletContext]="{field: form.get('FechaNacimiento')}">
+				</ng-container>
+			</div>
+
+			<div class="grid-col-12">
+				<p class="display-block mb-5 m-0 text-black">Número de cuenta</p>
+				<nz-input-group nzAddOnBeforeIcon="dollar-circle">
+					<input nz-input formControlName="NumeroCuenta" placeholder="Número de cuenta" type="text" class="w-full py-5">
+				</nz-input-group>
+
+				<ng-container *ngIf="form.get('NumeroCuenta')?.errors && form.get('NumeroCuenta')?.dirty"
+					[ngTemplateOutlet]="formErrorTemplate"
+					[ngTemplateOutletContext]="{field: form.get('NumeroCuenta'), dictionary: {pattern: 'El número de cuenta solo puede contener números'}}">
+				</ng-container>
+			</div>
+
+			<ng-container *ngIf="errors && errors.length > 0">
+				<div class="grid-col-12 px-10 py-7 border-1 border-solid border-red-700 bg-redgray rounded-sm">
+					<ng-container *ngFor="let e of errors; let isLast = last">
+						<p
+							class="text-red-800 display-block m-0"
+							[ngClass]="{'mb-7': !isLast}">{{ e.text }}</p>
+					</ng-container>
+				</div>
+			</ng-container>
+
+			<button nz-button type="button" (click)="recuperar()" [nzLoading]="isLoading" nzType="primary" class="mt-10 grid-col-12">Validar información</button>
+
+			<button nz-button type="button" (click)="recuperacionSocio = !recuperacionSocio" [disabled]="isLoading" nzType="text" class="grid-col-12">
+				{{ recuperacionSocio ? 'Recuperación para usuarios no socios' : 'Recuperación para socios de la institución' }}
+			</button>
+		</form>
+	</div>
+
+</div>
+
+<ng-template #formErrorTemplate let-field="field" let-dictionary="dictionary">
+	<div class="w-full pt-5">
+		<ng-container *ngFor="let item of field.errors | keyvalue">
+			<p class="m-0 mt-5 display-block text-red-700">
+				{{ dictionary && dictionary[item.key+''] ? dictionary[item.key+''] : formsMappings[item.key+'']?.replace('{param}', item.value) }}</p>
+		</ng-container>
+	</div>
+</ng-template>

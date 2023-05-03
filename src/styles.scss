@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./app/shared/styles/VScss/VSstyles.scss";
+@import "./app/shared/styles/VScss/variables";
+@import "./app/app.component.scss";
+@import "./app/shared/styles/custom.scss";
+
+@font-face {
+    font-family: ProductSans;
+    src: url(./assets/fonts/product-sans/ProductSansRegular.ttf);
+    font-weight: regular;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: ProductSans;
+    src: url(./assets/fonts/product-sans/ProductSansItalic.ttf);
+    font-weight: regular;
+	font-style: italic;
+}
+
+@font-face {
+    font-family: ProductSans;
+    src: url(./assets/fonts/product-sans/ProductSansBold.ttf);
+    font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: ProductSans;
+    src: url(./assets/fonts/product-sans/ProductSansBoldItalic.ttf);
+    font-weight: bold;
+	font-style: italic;
+}
+
+:root {
+	/* MENU */
+	--color-item-menu: #4F5C71;
+	--bg-item-menu: transparent;
+	--color-item-menu-selected: var(--primary);
+	--bg-item-menu-selected: #EFF4FA;
+	--color-title-menu: #193D67;
+	--color-separator-menu: #8FA2C1;
+	/* FIN MENU */
+}
+
+.bg-theme-default-page {
+	background: var(--page-background);
+}
+
+[class~='hover:scale'] {
+	&:hover {
+		transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+		transform: scale(1.06);
+	}
+}

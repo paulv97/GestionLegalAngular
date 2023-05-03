@@ -1,0 +1,21 @@
+.contenedor-movimientos {
+	.item-movimiento {
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+.custom-btn-size {
+	height: 3.109rem;
+}
+
+.btn-pdf {
+	border-color: #c81f35;
+    background: #c81f35;
+
+	&:hover {
+		border-color: #e13249;
+    	background: #e13249;
+	}
+}

@@ -1,0 +1,103 @@
+<h4 class="font-bold text-theme-primary m-0 display-block mb-20">Listado de cuentas</h4>
+
+<div class="w-full grid">
+
+	<ng-container *ngIf="!isLoading; else loadingTmpl">
+		<ng-container *ngIf="!error; else errorTmpl">
+			<ng-container *ngIf="cuentas && cuentas.length > 0; else noDataTmpl">
+				<ng-container *ngFor="let p of cuentas">
+					<div class="w-full bg-separator px-10 grid-col-12 py-5">
+						<p class="separator-text m-0 color-separator display-block font-bold">{{ p.label | uppercase }} ({{
+							p.data.length }})</p>
+					</div>
+
+					<ng-container *ngFor="let c of p.data; let i = index">
+						<a [href]="'cuentas/' + c.numeroCuenta + (c.aliasCuenta ? '?alias=' + c.aliasCuenta : '')"
+							[@fadeInOut]
+							[class]="'no-underline card cursor-pointer px-15 py-10 grid-col-4 md:grid-col-6 sm:grid-col-12 rounded bg-card'">
+
+							<i class="display-block text-white mb-5 text-right text-smd display-block">
+								{{ c.descripcion | uppercase }}
+							</i>
+
+							<div class="w-full mb-5">
+								<p class="text-white display-block m-0">Disponible</p>
+								<p class="text-white display-block m-0 font-bold text-lg">
+									<ng-container [ngSwitch]="c.codigoMoneda">
+										<ng-container *ngSwitchCase="1">{{ c.saldoDisponible | currency:'USD' }}</ng-container>
+										<ng-container *ngSwicthDefault>{{ c.saldoDisponible | currency:'USD' }}</ng-container>
+									</ng-container>
+								</p>
+							</div>
+
+							<div class="w-full mt-15">
+								<p class="w-full text-smd display-inline-block m-0 text-white">
+									Nro. Cuenta:
+									<b class="text-smd display-inline-block m-0 text-white">{{ c.aliasCuenta || c.numeroCuenta }}</b>
+								</p>
+								<p class="w-full text-smd display-inline-block m-0 text-white">
+									Bloqueado:
+									<b class="text-smd display-inline-block m-0 text-white">
+										<ng-container [ngSwitch]="c.codigoMoneda">
+											<ng-container *ngSwitchCase="1">{{ c.saldoBloqueado | currency:'USD' }}
+											</ng-container>
+											<ng-container *ngSwicthDefault>{{ c.saldoBloqueado | currency:'USD' }}
+											</ng-container>
+										</ng-container>
+									</b>
+								</p>
+							</div>
+						</a>
+					</ng-container>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+	</ng-container>
+
+</div>
+
+<!--LOADING-->
+<ng-template #loadingTmpl>
+	<ng-container *ngFor="let i of [1,1]">
+		<div class="grid-col-12 h-25 rounded-sm skeleton"></div>
+
+		<div class="grid-col-4 skeleton rounded" style="height: 14.2rem"></div>
+		<div class="grid-col-4 skeleton rounded" style="height: 14.2rem"></div>
+	</ng-container>
+</ng-template>
+
+<!--NO DATA FOUND-->
+<ng-template #noDataTmpl>
+	<div class="grid-col-12">
+		<nz-empty nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+			[nzNotFoundContent]="contentTpl" [nzNotFoundFooter]="footerTpl">
+			<ng-template #contentTpl>
+				<span>
+					No se encontraron cuentas asociadas para mostrar
+				</span>
+			</ng-template>
+			<ng-template #footerTpl>
+				<button nz-button nzType="primary" (click)="aperturarCuenta()">Aperturar cuenta</button>
+			</ng-template>
+		</nz-empty>
+	</div>
+</ng-template>
+
+<!--ERROR-->
+<ng-template #errorTmpl>
+	<div class="grid-col-12 bg-gray-100 rounded-sm p-20 text-center">
+
+		<h4 class="font-medium text-red-700 display-block m-0 mb-20 text-center">
+			{{ error?.length == 1 ? 'Ocurrió un error al obtener las cuentas' : 'Ocurrieron varios errores al obtener las cuentas' }}
+		</h4>
+
+		<ng-container *ngFor="let e of error">
+			<p nz-paragraph class="w-full m-0 mb-7 text-center">
+				<span nz-icon class="mr-7 text-red-700" nzType="close-circle"></span>
+				{{ e.text }}
+			</p>
+		</ng-container>
+
+		<button nz-button (click)="obtenerCuentas()" class="mt-10">Volver a intentar</button>
+	</div>
+</ng-template>

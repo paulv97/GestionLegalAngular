@@ -1,0 +1,107 @@
+<h4 class="font-bold text-theme-primary m-0 display-block mb-20">Listado de garantías</h4>
+
+<div class="w-full grid">
+
+	<ng-container *ngIf="!isLoading; else loadingTmpl">
+		<ng-container *ngIf="!error; else errorTmpl">
+			<ng-container *ngIf="garantias && garantias.length > 0; else noDataTmpl">
+				<ng-container *ngFor="let g of garantias">
+					<div [@fadeInOut]
+						class="no-underline px-15 py-10 grid-col-4 md:grid-col-6 sm:grid-col-12 rounded bg-white border-1 border-solid color-box-border">
+
+						<i class="text-theme-primary display-block mb-5 text-smd display-block">
+							{{ g.deudor | uppercase }}
+						</i>
+
+						<div class="w-full mb-5">
+							<p class="display-block m-0">Capital por pagar</p>
+							<p class="display-block m-0 font-bold text-lg">
+								{{ g.saldoCapital | currency:'USD' }}
+							</p>
+						</div>
+
+						<div class="w-full mt-10">
+							<p class="w-full text-smd display-inline-block m-0">
+								Fecha primera cuota:
+								<b class="text-smd display-inline-block m-0">{{ g.fechaPrimeraCuota | date:'dd/MM/yyyy' }}</b>
+							</p>
+							<p class="w-full text-smd display-inline-block m-0">
+								Monto solicitado:
+								<b class="text-smd display-inline-block m-0">{{ g.montoCredito | currency:'USD' }}</b>
+							</p>
+							<p class="w-full text-smd display-inline-block m-0">
+								Capital pagado:
+								<b class="text-smd display-inline-block m-0">{{ g.capitalPagado | currency:'USD' }}</b>
+							</p>
+						</div>
+
+						<div class="w-full mt-7">
+							<p class="w-full text-smd display-inline-block m-0">
+								Nro. de crédito:
+								<b class="text-smd display-inline-block m-0">{{ g.numeroCredito }}</b>
+							</p>
+							<p class="w-full text-smd display-inline-block m-0">
+								Fecha de crédito:
+								<b class="text-smd display-inline-block m-0">{{ g.fechaCredito | date:'dd/MM/yyyy' }}</b>
+							</p>
+						</div>
+
+						<div class="w-full mt-7">
+							<p class="w-full text-smd display-inline-block m-0">
+								Días mora:
+								<b class="text-smd display-inline-block m-0"
+									[ngClass]="{'text-red-700': g.diasMora > 0}">{{ g.diasMora }}</b>
+							</p>
+							<p class="w-full text-smd display-inline-block m-0">
+								Mora:
+								<b class="text-smd display-inline-block m-0"
+									[ngClass]="{'text-red-700': g.mora > 0}">{{ g.mora | currency:'USD' }}</b>
+							</p>
+						</div>
+					</div>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+	</ng-container>
+
+</div>
+
+<!--LOADING-->
+<ng-template #loadingTmpl>
+	<ng-container *ngFor="let i of [1,1]">
+		<div class="grid-col-4 skeleton rounded" style="height: 22rem"></div>
+	</ng-container>
+</ng-template>
+
+<!--NO DATA FOUND-->
+<ng-template #noDataTmpl>
+	<div class="grid-col-12">
+		<nz-empty nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+			[nzNotFoundContent]="contentTpl">
+			<ng-template #contentTpl>
+				<span>
+					No se encontraron garantías disponibles para mostrar
+				</span>
+			</ng-template>
+		</nz-empty>
+	</div>
+</ng-template>
+
+<!--ERROR-->
+<ng-template #errorTmpl>
+	<div class="grid-col-12 bg-gray-100 rounded-sm p-20 text-center">
+
+		<h4 class="font-medium text-red-700 display-block m-0 mb-20 text-center">
+			{{ error?.length == 1 ? 'Ocurrió un error al obtener las garantías' : 'Ocurrieron varios errores al obtener las garantías' }}
+		</h4>
+
+		<ng-container *ngFor="let e of error">
+			<p nz-paragraph class="w-full m-0 mb-7 text-center">
+				<span nz-icon class="mr-7 text-red-700" nzType="close-circle"></span>
+				{{ e.text }}
+			</p>
+		</ng-container>
+
+		<button nz-button (click)="obtenerGarantias()" class="mt-10">Volver a intentar</button>
+	</div>
+</ng-template>

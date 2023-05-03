@@ -1,0 +1,42 @@
+.card {
+	&:hover {
+		transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+		transform: scale(1.06);
+	}
+}
+
+.separator-text {
+	letter-spacing: 0.15rem;
+}
+
+
+.grid {
+	.bg-card {
+		background-image: linear-gradient(
+			115deg,
+			hsl(212deg 18% 33%) 0%,
+			hsl(213deg 19% 31%) 12%,
+			hsl(213deg 21% 29%) 24%,
+			hsl(214deg 22% 27%) 35%,
+			hsl(215deg 24% 25%) 47%,
+			hsl(216deg 27% 22%) 58%,
+			hsl(216deg 29% 20%) 69%,
+			hsl(217deg 33% 18%) 80%,
+			hsl(218deg 37% 16%) 90%,
+			hsl(218deg 42% 14%) 100%
+		  );
+	}
+
+	.bg-card:nth-child(3n-1) {
+		background: rgb(56,177,125);
+		background: linear-gradient(90deg, rgb(69, 151, 116) 0%, rgba(20,79,90,1) 100%);
+	}
+
+	.bg-card:nth-child(3n + 1) {
+		background-image: linear-gradient(
+			115deg,
+			rgb(54, 110, 221) 0%,
+			rgb(1, 48, 92) 100%
+		  );
+	}
+}

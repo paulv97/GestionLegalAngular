@@ -1,0 +1,10 @@
+.custom-element {
+	border-color: var(--color-input-border);
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	width: 100%;
+
+	&:focus {
+		border-color: var(--primary);
+	}
+}

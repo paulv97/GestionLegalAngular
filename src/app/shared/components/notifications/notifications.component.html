@@ -1,0 +1,30 @@
+<div class="notifications-content relative overflow-auto">
+	<div class="bg-white sticky top-0 left-0 w-full flex flex-no-wrap items-center justify-between py-7 px-15 border-b-1 border-solid color-box-border">
+		<p class="display-block mb-0 font-bold text-black">Notificaciones</p>
+
+		<a class="text-sm display-block text-right m-0 cursor-pointer">Marcar todo como leído</a>
+	</div>
+
+	<ng-container *ngFor="let i of [1,1,1,1,1,1,1,1,1]; let isLast = last">
+		<a routerLink=""
+			class="hover:bg-bluegray py-7 w-full flex justify-between px-15"
+			[ngClass]="{'border-b-1 border-solid color-box-border': !isLast}">
+			<div style="width: 4.5rem; padding-top: 0.3rem;" class="pr-12">
+				<img class="mb-7 w-full rounded-sm display-block" src="https://img.freepik.com/vector-premium/chatbot-icon-concepto-chat-bot-o-chatterbot-robot-asistencia-virtual-sitio-web_123447-1619.jpg?w=2000">
+			</div>
+
+			<div class="" style="width: calc(100% - 4.5rem)">
+				<div class="justify-between w-full flex items-center flex-no-wrap mb-5">
+					<p class="font-bold text-black display-block m-0">Notificación nueva 1234</p>
+
+
+				</div>
+
+				<p class="text-smd display-block m-0 text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas iure commodi reprehenderit excepturi minima tenetur magnam dolorum dolore mollitia.</p>
+			</div>
+
+		</a>
+	</ng-container>
+
+
+</div>

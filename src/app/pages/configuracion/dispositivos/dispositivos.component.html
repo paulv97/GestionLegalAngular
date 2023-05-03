@@ -1,0 +1,52 @@
+<h4 class="font-bold text-theme-primary m-0 display-block mb-20">Mis dispostivos</h4>
+
+<div class="grid w-full">
+
+	<div class="w-full bg-separator px-10 grid-col-12 py-5">
+		<p class="separator-text m-0 color-separator display-block font-bold">BANCA WEB</p>
+	</div>
+
+	<ng-container *ngFor="let i of [1,1,1]">
+		<div class="overflow-hidden sm:grid-col-6 xs:grid-col-12 grid-col-4 rounded color-box-border border-solid border-1 pl-10 pr-5 py-7 flex flex-no-wrap items-center">
+			<img class="w-35 display-block m-0 mr-10" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/480px-Google_Chrome_icon_%28February_2022%29.svg.png">
+
+			<div class="overflow-hidden">
+				<p class="w-full overflow-hidden white-space-nowrap text-ellipsis font-bold display-block m-0 text-black pr-5">
+					Windows 10 - Google Chrome
+				</p>
+
+				<p class="display-block mt-3 m-0 text-sm text-gray-800">01/01/2022</p>
+				<p class="display-block m-0 text-sm text-gray-800">100.100.100.100</p>
+			</div>
+
+			<button nz-tooltip nzTooltipTitle="Cerrar sesión" nz-button nzType="text" class="text-gray-600 hover:text-red-600">
+				<span nz-icon nzType="logout" nzTheme="outline"></span>
+			</button>
+		</div>
+	</ng-container>
+
+
+	<div class="w-full bg-separator px-10 grid-col-12 py-5">
+		<p class="separator-text m-0 color-separator display-block font-bold">BANCA MÓVIL</p>
+	</div>
+
+	<ng-container *ngFor="let i of [1,1,1]">
+		<div class="overflow-hidden sm:grid-col-6 xs:grid-col-12 grid-col-4 rounded color-box-border border-solid border-1 pl-10 pr-5 py-7 flex flex-no-wrap items-center">
+			<img class="w-35 display-block m-0 mr-10" src="https://w7.pngwing.com/pngs/546/448/png-transparent-android-mobile-app-development-logo-android-logo-grass-mobile-app-development-thumbnail.png">
+
+			<div class="overflow-hidden">
+				<p class="w-full overflow-hidden white-space-nowrap text-ellipsis font-bold display-block m-0 text-black pr-5">
+					Samsung Galaxy S10 Android 11
+				</p>
+
+				<p class="display-block mt-3 m-0 text-sm text-gray-800">01/01/2022</p>
+				<p class="display-block m-0 text-sm text-gray-800">100.100.100.100</p>
+			</div>
+
+			<button nz-tooltip nzTooltipTitle="Cerrar sesión" nz-button nzType="text" class="text-gray-600 hover:text-red-600">
+				<span nz-icon nzType="logout" nzTheme="outline"></span>
+			</button>
+		</div>
+	</ng-container>
+
+</div>

@@ -1,0 +1,36 @@
+.secondary-label {
+	font-size: 1.4rem;
+}
+
+.vs-select-cuenta-origen {
+	&.ant-select {
+		height: auto !important;
+
+		nz-select-arrow {
+			display: none;
+		}
+
+		nz-select-top-control {
+			height: auto !important;
+			padding: 0 !important;
+
+			nz-select-item {
+				padding: 0 !important;
+
+				&::after {
+					display: none !important;
+				}
+			}
+
+			nz-select-placeholder {
+				&::after {
+					display: none !important;
+				}
+
+				.white-space {
+					white-space: normal !important;
+				}
+			}
+		}
+	}
+}
