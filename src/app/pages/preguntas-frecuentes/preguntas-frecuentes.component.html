@@ -7,31 +7,35 @@
 		<div class="grid-col-12">
 			<p class="display-block m-0 mb-7">Filtro de preguntas frecuentes</p>
 
-			<input nz-input placeholder="Filtro de preguntas" [(ngModel)]="busqueda" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
+			<input nz-input placeholder="Filtro de preguntas" 
+				[(ngModel)]="busqueda" 
+				(ngModelChange)="onBusquedaChange($event)"
+				nzSize="large" 
+				class="text-md rounded px-15 py-12 w-full" 
+				type="text">
 		</div>
 
 		<ng-container *ngIf="busqueda && busqueda.length > 0">
-
-			<div @fadeInOut class="grid-col-12 rounded border-1 border-solid border-gray-400">
-				<div class="w-full border-b-1 border-solid border-gray-400 p-15">
-					<h4 class="font-bold display-block m-0 mb-10">Pregunta 1</h4>
-
-					<p class="display-block m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto praesentium sed voluptas error corporis dicta natus saepe dignissimos, ullam quae alias. Quod exercitationem quidem quaerat delectus, repellat explicabo excepturi consequuntur quia, id reiciendis ducimus?</p>
-				</div>
-
-				<div class="w-full border-b-1 border-solid border-gray-400 p-15">
-					<h4 class="font-bold display-block m-0 mb-10">Pregunta 2</h4>
-
-					<p class="display-block m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto praesentium sed voluptas error corporis dicta natus saepe dignissimos, ullam quae alias. Quod exercitationem quidem quaerat delectus, repellat explicabo excepturi consequuntur quia, id reiciendis ducimus?</p>
-				</div>
-
-				<div class="w-full p-15">
-					<h4 class="font-bold display-block m-0 mb-10">Pregunta 3</h4>
-
-					<p class="display-block m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto praesentium sed voluptas error corporis dicta natus saepe dignissimos, ullam quae alias. Quod exercitationem quidem quaerat delectus, repellat explicabo excepturi consequuntur quia, id reiciendis ducimus?</p>
-				</div>
+			<div class="grid-col-12">
+				<p class="display-block text-center text-black m-0">
+					Mostrando
+					<span class="display-inline-block text-theme-primary m-0">{{ itemsEncontrados }}</span> 
+					resultados para
+					<span class="display-inline-block text-theme-primary m-0">{{ busqueda }}</span>
+				</p>
 			</div>
+		</ng-container>
 
+		<ng-container>
+			<div @fadeInOut class="grid-col-12 rounded border-1 border-solid border-gray-400">
+				<ng-container *ngFor="let p of preguntasFrecuentes | search: busqueda">
+					<div class="w-full border-b-1 border-solid border-gray-400 p-15">
+						<h4 class="font-bold display-block m-0 mb-10">{{ p.pregunta }}</h4>
+	
+						<p class="display-block m-0">{{ p.respuesta }}</p>
+					</div>
+				</ng-container>
+			</div>
 		</ng-container>
 
 	</div>
