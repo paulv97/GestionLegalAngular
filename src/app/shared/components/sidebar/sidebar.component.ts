@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
 		{
 			icon: 'pie-chart',
 			label: 'Estadísticas',
-			route: ''
+			route: 'estadisticas'
 		},
 		{
 			icon: 'setting',
