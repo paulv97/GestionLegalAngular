@@ -1,0 +1,35 @@
+<div class="w-full p-20 pt-40 max-width mx-auto" style="max-width: 80rem;">
+    <h2 class="font-bold mb-20 m-0 display-block text-center">Registro</h2>
+
+    <div class="w-full flex-wrap">
+        <form [formGroup]="form" class="grid-col-6">
+            <div class="grid-col-12">
+                <p class="display-block m-0 mb-7">Nombres</p>
+    
+                <input nz-input placeholder="Nombres" formControlName="nombres" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
+            </div>
+    
+            <div class="grid-col-12">
+                <p class="display-block m-0 mb-7">Apellidos</p>
+    
+                <input nz-input placeholder="Apellidos" formControlName="apellidos" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
+            </div>
+    
+            <div class="grid-col-12">
+                <p class="display-block m-0 mb-7">Correo eletrónico</p>
+    
+                <input nz-input placeholder="Correo electrónico" formControlName="email" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="email">
+            </div>
+    
+            <div class="grid-col-12">
+                <p class="display-block m-0 mb-7">Contraseña</p>
+    
+                <input nz-input placeholder="Contraseña" formControlName="clave" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="password">
+            </div>
+    
+            <div class="grid-col-12">
+                <button nz-button nzType="primary" class="w-full">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</div>

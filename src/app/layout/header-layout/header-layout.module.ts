@@ -10,7 +10,7 @@ const routes: Routes = [
 		{ path: 'servicios-judiciales', loadChildren: () => import('../../pages/servicios-judiciales/servicios-judiciales.module').then(m => m.ServiciosJudicialesModule) },
 		{ path: 'preguntas-frecuentes', loadChildren: () => import('../../pages/preguntas-frecuentes/preguntas-frecuentes.module').then(m => m.PreguntasFrecuentesModule) },
 		{ path: 'login', loadChildren: () => import('../../pages/login/login.module').then(m => m.LoginModule) },
-
+		{ path: 'registro', loadChildren: () => import('../../pages/registro/registro.module').then(m => m.RegistroModule) },
 	] }
 ]
 
