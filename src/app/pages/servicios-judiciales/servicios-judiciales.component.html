@@ -1,4 +1,4 @@
-<div class="w-full p-20 pt-40 max-width mx-auto">
+<div class="w-full p-20 pt-40 max-width mx-auto" style="max-width: 80rem;">
 
 	<h2 class="font-bold mb-20 m-0 display-block text-center">Servicios Judiciales</h2>
 
@@ -7,7 +7,7 @@
 		<div class="grid-col-12">
 			<p class="display-block m-0 mb-7">Búsqueda de lugar</p>
 
-			<input nz-input [(ngModel)]="busqueda" nzSize="large" class="w-full" type="text">
+			<input nz-input placeholder="Buscar lugar" [(ngModel)]="busqueda" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
 		</div>
 
 		<ng-container *ngIf="busqueda && busqueda.length > 0">
@@ -17,6 +17,11 @@
 				</p>
 			</div>
 		</ng-container>
+
+		<div class="grid-col-12 rounded-md p-20 bg-purplegray">
+			<img src="https://i.pcmag.com/imagery/articles/01IB0rgNa4lGMBlmLyi0VP6-6..v1611346416.png"
+				class="display-block w-full">
+		</div>
 
 	</div>
 
