@@ -7,7 +7,17 @@
 		<div class="grid-col-12">
 			<p class="display-block m-0 mb-7">Búsqueda de lugar</p>
 
-			<input nz-input placeholder="Buscar lugar" [(ngModel)]="busqueda" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
+			<div class="w-full flex items-center flex-no-wrap">
+				<nz-select [(ngModel)]="categoriaSeleccionada" nzSize="large" nzMode="tags" nzShowSearch
+					class="text-md rounded w-full"
+					nzPlaceHolder="Buscar lugar">
+					<nz-option *ngFor="let option of categorias" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+				</nz-select>
+
+				<button (click)="buscar()" nz-button nzType="primary" nzSize="large" class="ml-7">
+					<span nz-icon nzType="search" nzTheme="outline"></span>
+				</button>
+			</div>
 		</div>
 
 		<ng-container *ngIf="busqueda && busqueda.length > 0">
@@ -20,8 +30,11 @@
 		</ng-container>
 
 		<div class="grid-col-12 rounded-md p-20 bg-purplegray">
-			<img src="https://i.pcmag.com/imagery/articles/01IB0rgNa4lGMBlmLyi0VP6-6..v1611346416.png"
-				class="display-block w-full">
+			<div style="height: 450px;"
+				leaflet
+				[leafletOptions]="options"
+				(leafletMapReady)="onMapReady($event)">
+			</div>
 		</div>
 
 	</div>
