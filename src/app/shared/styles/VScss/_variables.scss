@@ -1,5 +1,5 @@
 /* TEXTOS */
-$font-family: 'ProductSans', sans-serif;
+$font-family: 'Inter', sans-serif;
 $default-size: 10px;
 $default-size-num: 9.4;
 
@@ -110,7 +110,11 @@ $morado:
 
 $theme:
 	primary var(--primary),
+	primary-dark var(--primary-dark),
+	primary-accent var(--primary-accent),
 	secondary var(--secondary),
+	secondary-dark var(--secondary-dark),
+	secondary-accent var(--secondary-accent),
 ;
 
 $default-colors: (

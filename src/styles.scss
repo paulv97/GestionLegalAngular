@@ -1,36 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 @import "./app/shared/styles/VScss/VSstyles.scss";
 @import "./app/shared/styles/VScss/variables";
 @import "./app/app.component.scss";
 @import "./app/shared/styles/custom.scss";
-
-@font-face {
-    font-family: ProductSans;
-    src: url(./assets/fonts/product-sans/ProductSansRegular.ttf);
-    font-weight: regular;
-	font-style: normal;
-}
-
-@font-face {
-    font-family: ProductSans;
-    src: url(./assets/fonts/product-sans/ProductSansItalic.ttf);
-    font-weight: regular;
-	font-style: italic;
-}
-
-@font-face {
-    font-family: ProductSans;
-    src: url(./assets/fonts/product-sans/ProductSansBold.ttf);
-    font-weight: bold;
-	font-style: normal;
-}
-
-@font-face {
-    font-family: ProductSans;
-    src: url(./assets/fonts/product-sans/ProductSansBoldItalic.ttf);
-    font-weight: bold;
-	font-style: italic;
-}
 
 :root {
 	/* MENU */
