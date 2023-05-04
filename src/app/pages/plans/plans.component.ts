@@ -7,9 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./plans.component.scss']
 })
 export class PlansComponent implements OnInit {
-  // choosePlan(undefined: undefined) {
-  // throw new Error('Method not implemented.');
-  // }
   selectedPlan: String = '';
 
   choosePlan(plan: String) {
@@ -17,7 +14,6 @@ export class PlansComponent implements OnInit {
     console.log(this.selectedPlan);
     this.router.navigate(['checkout/12345'])
   }
-  // basicPlanItems: any;
 
   basicPlanItems = [
     "Unlimited Public Projects",
@@ -32,5 +28,4 @@ export class PlansComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

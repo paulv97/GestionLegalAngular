@@ -9,21 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-blog.component.scss']
 })
 export class CreateBlogComponent implements OnInit {
+
+  font: number = 1
+  date: Date
+  form: FormGroup
+  isLoading: boolean = false
+
+  showBlogs() {
+    this.isLoading = true
+
+    // redirect to the blogs page
+    setTimeout(() => {
+      this.isLoading = false
+      window.open('/assets/paginas-samuel/Paginas/BlogIndividual.html', '_blank')
+    }
+      , 5000)
+  }
+
+  setFont(font: number) {
+    this.font = font
+    console.log("Selected Font: " + font)
+  }
+
   user: { name: string; email: string; } = {
     name: 'John Doe',
     email: 'john@email.com'
   }
-  date: Date
-  // blogBody: any;
-
-  show(num: any) {
-    console.log(num);
-  }
-  // title: any;
-
-
-  form: FormGroup
-  isLoading: boolean = false
 
   constructor(
     private message: NzMessageService,
@@ -45,13 +56,9 @@ export class CreateBlogComponent implements OnInit {
     }
 
     this.isLoading = true
-
-    // redirect to the busqueda page
     setTimeout(() => {
       this.isLoading = false
       this.message.success('Blog creado exitosamente.')
-      //this.router.navigate(['/assets/paginas-samuel/Paginas/BlogIndividual.html'])
-      window.open('/assets/paginas-samuel/Paginas/BlogIndividual.html', '_blank')
     }
       , 5000)
   }

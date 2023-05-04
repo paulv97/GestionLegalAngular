@@ -3,12 +3,10 @@
 
 	<br />
 	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sit
-		assumenda neque! Autem incidunt sed nesciunt. Voluptatibus vero
-		inventore, laboriosam doloribus nobis veritatis quos sit laudantium
-		praesentium nam fuga possimus porro perferendis, sed tempora temporibus
-		autem at quasi quisquam. Rem facere est, magni iusto reprehenderit
-		consequuntur vel aperiam. Modi, delectus.
+		En este espacio puedes tu blog, puedes escribir lo que quieras, pero
+		recuerda que no debes de escribir cosas que no sean de tu autoría.
+		Maneja un lenguaje adecuado y no escribas cosas que puedan ofender a
+		otras personas. Muchas gracias por tu comprensión.
 	</p>
 
 	<div class="w-full grid justify-center">
@@ -55,11 +53,15 @@
 							</a>
 							<nz-dropdown-menu #menu="nzDropdownMenu">
 								<ul nz-menu nzSelectable>
-									<li (click)="show(1)" nz-menu-item>
+									<li (click)="setFont(1)" nz-menu-item>
+										Calibri
+									</li>
+									<li (click)="setFont(2)" nz-menu-item>
 										Fuente 2
 									</li>
-									<li nz-menu-item>Fuente 3</li>
-									<li nz-menu-item>Fuente 4</li>
+									<li (click)="setFont(3)" nz-menu-item>
+										Fuente 4
+									</li>
 								</ul>
 							</nz-dropdown-menu>
 							<!-- add a vertical separator -->
@@ -109,10 +111,12 @@
 			</div>
 
 			<!-- show the blog -->
-			<div class="w-full grid justify-center mb-40">
+			<div class="w-full grid justify-center mb-40 mt-30">
 				<div class="grid-col-12 justify-center">
 					<p>Vista previa:</p>
-					<div class="border-4" style="border: 1px dashed black">
+					<!-- <div class="border-4" style="border: 1px dashed black"> -->
+					<div class="card flex-wrap">
+						<!-- title -->
 						<p class="display-block m-0 mb-7">
 							{{ form.controls["title"].value }}
 						</p>
@@ -131,6 +135,19 @@
 						</p>
 					</div>
 				</div>
+			</div>
+
+			<div class="grid-col-12 mb-20">
+				<button
+					nz-button
+					nzType="primary"
+					nzSize="large"
+					class="w-full"
+					[nzLoading]="isLoading"
+					(click)="showBlogs()"
+				>
+					Ver todos los Blogs
+				</button>
 			</div>
 		</div>
 	</div>

@@ -1,16 +1,6 @@
 <div class="mt-40 mx-auto" style="max-width: 80%">
 	<h1 class="font-bold mb-20 m-0 display-block text-center">Elige tu Plan</h1>
-	<!-- <div class="box-border h-32 w-32 p-4 border-4"><h1>kjfenfe</h1></div> -->
-	<!-- <div class="card">enfjer</div> -->
-
-	<!-- <div class="flex flex-wrap max-width justify-center">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-
-    </div> -->
-	<!-- div that contains 3 cards in a row and is responsive -->
-	<div class="w-full grid flex-wrap justify-center">
+	<div class="w-full grid flex flex-wrap justify-center">
 		<!-- card 1 -->
 		<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
 			<nz-card-meta nzTitle="Básico" nzDescription="Plan Personal">
@@ -32,7 +22,7 @@
 		<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
 			<nz-card-meta nzTitle="Premium" nzDescription="Plan Recomendado">
 			</nz-card-meta>
-			<h1>$5</h1>
+			<h1>$10</h1>
 
 			<ul>
 				<li *ngFor="let item of basicPlanItems; let i = index">
@@ -47,9 +37,9 @@
 		</nz-card>
 		<!-- card 3 -->
 		<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
-			<nz-card-meta nzTitle="Básico" nzDescription="Plan Empresarial">
+			<nz-card-meta nzTitle="Para Empresas" nzDescription="Plan Empresarial">
 			</nz-card-meta>
-			<h1>$5</h1>
+			<h1>$15</h1>
 
 			<ul>
 				<li *ngFor="let item of basicPlanItems; let i = index">

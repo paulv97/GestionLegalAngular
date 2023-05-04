@@ -11,10 +11,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class LoginComponent implements OnInit {
   googleLogin() {
-    throw new Error('Method not implemented.');
+    console.log("login with google...")
   }
   facebookLogin() {
-    throw new Error('Method not implemented.');
+    console.log("login with facebook...")
   }
 
   form: FormGroup
