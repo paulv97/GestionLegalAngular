@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="../Sass/stylesBlogIndividual.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../Sass/mini.css"> -->
+
+        <script src="../JS/header.component.js"></script>
+        <script src="../JS/footer.component.js"></script>
+
+        <title>Blog Individual</title>
+
+    </head>
+
+    <body>
+        <div class="container">
+
+            <app-header></app-header>
+
+            <section class="seccion1 border">
+                <div class="tituloAutor border">
+                    <img src="../Imagen/fondoBlog.jpg" alt="fondoBlog2">
+                    <div class="textoEncima">
+                        <h1>Blog Post Title</h1>
+                        <p>
+                            dia mes anio Por Autor Blog
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="imagenB border">
+                    <img src="../Imagen/imagenBlog.jpg" alt="imagenBlog" >
+                </div>
+
+                <div class="compartir">
+                    <a href="https://www.facebook.com">
+                        <img src="../Imagen/facebook.svg" alt="facebook" class="compartirTam" >
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <img src="../Imagen/instagram.svg" alt="instagram" class="compartirTam">
+                    </a>
+                    <a href="https://twitter.com/">
+                        <img src="../Imagen/twitter.svg" alt="twitter" class="compartirTam">
+                    </a>
+                    <a href="whatsapp://send?text=Hola%20WhatsApp!">
+                        <img src="../Imagen/whatsapp.svg" alt="whatsapp" class="compartirTam">
+                    </a>
+                </div>
+            </section>
+            <section class="seccion2 border">
+                <textarea type="text" name="informacionB" id="informacionB">
+                    AQUI VA TODA LA INFORMACION DE UN BLOG CREADO
+                </textarea>
+            </section>
+            <section class="seccion3 border">
+                <div class="calificar border">
+                    <label for="califica">Califica este blog:</label>
+                    <img id="megusta" src="../Imagen/like.svg" alt="like">
+                    <label id="Nmegusta"for="likes">346</label>
+                    <img id="nomegusta" src="../Imagen/dislike.svg" alt="dislike">
+                    <label id="Nnomegusta" for="dislikes">231</label>
+                </div>
+                <div class="comentario border">
+                    <form action="#" method="GET" enctype="application/x-www-form-urlencoded">
+                        <fieldset>
+                            <!--<legend>Mi form</legend>-->
+
+                            <h1 >Deja un comentario a continuacion:</h1>
+                            <label for="comentarioB">Comentar *</label><br>
+                            <textarea type="text" name="comentarioB" id="comentarioBI" required ></textarea><br>
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" name="nombre" id="nombreBI" required><br>
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" name="email" id="emailBI" required><br>
+                            <button type="button" onclick="validarFormulario()">PUBLICAR COMENTARIO</button>
+                        </fieldset>
+                    </form>    
+                </div>
+            </section>
+            <section class="seccion4 border">
+                <div>
+                    <h1 style="text-decoration: underline;">Comentarios</h1>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                      <img src="../Imagen/usuario.svg" alt="Avatar del autor">
+                      <h4 class="comment-author">Autor</h4>
+                      <span class="comment-date">23 Abril, 2023</span>
+                    </div>
+                    <div class="comment-body">
+                      <p>Contenido del comentarioooooooooooooooooooooooooooooooooooooooo</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                      <img src="../Imagen/usuario.svg" alt="Avatar del autor">
+                      <h4 class="comment-author">Autor</h4>
+                      <span class="comment-date">22 Abril, 2023</span>
+                    </div>
+                    <div class="comment-body">
+                      <p>Contenido del comentario, este es un test...........................................</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                      <img src="../Imagen/usuario.svg" alt="Avatar del autor">
+                      <h4 class="comment-author">Autor</h4>
+                      <span class="comment-date">22 Abril, 2023</span>
+                    </div>
+                    <div class="comment-body">
+                      <p>Contenido del comentario, este es un simple avisoooooooooooooooooooooo</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <app-footer></app-footer>
+
+        </div>
+
+        <script src="../JS/scriptBlogIndividual.js"></script>
+
+
+    </body>
+
+
+</html>
