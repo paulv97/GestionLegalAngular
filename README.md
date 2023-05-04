@@ -34,3 +34,4 @@ Pasos:
 - Ubicarse en la raiz del Proyecto
 - Ejecutar npm install --force
 - Ejecutar ng serve
+- URL del proyecto por defecto http://localhost:4200/
