@@ -30,7 +30,7 @@ export class BusquedaComponent implements OnInit {
 			providencia: Math.floor(Date.now() / 1000)
 		},
 		{
-			nombre: 'Miguel Villalta',
+			nombre: 'Paul Villalta',
 			razon: '...',
 			fecha: new Date(),
 			providencia: Math.floor(Date.now() / 1000)

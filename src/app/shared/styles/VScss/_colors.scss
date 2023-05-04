@@ -1,5 +1,3 @@
-@use "sass:meta";
-
 @mixin colores($colorName, $colour) {
 	@each $name, $color in $colour {
 		.bg-#{$colorName}-#{$name} { background: $color }
