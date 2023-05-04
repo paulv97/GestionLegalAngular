@@ -37,7 +37,51 @@ export class BusquedaComponent implements OnInit {
 			fecha: new Date(),
 			providencia: Math.floor(Date.now() / 1000)
 		},
+		{
+			nombre: 'Paul Villalta',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Paul Villalta',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Paul Villalta',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Juan Yumbla',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Pedro Andrade',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Benito Perez',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Patricia Abad',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
 	]
+
+	
 
 	constructor(
 		private _modalService: NzModalService,
