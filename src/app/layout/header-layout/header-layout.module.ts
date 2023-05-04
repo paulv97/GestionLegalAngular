@@ -6,6 +6,7 @@ import { HeaderModule } from 'src/app/shared/components/header/header.module';
 
 const routes: Routes = [
 	{ path: '', component: HeaderLayoutComponent, children: [
+		{ path: '', loadChildren: () => import('../../pages/index/index.module').then(m => m.IndexModule) },
 		{ path: 'servicios-judiciales', loadChildren: () => import('../../pages/servicios-judiciales/servicios-judiciales.module').then(m => m.ServiciosJudicialesModule) },
 		{ path: 'preguntas-frecuentes', loadChildren: () => import('../../pages/preguntas-frecuentes/preguntas-frecuentes.module').then(m => m.PreguntasFrecuentesModule) },
 		{ path: 'login', loadChildren: () => import('../../pages/login/login.module').then(m => m.LoginModule) },
