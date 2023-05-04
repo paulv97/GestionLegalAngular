@@ -15,7 +15,7 @@ import { CreateBlogComponent } from './create-blog.component';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: CreateBlogModule }
+      { path: '', component: CreateBlogComponent }
     ]),
     HeaderModule
   ]
