@@ -4,25 +4,3 @@
 @import "./app/shared/styles/VScss/variables";
 @import "./app/app.component.scss";
 @import "./app/shared/styles/custom.scss";
-
-:root {
-	/* MENU */
-	--color-item-menu: #4F5C71;
-	--bg-item-menu: transparent;
-	--color-item-menu-selected: var(--primary);
-	--bg-item-menu-selected: #EFF4FA;
-	--color-title-menu: #193D67;
-	--color-separator-menu: #8FA2C1;
-	/* FIN MENU */
-}
-
-.bg-theme-default-page {
-	background: var(--page-background);
-}
-
-[class~='hover:scale'] {
-	&:hover {
-		transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-		transform: scale(1.06);
-	}
-}

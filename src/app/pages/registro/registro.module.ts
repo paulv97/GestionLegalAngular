@@ -4,6 +4,7 @@ import { RegistroComponent } from './registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 
@@ -17,6 +18,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: RegistroComponent },]),
 		NzInputModule,
+    NzButtonModule,
   ]
 })
 export class RegistroModule { }
