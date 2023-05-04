@@ -1,28 +1,48 @@
-<div class="w-full p-20 pt-40 max-width mx-auto" style="max-width: 120rem;">    
+<div class="w-full bg-purplegray">
+	<div class="w-full mx-auto max-width px-20 py-30">
+		<div class="w-full grid">
+			<div class="grid-col-6 sm:grid-col-12">
+				<h2 class="font-bold mb-15 m-0 display-block">Gestion Legal</h2>
 
-    <div class="w-full grid">
-        <div class="grid-col-6" style="border: 1px solid;">
-            <h2 class="font-bold mb-20 m-0 display-block text-left">Gestion Legal</h2>
+				<p class="display-block text-gray-900">
+					Nuestro servicio web ofrece un conjunto completo de herramientas para ayudar a los abogados a
+					simplificar su trabajo diario. Con funciones personalizables y una interfaz fácil de usar, nuestra
+					plataforma todo en uno ofrece desde gestión de casos hasta generación de documentos legales,
+					organización de calendarios y comunicación con clientes. ¡Únase hoy mismo a nuestra comunidad de
+					abogados exitosos!
+				</p>
 
-            <p class="display-block text-md">
-                Nuestro servicio web ofrece un conjunto completo de herramientas para ayudar a los abogados a simplificar su trabajo diario. Con funciones personalizables y una interfaz fácil de usar, nuestra plataforma todo en uno ofrece desde gestión de casos hasta generación de documentos legales, organización de calendarios y comunicación con clientes. ¡Únase hoy mismo a nuestra comunidad de abogados exitosos!
-            </p>
+				<button nz-button nzType="primary" style="min-width: 30px;">Comenzar ahora</button>
+			</div>
+			<div class="grid-col-6 sm:grid-col-12">
+				<img src="/assets/images/herramientas.png" alt="preview" class="mx-auto display-block m-0 rounded shadow-md w-full"
+					style="max-width: 50rem;">
+			</div>
+		</div>
+	</div>
+</div>
 
-            <button nz-button nzType="primary" style="min-width: 30px;">Comenzar ahora</button>
-        </div>
-        <div class="grid-col-6" style="border: 1px solid;">
-            <img src="/assets/images/herramientas.png" alt="preview" class="w-full">
-        </div>
+<div class="w-full">
+	<div class="w-full max-width mx-auto p-20">
+		<div class="w-full grid">
 
-        <div class="grid-col-12 bg-gray-100" style="border: 1px solid;">
-            <h2 class="font-bold mb-20 mt-50 m-0 display-block text-center">Lo que nuestros clientes dicen:</h2>
-            <div class="w-full flex flex-wrap" style="border: 1px solid;">
-                <div class="flex flex-wrap bg-white p-20 justify-center" style="max-width: 30%;">
-                    <p class="display-block text-md">"GestiónLegal me ha ayudado a organizar mejor mis casos y aumentar mi productividad. ¡Lo recomiendo altamente!"</p>
-                    <cite>John Doe, Abogado en ejercicio</cite>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="grid-col-12">
+				<h3 class="font-semibold mb-20 mt-30 text-theme-primary m-0 display-block text-center">Lo que nuestros clientes dicen:</h3>
 
+				<div class="w-full grid">
+					<ng-container *ngFor="let i of [1,1,1]">
+						<div class="grid-col-4 md:grid-col-6 sm:grid-col-12 flex-wrap bg-white p-20 rounded shadow-lg">
+							<p class="display-block text-md">"GestiónLegal me ha ayudado a organizar mejor mis casos y aumentar
+								mi productividad. ¡Lo recomiendo altamente!"</p>
+
+							<div class="w-full flex items-center flex-no-wrap">
+								<img src="https://randomuser.me/api/portraits/men/11.jpg" class="display-block m-0 mr-7 w-30 h-30 rounded-full">
+								<i class="text-smd text-gray-800">John Doe, Abogado en ejercicio</i>
+							</div>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
