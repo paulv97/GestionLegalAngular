@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   probar() {
     console.log("hola")
+    console.log(this.email)
+    console.log(this.password)
 
     // window.location.href = "src/pages/app/paginas/index.html"
   }
