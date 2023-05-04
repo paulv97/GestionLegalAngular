@@ -50,7 +50,8 @@ export class CreateBlogComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false
       this.message.success('Blog creado exitosamente.')
-      this.router.navigate(['/busqueda'])
+      //this.router.navigate(['/assets/paginas-samuel/Paginas/BlogIndividual.html'])
+      window.open('/assets/paginas-samuel/Paginas/BlogIndividual.html', '_blank')
     }
       , 5000)
   }

@@ -28,6 +28,11 @@ export class SidebarComponent implements OnInit {
 			route: 'estadisticas'
 		},
 		{
+			icon: 'file-text',
+			label: 'blog',
+			route: 'create-blog'
+		},
+		{
 			icon: 'setting',
 			label: 'Configuración',
 			route: ''
@@ -46,10 +51,15 @@ export class SidebarComponent implements OnInit {
 			click: () => { this.cerrarSesion() }
 		},
 		{
+			icon: 'info-circle',
+			label: 'Autor: Paul Villalta',
+			click: () => { }
+		},
+		{
 			icon: 'menu',
 			label: 'Cerrar menú',
 			click: () => { this.toggleMenu() }
-		},
+		},		
 	]
 
 	constructor(
