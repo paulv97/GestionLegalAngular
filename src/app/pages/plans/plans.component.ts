@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plans',
@@ -14,6 +15,7 @@ export class PlansComponent implements OnInit {
   choosePlan(plan: String) {
     this.selectedPlan = plan;
     console.log(this.selectedPlan);
+    this.router.navigate(['checkout/12345'])
   }
   // basicPlanItems: any;
 
@@ -24,7 +26,9 @@ export class PlansComponent implements OnInit {
     "Dedicated Phone Support",
   ];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
