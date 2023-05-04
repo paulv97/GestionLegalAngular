@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 
 
@@ -19,6 +20,9 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     RouterModule.forChild([{ path: '', component: RegistroComponent },]),
 		NzInputModule,
     NzButtonModule,
+  ],
+  providers: [
+    NzMessageService,
   ]
 })
 export class RegistroModule { }

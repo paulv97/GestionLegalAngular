@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-registro',
@@ -9,18 +11,37 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class RegistroComponent implements OnInit {
 
   form: FormGroup
+  isLoading: boolean = false
 
   constructor(
+    private message: NzMessageService,
+    private router: Router
   ) { 
     this.form = new FormGroup({
-      nombres: new FormControl(null),
-      apellidos: new FormControl(null),
-      email: new FormControl(null),
-      clave: new FormControl(null)
+      nombres: new FormControl(null, [Validators.required]),
+      apellidos: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required]),
+      clave: new FormControl(null, [Validators.required])
     })
   }
 
   ngOnInit(): void {
+  }
+
+  registrarse() {
+    if(this.form.invalid) {
+      this.form.markAllAsTouched()
+      this.form.markAsDirty()
+      return
+    }
+
+    this.isLoading = true
+
+    setTimeout(() => {
+      this.isLoading = false
+      this.message.success('Registro exitoso.')
+      this.router.navigate(['/login'])
+    }, 5000)
   }
 
 }
