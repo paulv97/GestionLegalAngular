@@ -1,0 +1,44 @@
+<div *nzModalTitle>
+	<h5 class="font-bold m-0 display-block">Formulario de registro</h5>
+</div>
+
+<form [formGroup]="form" class="w-full grid">
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Nombre del cliente</p>
+		<input nz-input formControlName="nombre" type="text" class="w-full">
+	</div>
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Razón envío / motivo</p>
+		<textarea class="w-full" formControlName="razon" nz-input></textarea>
+	</div>
+
+	<div class="grid-col-7">
+		<p class="display-block m-0 mb-7">Código de dependencia</p>
+		<input nz-input type="text" formControlName="codigoDependencia" class="w-full">
+	</div>
+
+	<div class="grid-col-5">
+		<p class="display-block m-0 mb-7">Año</p>
+		<input nz-input type="text" formControlName="anio" class="w-full">
+	</div>
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Número secuencial</p>
+		<input nz-input type="text" formControlName="providencia" class="w-full">
+	</div>
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Contacto</p>
+		<input nz-input type="text" formControlName="contacto" class="w-full">
+	</div>
+
+	<div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
+
+	<div class="grid-col-12 grid">
+		<button class="grid-col-6" (click)="cerrarModal()" nz-button>Cancelar</button>
+		<button class="grid-col-6" (click)="guardarJuicio()" nz-button nzType="primary">Guardar</button>
+	</div>
+
+</form>

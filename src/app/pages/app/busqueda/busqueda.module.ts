@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
+import { NuevoJuicioModule } from './nuevo-juicio/nuevo-juicio.module';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
 	declarations: [
@@ -20,6 +22,8 @@ import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
 		NzButtonModule,
 		NzIconModule,
 		SearchPipeModule,
+		NuevoJuicioModule,
+		NzModalModule,
 	]
 })
 export class BusquedaModule { }
