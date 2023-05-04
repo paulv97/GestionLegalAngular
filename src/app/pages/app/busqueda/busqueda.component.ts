@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NuevoJuicioComponent } from './nuevo-juicio/nuevo-juicio.component';
 
 @Component({
 	selector: 'app-busqueda',
@@ -10,7 +12,7 @@ export class BusquedaComponent implements OnInit {
 	busqueda: string = ''
 	fecha = new Date()
 
-	public readonly CASOS = [
+	CASOS = [
 		{
 			nombre: 'Calle Aracely',
 			razon: '...',
@@ -35,11 +37,70 @@ export class BusquedaComponent implements OnInit {
 			fecha: new Date(),
 			providencia: Math.floor(Date.now() / 1000)
 		},
+		{
+			nombre: 'Paul Villalta',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Paul Villalta',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Paul Villalta',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Juan Yumbla',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Pedro Andrade',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Benito Perez',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
+		{
+			nombre: 'Patricia Abad',
+			razon: '...',
+			fecha: new Date(),
+			providencia: Math.floor(Date.now() / 1000)
+		},
 	]
 
-	constructor() { }
+	
+
+	constructor(
+		private _modalService: NzModalService,
+	) { }
 
 	ngOnInit(): void {
+	}
+
+	abrirModalNuevoJuicio() {
+		const modal = this._modalService.create({
+			nzContent: NuevoJuicioComponent,
+			nzFooter: null,
+		})
+
+		modal.afterClose.subscribe(data => {
+			if (!data) return
+
+			this.CASOS = [data, ...this.CASOS]
+		})
 	}
 
 }

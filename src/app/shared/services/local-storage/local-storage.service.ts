@@ -28,7 +28,8 @@ export class LocalStorageService {
 	}
 
 	private getKey(key: string) {
-		return CryptoJS.SHA224(key).toString();
+		// return CryptoJS.SHA224(key).toString();
+		return key;
 	}
 
 	getStorage(keyTypes: LocalStorageTypes) {
@@ -38,7 +39,7 @@ export class LocalStorageService {
 
 			if(data) {
 				let dataDecrypted = CryptoJS.AES.decrypt(data, this.secretKey).toString(CryptoJS.enc.Utf8);
-				return JSON.parse(dataDecrypted) || dataDecrypted;
+				return JSON.parse(data) || data;
 			}
 		} catch(ex) {
 			return null
@@ -49,7 +50,7 @@ export class LocalStorageService {
 		let key = this.getKey(keyTypes.key)
 		let dataEncrypted = CryptoJS.AES.encrypt(JSON.stringify(data), this.secretKey).toString();
 
-		window.localStorage.setItem(key, dataEncrypted);
+		window.localStorage.setItem(key, JSON.stringify(data));
 	}
 
 	getInformation(): any {

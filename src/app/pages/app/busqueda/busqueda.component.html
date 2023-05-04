@@ -5,7 +5,7 @@
 		<div class="grid-col-12 flex items-center flex-no-wrap" style="gap: 1.5rem">
 			<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
 
-			<button nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
+			<button (click)="abrirModalNuevoJuicio()" nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
 		</div>
 
 		<ng-container *ngFor="let c of CASOS | search:busqueda">
@@ -14,7 +14,7 @@
 
 				<p class="display-block m-0">Razón envío: {{ c.razon }}</p>
 				<p class="display-block m-0 text-gray-600 mb-7">{{ c.fecha| date:'dd-MM-yyyy hh:mm' }}</p>
-				<p class="display-block m-0 text-gray-600 mb-12">Providencia del juicio {{ c.providencia }}</p>
+				<p class="display-block m-0 text-gray-600 mb-12">Providencia del juicio: {{ c.providencia }}</p>
 
 				<div class="w-full flex items-center justify-between">
 					<button nz-button nzShape="circle" nzType="text">

@@ -1,0 +1,130 @@
+.container {
+  display: grid;
+  grid-template-areas: "header" "tituloP" "datosC" "formulario" "footer";
+  /*grid-template-columns: 100%; */
+  grid-template-rows: auto auto auto auto auto;
+  height: 100vh;
+  /*grid-gap: 20px;*/
+}
+.container header {
+  grid-area: header;
+}
+.container .seccion1 {
+  grid-area: tituloP;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: underline;
+  background-color: #f5f5f5;
+}
+.container .seccion1 img {
+  width: 50px;
+  height: 50px;
+}
+.container .seccion2 {
+  grid-area: datosC;
+  display: grid;
+  grid-template-areas: "asesor1 asesor2 correo";
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  background-color: #f5f5f5;
+}
+.container .seccion2 .widget1 {
+  grid-area: asesor1;
+}
+.container .seccion2 .widget2 {
+  grid-area: asesor2;
+}
+.container .seccion2 .widget3 {
+  grid-area: correo;
+}
+.container .seccion2 .widget1, .container .seccion2 .widget2, .container .seccion2 .widget3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*margin: 10px;*/
+}
+.container .seccion2 .imagen-seccion2 {
+  max-width: 30%;
+  height: 150px;
+}
+.container .seccion2 .espacioI {
+  padding: 15px;
+}
+.container .seccion3 {
+  grid-area: formulario;
+  display: grid;
+  grid-template-areas: "imagenF camposF";
+  grid-template-columns: 1fr 1fr;
+  /*grid-gap: 20px;*/
+}
+.container .seccion3 .imagenF {
+  grid-area: imagenF;
+}
+.container .seccion3 .imagenF img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.container .seccion3 .camposF {
+  grid-area: camposF;
+  background-color: #f5f5f5;
+}
+.container .seccion3 .camposF form fieldset {
+  width: auto;
+  height: 100%;
+  padding: 100px;
+}
+.container .seccion3 .camposF form fieldset h1 {
+  text-decoration: underline;
+}
+.container .seccion3 .camposF form fieldset input {
+  width: 400px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+.container .seccion3 .camposF form fieldset textarea {
+  width: 400px;
+  height: 200px;
+}
+.container .seccion3 .camposF form fieldset #nombreC {
+  text-transform: uppercase;
+}
+.container .seccion3 .imagenF, .container .seccion3 .camposF {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*margin: 10px; */
+}
+.container footer {
+  grid-area: footer;
+}
+.container .border {
+  border: 0px solid black;
+}
+.container .border2 {
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-areas: "header" "tituloP" "datosC" "formulario" "footer";
+    grid-template-columns: 1fr;
+    /*grid-template-rows: auto auto auto 500px auto; */
+  }
+  .container .seccion2 {
+    grid-template-areas: "asesor1" "asesor2" "correo";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+  }
+  .container .seccion3 {
+    grid-template-areas: "imagenF" "camposF";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+  .container .seccion3 .camposF form fieldset {
+    padding: 10px;
+  }
+}
+
+/*# sourceMappingURL=stylesContacto.css.map */

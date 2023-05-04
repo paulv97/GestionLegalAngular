@@ -1,0 +1,87 @@
+@charset "UTF-8";
+.menuEstilo {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80rem;
+  margin: auto;
+  border-bottom: none; }
+
+.estiloMenu {
+  margin: auto;
+  max-width: 80rem; }
+
+.columnaMenu {
+  position: middle;
+  float: right;
+  padding-right: 5%; }
+
+/* Estilos para el hero */
+.hero {
+  background-color: #f5f5f5;
+  padding: 60px 0;
+  max-width: 80rem;
+  margin: auto; }
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 1em; }
+  .hero p {
+    font-size: 1.2em;
+    line-height: 1.5; }
+  .hero .button {
+    margin-top: 2em; }
+
+/* Estilos para la sección de opiniones */
+.opiniones {
+  background-color: #eaeaea;
+  padding: 60px 0;
+  max-width: 80rem;
+  margin: auto; }
+  .opiniones h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    text-align: center; }
+  .opiniones .testimonial {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    text-align: center;
+    margin-bottom: 2em; }
+    .opiniones .testimonial p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      margin-bottom: 1em; }
+    .opiniones .testimonial cite {
+      font-style: italic;
+      font-size: 1.2em; }
+
+.formulario {
+  max-width: 40rem;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  vertical-align: middle; }
+
+label {
+  display: block;
+  margin-bottom: 5px; }
+
+input[type="text"], input[type="number"], input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px; }
+
+button[type="submit"] {
+  display: block;
+  margin: 0 auto; }
+
+form h2 {
+  font-size: 24px;
+  margin-bottom: 20px; }
+
+.pantalla {
+  max-width: 100rem;
+  max-height: 100rem; }

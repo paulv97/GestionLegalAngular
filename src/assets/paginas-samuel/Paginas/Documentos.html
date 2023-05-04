@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="../Sass/stylesDocumentos.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../Sass/mini.css"> -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+
+
+        <script src="../JS/header.component.js"></script>
+        <script src="../JS/footer.component.js"></script>
+
+
+        <title>Documentos</title>
+
+    </head>
+
+    <body>
+        <div class="container">
+
+          <app-header></app-header>
+
+
+            <section class="seccion1 border">
+
+                <div class="docTitle border">
+                    <h1>Documentos</h1>
+                </div>
+                <div class="busqueda border">
+                    <input type="text" name="buscar" id="buscar" placeholder="BUSQUEDA" required>
+                </div>
+            </section>
+            <section class="seccion2 border">
+
+                <button onclick="document.getElementById('fileInput').click()" class="btn-image"></button>
+                <input type="file" id="fileInput" style="display: none;">
+                
+            </section>
+
+            <section id="seccionDocs" class="seccion3 border2">
+
+            </section>
+
+            <app-footer></app-footer>
+
+        </div>
+
+        <script src="../JS/scriptDocumentos.js"></script>
+        
+                    
+    </body>
+
+</html>
