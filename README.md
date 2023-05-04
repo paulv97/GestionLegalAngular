@@ -27,6 +27,10 @@
     - Pasarela de pagos (checkout)
 
 ## Como ejecutar el proyecto
+Requesitos: Tener instalado npm
+
+Pasos:
 - Ejecutar npm install -g @angular/cli
+- Ubicarse en la raiz del Proyecto
 - Ejecutar npm install --force
 - Ejecutar ng serve
