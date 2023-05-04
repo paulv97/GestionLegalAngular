@@ -28,14 +28,10 @@ class HeaderComponent extends HTMLElement {
 		  <a href="Contacto.html" class="button">Contacto</a>
 		  <a href="QuienesSomos.html" class="button">About</a>
 		  <a href="Blogs.html" class="button">Blogs</a>
-          <a href="#" class="button">Productos</a>
-          <a href="#" class="button">Costo</a>
-          <a href="#" class="button">Recursos</a>
 		  <a href="Documentos.html" class="button">Documentos</a>
-          <a href="index.html" class="button">Inicio</a>
+          <a href="../../../" class="button">Inicio</a>
           
         </div>
-        <button>Comprar</button>
       </header>
 		`
 	}
