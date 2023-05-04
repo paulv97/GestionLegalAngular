@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-blog.component.scss']
 })
 export class CreateBlogComponent implements OnInit {
+publish() {
+throw new Error('Method not implemented.');
+}
+  show(num: any) {
+    console.log(num);
+  }
+  title: any;
 
   constructor() { }
 

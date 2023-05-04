@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderModule } from '../../shared/components/header/header.module';
 import { CreateBlogComponent } from './create-blog.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 
 
@@ -15,9 +18,11 @@ import { CreateBlogComponent } from './create-blog.component';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: CreateBlogModule }
+      { path: '', component: CreateBlogComponent }
     ]),
-    HeaderModule
+    HeaderModule,
+    NzDropDownModule,
+    NzInputModule
   ]
 })
 export class CreateBlogModule { }

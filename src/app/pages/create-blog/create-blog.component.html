@@ -1,1 +1,63 @@
-<p>create-blog works!</p>
+<div class="mt-40 mx-auto" style="max-width: 80%">
+	<h2 class="font-bold mb-20 m-0 display-block text-center">Mi Blog</h2>
+
+	<br />
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sit
+		assumenda neque! Autem incidunt sed nesciunt. Voluptatibus vero
+		inventore, laboriosam doloribus nobis veritatis quos sit laudantium
+		praesentium nam fuga possimus porro perferendis, sed tempora temporibus
+		autem at quasi quisquam. Rem facere est, magni iusto reprehenderit
+		consequuntur vel aperiam. Modi, delectus.
+	</p>
+	<div class="w-full grid justify-center">
+		<div class="grid-col-12 justify-center">
+			<p class="display-block m-0">Nueva Entrada</p>
+			<div class="card flex-wrap">
+				<p>Título</p>
+				<br />
+				<input
+					nz-input
+					placeholder="Mi nuevo blog..."
+					[(ngModel)]="title"
+					class="text-md rounded px-15 py-12"
+					type="text"
+				/>
+				<br />
+				<p>Descripción</p>
+				<br />
+				<div class="border-4" style="border: 1px dashed black">
+					<div class="flex row">
+						<a nz-dropdown [nzDropdownMenu]="menu">
+							Times New Roman
+							<span nz-icon nzType="down"></span>
+						</a>
+						<nz-dropdown-menu #menu="nzDropdownMenu">
+							<ul nz-menu nzSelectable>
+								<li (click)="show(1)" nz-menu-item>
+									Fuente 2
+								</li>
+								<li nz-menu-item>Fuente 3</li>
+								<li nz-menu-item>Fuente 4</li>
+							</ul>
+						</nz-dropdown-menu>
+						<!-- add a vertical separator -->
+						<div nz-menu-divider></div>
+					</div>
+					<div>
+						<textarea
+							nz-input
+							placeholder="Controlled autosize"
+							[nzAutosize]="{ minRows: 5 }"
+						></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="flex justify-center">
+				<button (click)="publish()" class="btn btn-primary">
+					<h6>Publicar</h6>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
