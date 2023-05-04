@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-sidebar',
@@ -47,7 +48,7 @@ export class SidebarComponent implements OnInit {
 		{
 			icon: 'logout',
 			label: 'Salir',
-			click: () => { }
+			click: () => { this.cerrarSesion() }
 		},
 		{
 			icon: 'menu',
@@ -56,7 +57,9 @@ export class SidebarComponent implements OnInit {
 		},
 	]
 
-	constructor() { }
+	constructor(
+		private router: Router,
+	) { }
 
 	ngOnInit(): void {
 	}
@@ -64,5 +67,9 @@ export class SidebarComponent implements OnInit {
 	toggleMenu() {
 		this.isOpen = !this.isOpen
 		this.onToggleEmitter.emit(this.isOpen)
+	}
+
+	cerrarSesion() {
+		this.router.navigate(['/']);
 	}
 }
