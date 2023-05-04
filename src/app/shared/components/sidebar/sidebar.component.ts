@@ -46,10 +46,15 @@ export class SidebarComponent implements OnInit {
 			click: () => { this.cerrarSesion() }
 		},
 		{
+			icon: 'info-circle',
+			label: 'Autor: Paul Villalta',
+			click: () => { }
+		},
+		{
 			icon: 'menu',
 			label: 'Cerrar menú',
 			click: () => { this.toggleMenu() }
-		},
+		},		
 	]
 
 	constructor(
