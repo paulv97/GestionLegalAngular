@@ -110,3 +110,21 @@ for (let i = 0; i < botonesD.length; i++) {
   });
 
 }
+
+let searchInput = document.getElementById("buscarDoc");
+
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        let searchValue = event.target.value.toLowerCase();
+        let docs = document.querySelectorAll('.document-preview');
+
+        docs.forEach(doc => {
+            let docTitle = doc.querySelector('h3').textContent.toLowerCase();
+            if (docTitle.includes(searchValue)) {
+                doc.style.display = 'block';
+            } else {
+                doc.style.display = 'none';
+            }
+        });
+    }
+});
