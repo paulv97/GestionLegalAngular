@@ -13,14 +13,9 @@ export class SidebarComponent implements OnInit {
 
 	public readonly MENU = [
 		{
-			icon: 'search',
-			label: 'Buscar',
-			route: 'busqueda'
-		},
-		{
 			icon: 'apartment',
 			label: 'Juicios',
-			route: ''
+			route: 'busqueda'
 		},
 		{
 			icon: 'book',
