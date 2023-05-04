@@ -1,3 +1,3 @@
 export interface LocalStorageTypes {
-	key: 'sidebar' | 'menu' | 'home' | 'sesion' | 'mails';
+	key: 'sidebar' | 'menu' | 'home' | 'sesion' | 'mails' | 'preferences';
 }

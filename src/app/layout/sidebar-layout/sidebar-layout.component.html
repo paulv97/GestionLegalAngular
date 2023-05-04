@@ -1,7 +1,7 @@
 <div class="w-screen h-screen">
 	<div class="content h-full w-full flex flex-no-wrap mx-auto">
 		<div class="sidebar-space h-full relative overflow-auto" style="z-index: 20;">
-			<app-sidebar [(toggle)]="isOpen"></app-sidebar>
+			<app-sidebar [toggle]="isOpen" (toggleChange)="onMenuToggle($event)"></app-sidebar>
 		</div>
 
 		<div class="main-content h-full overflow-auto" style="z-index: 1"
