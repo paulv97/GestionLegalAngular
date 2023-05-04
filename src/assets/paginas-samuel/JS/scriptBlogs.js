@@ -59,3 +59,21 @@ blogs.map ((x) =>{
 }
 
 );
+
+let searchInput = document.getElementById("buscarBlog");
+
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        let searchValue = event.target.value.toLowerCase();
+        let cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            let cardTitle = card.querySelector('h2').textContent.toLowerCase();
+            if (cardTitle.includes(searchValue)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+});
