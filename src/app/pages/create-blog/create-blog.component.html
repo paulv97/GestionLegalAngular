@@ -10,53 +10,127 @@
 		autem at quasi quisquam. Rem facere est, magni iusto reprehenderit
 		consequuntur vel aperiam. Modi, delectus.
 	</p>
+
 	<div class="w-full grid justify-center">
 		<div class="grid-col-12 justify-center">
 			<p class="display-block m-0">Nueva Entrada</p>
 			<div class="card flex-wrap">
-				<p>Título</p>
-				<br />
-				<input
-					nz-input
-					placeholder="Mi nuevo blog..."
-					[(ngModel)]="title"
-					class="text-md rounded px-15 py-12"
-					type="text"
-				/>
-				<br />
-				<p>Descripción</p>
-				<br />
-				<div class="border-4" style="border: 1px dashed black">
-					<div class="flex row">
-						<a nz-dropdown [nzDropdownMenu]="menu">
-							Times New Roman
-							<span nz-icon nzType="down"></span>
-						</a>
-						<nz-dropdown-menu #menu="nzDropdownMenu">
-							<ul nz-menu nzSelectable>
-								<li (click)="show(1)" nz-menu-item>
-									Fuente 2
-								</li>
-								<li nz-menu-item>Fuente 3</li>
-								<li nz-menu-item>Fuente 4</li>
-							</ul>
-						</nz-dropdown-menu>
-						<!-- add a vertical separator -->
-						<div nz-menu-divider></div>
-					</div>
-					<div>
-						<textarea
+				<!-- form to validate title and description -->
+				<form [formGroup]="form" class="w-full">
+					<div class="grid-col-12 mb-20">
+						<p class="display-block m-0 mb-7">Titulo del Blog</p>
+
+						<input
 							nz-input
-							placeholder="Controlled autosize"
-							[nzAutosize]="{ minRows: 5 }"
-						></textarea>
+							placeholder="Mi Blog"
+							formControlName="title"
+							nzSize="large"
+							class="text-md rounded px-15 py-12 w-full"
+							type="text"
+						/>
+					</div>
+					<div
+						*ngIf="
+							(form.get('title')?.touched &&
+								form.get('title')?.errors) ||
+							form.get('title')?.dirty
+						"
+						class="mb-20"
+					>
+						<p
+							*ngIf="form.get('title')?.hasError('required')"
+							class="m-0 mt-5 display-block text-red-700"
+						>
+							El campo es requerido
+						</p>
+					</div>
+
+					<!-- description -->
+					<p class="display-block m-0 mb-7">Descripción</p>
+					<div class="border-4" style="border: 1px dashed black">
+						<div class="flex row">
+							<a nz-dropdown [nzDropdownMenu]="menu">
+								Times New Roman
+								<span nz-icon nzType="down"></span>
+							</a>
+							<nz-dropdown-menu #menu="nzDropdownMenu">
+								<ul nz-menu nzSelectable>
+									<li (click)="show(1)" nz-menu-item>
+										Fuente 2
+									</li>
+									<li nz-menu-item>Fuente 3</li>
+									<li nz-menu-item>Fuente 4</li>
+								</ul>
+							</nz-dropdown-menu>
+							<!-- add a vertical separator -->
+							<div nz-menu-divider></div>
+						</div>
+						<div>
+							<textarea
+								nz-input
+								placeholder="Contenido del Blog"
+								formControlName="blogBody"
+								nzSize="large"
+								class="text-md rounded px-15 py-12 w-full"
+								type="text"
+								[nzAutosize]="{ minRows: 5 }"
+							></textarea>
+						</div>
+					</div>
+					<div
+						*ngIf="
+							(form.get('blogBody')?.touched &&
+								form.get('blogBody')?.errors) ||
+							form.get('blogBody')?.dirty
+						"
+						class="mb-20"
+					>
+						<p
+							*ngIf="form.get('blogBody')?.hasError('required')"
+							class="m-0 mt-5 display-block text-red-700"
+						>
+							El campo es requerido
+						</p>
+					</div>
+
+					<div class="grid-col-12 mb-20">
+						<button
+							nz-button
+							nzType="primary"
+							nzSize="large"
+							class="w-full"
+							[nzLoading]="isLoading"
+							(click)="publish()"
+						>
+							Publicar
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<!-- show the blog -->
+			<div class="w-full grid justify-center mb-40">
+				<div class="grid-col-12 justify-center">
+					<p>Vista previa:</p>
+					<div class="border-4" style="border: 1px dashed black">
+						<p class="display-block m-0 mb-7">
+							{{ form.controls["title"].value }}
+						</p>
+						<br />
+
+						<p>Por {{ user.name }}</p>
+						<br />
+
+						<!--  show the date -->
+						<p>
+							{{ date | date : "dd/MM/yyyy" }}
+						</p>
+						<!-- show the description -->
+						<p class="display-block m-0 mb-7">
+							{{ form.controls["blogBody"].value }}
+						</p>
 					</div>
 				</div>
-			</div>
-			<div class="flex justify-center">
-				<button (click)="publish()" class="btn btn-primary">
-					<h6>Publicar</h6>
-				</button>
 			</div>
 		</div>
 	</div>

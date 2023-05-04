@@ -2,66 +2,107 @@
 	<h2 class="font-bold mb-20 m-0 display-block text-center">
 		Iniciar Sesión
 	</h2>
-	<div class="w-full grid justify-center">
-		<div class="grid-col-12 justify-center">
-			<p class="display-block m-0">Correo electrónico</p>
 
+	<form [formGroup]="form" class="w-full">
+		<div class="grid-col-12 mb-20">
+			<p class="display-block m-0 mb-7">Correo electrónico</p>
 			<input
 				nz-input
 				placeholder="Correo electrónico"
-				[(ngModel)]="email"
-				class="text-md rounded px-15 py-12"
-				type="text"
+				formControlName="email"
+				nzSize="large"
+				class="text-md rounded px-15 py-12 w-full"
+				type="email"
 			/>
 		</div>
+		<div
+			*ngIf="
+				(form.get('email')?.touched && form.get('email')?.errors) ||
+				form.get('email')?.dirty
+			"
+			class="mb-20"
+		>
+			<p
+				*ngIf="form.get('email')?.hasError('required')"
+				class="m-0 mt-5 display-block text-red-700"
+			>
+				El campo es requerido
+			</p>
+			<p
+				*ngIf="form.get('email')?.hasError('pattern')"
+				class="m-0 mt-5 display-block text-red-700"
+			>
+				El correo no tiene un formato correcto
+			</p>
+		</div>
 
-		<div class="grid-col-12 justify-center">
-			<p class="display-block m-0">Contraseña</p>
-
+		<!-- password -->
+		<div class="grid-col-12 mb-20">
+			<p class="display-block m-0 mb-7">Contraseña</p>
 			<input
 				nz-input
 				placeholder="Contraseña"
-				[(ngModel)]="password"
-				class="text-md rounded px-15 py-12"
-				type="text"
+				formControlName="password"
+				nzSize="large"
+				class="text-md rounded px-15 py-12 w-full"
+				type="password"
 			/>
 		</div>
+		<div
+			*ngIf="
+				(form.get('password')?.touched &&
+					form.get('password')?.errors) ||
+				form.get('password')?.dirty
+			"
+			class="mb-20"
+		>
+			<p
+				*ngIf="form.get('password')?.hasError('required')"
+				class="m-0 mt-5 display-block text-red-700"
+			>
+				El campo es requerido
+			</p>
+		</div>
+		<!-- </form>
 
+	<div class="w-full grid justify-center"> -->
 		<!-- add a centered button with half size to login -->
-		<div class="grid-col-12 justify-center">
+		<div class="grid-col-12 mb-20">
 			<button
 				nz-button
 				nzType="primary"
-				class="text-md rounded px-15 py-12"
-				type="button"
-				style="width: 100%"
+				nzSize="large"
+				class="w-full"
+				[nzLoading]="isLoading"
+				(click)="login()"
 			>
-				Iniciar sesión
+				Ingresar
 			</button>
 		</div>
 
-
-		<div class="grid-col-12 justify-center">
-			<!-- add facebook login -->
+		<div class="grid-col-12 mb-5">
 			<button
 				nz-button
 				nzType="primary"
-				class="text-md rounded px-15 py-12 mb-20"
-				type="button"
-				style="width: 100%"
+				nzSize="large"
+				class="w-full"
+				[nzLoading]="isLoading"
+				(click)="googleLogin()"
 			>
-				Iniciar sesión con Facebook
+				Inicia sesion con Google
 			</button>
+		</div>
 
-			<!-- add google login -->
+		<div class="grid-col-12 mb-5">
 			<button
 				nz-button
 				nzType="primary"
-				class="text-md rounded px-15 py-12"
-				type="button"
-				style="width: 100%"
+				nzSize="large"
+				class="w-full"
+				[nzLoading]="isLoading"
+				(click)="facebookLogin()"
 			>
-				Iniciar sesión con Google
+				Inicia sesion con Facebook
 			</button>
 		</div>
 
@@ -75,5 +116,6 @@
 				Regístrate
 			</a>
 		</div>
-	</div>
+		<!-- </div> -->
+	</form>
 </div>

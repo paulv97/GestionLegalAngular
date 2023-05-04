@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-blog',
@@ -6,15 +9,51 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-blog.component.scss']
 })
 export class CreateBlogComponent implements OnInit {
-publish() {
-throw new Error('Method not implemented.');
-}
+  user: { name: string; email: string; } = {
+    name: 'John Doe',
+    email: 'john@email.com'
+  }
+  date: Date
+  // blogBody: any;
+
   show(num: any) {
     console.log(num);
   }
-  title: any;
+  // title: any;
 
-  constructor() { }
+
+  form: FormGroup
+  isLoading: boolean = false
+
+  constructor(
+    private message: NzMessageService,
+    private router: Router
+  ) {
+    this.form = new FormGroup({
+      title: new FormControl(null, [Validators.required]),
+      blogBody: new FormControl(null, [Validators.required])
+    })
+    this.date = new Date()
+  }
+
+
+  publish() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched()
+      this.form.markAsDirty()
+      return
+    }
+
+    this.isLoading = true
+
+    // redirect to the busqueda page
+    setTimeout(() => {
+      this.isLoading = false
+      this.message.success('Blog creado exitosamente.')
+      this.router.navigate(['/busqueda'])
+    }
+      , 5000)
+  }
 
   ngOnInit(): void {
   }
