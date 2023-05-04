@@ -7,11 +7,19 @@
 
             <input nz-input placeholder="Nombres" formControlName="nombres" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
         </div>
+        <div *ngIf="form.get('nombres')?.touched && form.get('nombres')?.errors || form.get('nombres')?.dirty"
+            class="mb-20">
+            <p *ngIf="form.get('nombres')?.hasError('required')" class="m-0 mt-5 display-block text-red-700">El campo es requerido</p>
+        </div>
 
         <div class="grid-col-12 mb-20">
             <p class="display-block m-0 mb-7">Apellidos</p>
 
             <input nz-input placeholder="Apellidos" formControlName="apellidos" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="text">
+        </div>
+        <div *ngIf="form.get('apellidos')?.touched && form.get('apellidos')?.errors || form.get('apellidos')?.dirty"
+            class="mb-20">
+            <p *ngIf="form.get('apellidos')?.hasError('required')" class="m-0 mt-5 display-block text-red-700">El campo es requerido</p>
         </div>
 
         <div class="grid-col-12 mb-20">
@@ -19,11 +27,20 @@
 
             <input nz-input placeholder="Correo electrónico" formControlName="email" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="email">
         </div>
+        <div *ngIf="form.get('email')?.touched && form.get('email')?.errors || form.get('email')?.dirty"
+            class="mb-20">
+            <p *ngIf="form.get('email')?.hasError('required')" class="m-0 mt-5 display-block text-red-700">El campo es requerido</p>
+            <p *ngIf="form.get('email')?.hasError('pattern')" class="m-0 mt-5 display-block text-red-700">El correo no tiene un formato correcto</p>
+        </div>
 
         <div class="grid-col-12 mb-40">
             <p class="display-block m-0 mb-7">Contraseña</p>
 
             <input nz-input placeholder="Contraseña" formControlName="clave" nzSize="large" class="text-md rounded px-15 py-12 w-full" type="password">
+        </div>
+        <div *ngIf="form.get('clave')?.touched && form.get('clave')?.errors || form.get('clave')?.dirty"
+            class="mb-20">
+            <p *ngIf="form.get('clave')?.hasError('required')" class="m-0 mt-5 display-block text-red-700">El campo es requerido</p>
         </div>
 
         <div class="grid-col-12">

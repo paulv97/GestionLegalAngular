@@ -20,7 +20,7 @@ export class RegistroComponent implements OnInit {
     this.form = new FormGroup({
       nombres: new FormControl(null, [Validators.required]),
       apellidos: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
       clave: new FormControl(null, [Validators.required])
     })
   }
