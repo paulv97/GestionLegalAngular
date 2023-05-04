@@ -28,6 +28,11 @@ export class SidebarComponent implements OnInit {
 			route: 'estadisticas'
 		},
 		{
+			icon: 'file-text',
+			label: 'blog',
+			route: 'create-blog'
+		},
+		{
 			icon: 'setting',
 			label: 'Configuración',
 			route: ''
