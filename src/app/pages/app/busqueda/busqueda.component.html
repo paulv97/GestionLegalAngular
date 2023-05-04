@@ -9,7 +9,7 @@
 		</div>
 
 		<ng-container *ngFor="let c of CASOS | search:busqueda">
-			<div class="grid-col-3 md:grid-col-4 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
+			<div class="grid-col-3 md:grid-col-4 sm:grid-col-6 xs:grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
 				<p class="text-md display-block m-0 mb-5 font-bold">{{ c.nombre }}</p>
 
 				<p class="display-block m-0">Razón envío: {{ c.razon }}</p>
