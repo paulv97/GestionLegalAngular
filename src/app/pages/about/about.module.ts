@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlansComponent } from './plans.component';
+import { AboutComponent } from './about.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -9,17 +9,17 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 
 @NgModule({
   declarations: [
-    PlansComponent
+    AboutComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: PlansComponent }
+      { path: '', component: AboutComponent }
     ]),
     NzInputModule,
     HeaderModule,
     NzCardModule
   ]
 })
-export class PlansModule { }
+export class AboutModule { }
