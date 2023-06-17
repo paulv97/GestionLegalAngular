@@ -13,12 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarLayoutModule } from './layout/sidebar-layout/sidebar-layout.module';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { AboutComponent } from './pages/about/about.component';
 
 registerLocaleData(es);
 
 @NgModule({
 	declarations: [
 		AppComponent,
+  AboutComponent,
 	],
 	imports: [
 		BrowserModule,
