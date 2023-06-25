@@ -32,7 +32,7 @@
     
 	.section2 {
 		grid-area: seccion2;
-		background-color: #f5f5f5;
+		// background-color: #f5f5f5;
 		display: grid;
 		grid-template-areas: "frase frase"
         "widget1 widget2"
@@ -88,7 +88,7 @@
 
 		grid-template-rows: auto auto;
 		//grid-gap: 15px;
-		background-color: #f5f5f5;
+		// background-color: #f5f5f5;
 
         .encabezado {
             grid-area: encabezado;
