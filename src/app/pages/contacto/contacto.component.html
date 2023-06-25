@@ -1,1 +1,66 @@
-<p>contacto works!</p>
+<div class="container">
+
+    <section class="seccion1 border2">
+        <h1>CONTÁCTENOS</h1>
+        <!-- <a href="whatsapp://send?text=Hola%20WhatsApp!">
+            <img src="../Imagen/whatsapp.svg" alt="whatsapp">
+        </a> -->
+    </section>
+    <section class="seccion2 border">
+        <div class="widget1 border2">
+            <img src="../Imagen/telefono.svg" alt="telefono" class="imagen-seccion2">
+            <div class="espacioI">
+                <h1>Asesor 1:</h1>
+                <p>0987654321</p>
+            </div>
+            
+        </div>
+        <div class="widget2 border2">
+            <img src="../Imagen/telefono.svg" alt="telefono" class="imagen-seccion2">
+            <div class="espacioI">
+                <h1>Asesor 2:</h1>
+                <p>0987654321</p>
+            </div>
+        </div>
+        <div class="widget3 border2">
+            <img src="../Imagen/correo.svg" alt="telefono" class="imagen-seccion2">
+            <div class="espacioI">
+                <h1>Correo electrónico:</h1>
+                <p>gestionlegal@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="widget4 border2">
+            <img src="../Imagen/correo.svg" alt="telefono" class="imagen-seccion2">
+            <div class="espacioI">
+                <h1>Correo electrónico:</h1>
+                <p>gestionlegal@gmail.com</p>
+            </div>
+        </div>
+
+    </section>
+    <section class="seccion3 border2">
+        <div class="imagenF border">
+            <img src="../Imagen/imagenContacto.webp" alt="imagenContacto">
+        </div>
+        <div class="camposF border">
+            <form action="#" method="GET" enctype="application/x-www-form-urlencoded">
+                <fieldset>
+                    <!--<legend>Mi form</legend>-->
+                    <h1 >Escribános</h1>
+                    <label for="nombreC">Nombre y Apellido</label><br>
+                    <input type="text" name="nombreC" id="nombreC" required><br>
+                    <label for="emailC">E-mail</label><br>
+                    <input type="email" name="emailC" id="emailC" required><br>
+                    <label for="telefonoC">Telefono</label><br>
+                    <input type="text" name="telefonoC" id="telefonoC" pattern="[0-9]*" title="Ingresa solo números" required><br>
+                    <label for="mensajeC">Mensaje o requerimiento</label><br>
+                    <textarea type="text" name="mensajeC" id="mensajeC" required ></textarea><br>
+                    <button type="button" onclick="validarFormulario()">Enviar</button>
+                </fieldset>
+            </form>    
+            
+        </div>
+    </section>
+
+</div>
