@@ -1,0 +1,146 @@
+.container {
+	display: grid;
+	grid-template-areas:
+    "portada"
+    "seccion2"
+    "seccion3"
+    ;
+	grid-template-rows: 600px auto auto ;
+	
+	height: 100vh;
+
+
+	.section1 {
+		grid-area: portada;
+		background-image: url(/assets/images/portadaNosotros.jpg);
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		justify-content: right;
+
+        .cuadroTexto {
+            margin-right: 20px;
+            padding: 20px;
+            color: #090909;
+            background-color: rgb(251, 251, 252);
+            width: 300px;
+            height: 250px;
+            text-align: center;
+        }
+
+	}
+    
+	.section2 {
+		grid-area: seccion2;
+		background-color: #f5f5f5;
+		display: grid;
+		grid-template-areas: "frase frase"
+        "widget1 widget2"
+        "widget3 widget4";
+
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto 1fr 1fr;
+
+        .widget1 {
+            grid-area: widget1;
+        }
+        .widget2 {
+            grid-area: widget2;
+        }
+        .widget3 {
+            grid-area: widget3;
+        }
+        .widget4 {
+            grid-area: widget4;
+        }
+        .frase {
+            grid-area: frase;
+            font-weight: bold;
+        }
+
+        .frase, .widget1, .widget2, .widget3, .widget4 {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .longitudF {
+            max-width: 800px;
+        }
+        .longitudT {
+            max-width: 300px;
+        }
+        .imagen-seccion2 {
+            max-width: 30%;
+            height: 150px;
+        }
+	}
+
+
+	.section3 {
+		grid-area: seccion3;
+		display: grid;
+		grid-template-areas: "encabezado"
+        "equipo" ;
+
+		grid-template-rows: auto auto;
+		//grid-gap: 15px;
+		background-color: #f5f5f5;
+
+        .encabezado {
+            grid-area: encabezado;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .equipo {
+            grid-area: equipo;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            text-align: center;
+            
+        }
+        
+        .imagen-seccion3 {
+            max-width: 100%;
+            height: 270px;
+            
+        }
+	}
+
+
+	.border {
+		border: 0px solid black;
+	}
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        grid-template-areas: 
+        "portada"
+        "seccion2"
+        "seccion3"
+        ;
+        grid-template-columns:1fr;
+
+        .section2 {
+            grid-template-areas: "frase"
+            "widget1" "widget2"
+            "widget3" "widget4";
+            grid-template-columns: auto;
+            grid-template-rows:repeat(5,auto);
+        }
+
+        .section3{
+            .equipo{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+}
