@@ -12,7 +12,8 @@ const routes: Routes = [
 		{ path: 'login', loadChildren: () => import('../../pages/login/login.module').then(m => m.LoginModule) },
 		{ path: 'signup', loadChildren: () => import('../../pages/registro/registro.module').then(m => m.RegistroModule) },	
 		{ path: 'plans', loadChildren: () => import('../../pages/plans/plans.module').then(m => m.PlansModule) },
-		{ path: 'about', loadChildren: () => import('../../pages/about/about.module').then(m => m.AboutModule) }, ] }
+		{ path: 'about', loadChildren: () => import('../../pages/about/about.module').then(m => m.AboutModule) }, 
+		{ path: 'contacto', loadChildren: () => import('../../pages/contacto/contacto.module').then(m => m.ContactoModule) },] }
 ]
 
 @NgModule({
