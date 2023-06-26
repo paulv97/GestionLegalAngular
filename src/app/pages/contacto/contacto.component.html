@@ -1,65 +1,60 @@
 <div class="container">
 
-    <section class="seccion1 border2">
-        <h1>CONTÁCTENOS</h1>
+    <section class="seccion1 border">
+        <h1 class="font-bold mb-20 m-0 display-block text-center">CONTÁCTENOS</h1>
         <!-- <a href="whatsapp://send?text=Hola%20WhatsApp!">
             <img src="../Imagen/whatsapp.svg" alt="whatsapp">
         </a> -->
     </section>
     <section class="seccion2 border">
         <div class="widget1 border2">
-            <img src="../Imagen/telefono.svg" alt="telefono" class="imagen-seccion2">
+            <img src="/assets/images/telefono.svg" alt="telefono" class="imagen-seccion2">
             <div class="espacioI">
-                <h1>Asesor 1:</h1>
+                <h1>Asesor 1:</h1><br>
                 <p>0987654321</p>
             </div>
             
         </div>
         <div class="widget2 border2">
-            <img src="../Imagen/telefono.svg" alt="telefono" class="imagen-seccion2">
+            <img src="/assets/images/telefono.svg" alt="telefono" class="imagen-seccion2">
             <div class="espacioI">
-                <h1>Asesor 2:</h1>
+                <h1>Asesor 2:</h1><br>
                 <p>0987654321</p>
             </div>
         </div>
         <div class="widget3 border2">
-            <img src="../Imagen/correo.svg" alt="telefono" class="imagen-seccion2">
+            <img src="/assets/images/correo.svg" alt="telefono" class="imagen-seccion2">
             <div class="espacioI">
-                <h1>Correo electrónico:</h1>
+                <h1>Correo electrónico:</h1><br>
                 <p>gestionlegal@gmail.com</p>
             </div>
         </div>
 
         <div class="widget4 border2">
-            <img src="../Imagen/correo.svg" alt="telefono" class="imagen-seccion2">
-            <div class="espacioI">
-                <h1>Correo electrónico:</h1>
-                <p>gestionlegal@gmail.com</p>
-            </div>
+            <!-- <img src="../Imagen/correo.svg" alt="telefono" class="imagen-seccion2"> -->
+            <img src="/assets/images/whatsapp.svg" alt="whatsapp" class="imagen-whats">
         </div>
 
     </section>
-    <section class="seccion3 border2">
+    <section class="seccion3 border">
         <div class="imagenF border">
-            <img src="../Imagen/imagenContacto.webp" alt="imagenContacto">
+            <img src="/assets/images/imagenContacto.webp" alt="imagenContacto">
         </div>
         <div class="camposF border">
-            <form action="#" method="GET" enctype="application/x-www-form-urlencoded">
+            <form>
                 <fieldset>
-                    <!--<legend>Mi form</legend>-->
-                    <h1 >Escribános</h1>
-                    <label for="nombreC">Nombre y Apellido</label><br>
-                    <input type="text" name="nombreC" id="nombreC" required><br>
-                    <label for="emailC">E-mail</label><br>
-                    <input type="email" name="emailC" id="emailC" required><br>
-                    <label for="telefonoC">Telefono</label><br>
-                    <input type="text" name="telefonoC" id="telefonoC" pattern="[0-9]*" title="Ingresa solo números" required><br>
-                    <label for="mensajeC">Mensaje o requerimiento</label><br>
-                    <textarea type="text" name="mensajeC" id="mensajeC" required ></textarea><br>
-                    <button type="button" onclick="validarFormulario()">Enviar</button>
+                    <h1 class="font-bold mb-20 m-0 display-block">Escribános</h1><br>
+                    <label for="nombreC" class="display-block m-0 mb-7">Nombre y Apellido</label>
+                    <input nz-input placeholder="Nombre y Apellido" class="text-md rounded px-15 py-12 w-full" type="text" name="nombreC" id="nombreC" required><br><br>
+                    <label for="emailC" class="display-block m-0 mb-7">E-mail</label>
+                    <input nz-input placeholder="Email" class="text-md rounded px-15 py-12 w-full" type="email" name="emailC" id="emailC" required><br><br>
+                    <label for="telefonoC" class="display-block m-0 mb-7">Telefono</label>
+                    <input nz-input placeholder="Telefono" class="text-md rounded px-15 py-12 w-full" type="text" name="telefonoC" id="telefonoC" pattern="[0-9]*" title="Ingresa solo números" required><br><br>
+                    <label for="mensajeC" class="display-block m-0 mb-7">Mensaje o requerimiento</label>
+                    <textarea class="text-md rounded px-15 py-12 w-full" type="text" name="mensajeC" id="mensajeC" required ></textarea><br>
+                    <button nz-button nzType="primary" style="min-width: 30px;">Enviar</button>
                 </fieldset>
-            </form>    
-            
+            </form>     
         </div>
     </section>
 
