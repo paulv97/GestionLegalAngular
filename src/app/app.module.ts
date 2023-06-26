@@ -15,6 +15,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { BlogsComponent } from './pages/blogs/blogs.component';
 
 registerLocaleData(es);
 
