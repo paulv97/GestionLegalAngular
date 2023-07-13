@@ -17,6 +17,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { DocumentosComponent } from './pages/documentos/documentos.component';
 
 registerLocaleData(es);
 

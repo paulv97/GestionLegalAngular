@@ -10,6 +10,7 @@ const routes: Routes = [
 		{ path: 'recursos', loadChildren: () => import('../../pages/app/recursos/recursos.module').then(m => m.RecursosModule) },
 		{ path: 'estadisticas', loadChildren: () => import('../../pages/app/estadisticas/estadisticas.module').then(m => m.EstadisticasModule) },
 		{ path: 'create-blog', loadChildren: () => import('../../pages/create-blog/create-blog.module').then(m => m.CreateBlogModule) },
+		{ path: 'documentos', loadChildren: () => import('../../pages/documentos/documentos.module').then(m => m.DocumentosModule) },
 	] }
 ]
 

@@ -29,8 +29,13 @@ export class SidebarComponent implements OnInit {
 		},
 		{
 			icon: 'file-text',
-			label: 'blog',
+			label: 'Blog',
 			route: 'create-blog'
+		},
+		{
+			icon: 'file',
+			label: 'Documentos',
+			route: 'documentos'
 		},
 		{
 			icon: 'setting',
