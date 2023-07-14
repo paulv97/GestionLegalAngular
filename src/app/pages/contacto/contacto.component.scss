@@ -99,8 +99,10 @@
             grid-area: camposF;
             // background-color: #f5f5f5;
 
+            padding: 15px;
+
             form{
-                fieldset{
+                // fieldset{
                     width: auto;
                     height: 100%;
                     padding: 100px;
@@ -128,7 +130,7 @@
                         text-transform: uppercase;
                       }
 
-                }
+                // }
             }
 
         }
