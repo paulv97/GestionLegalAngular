@@ -11,19 +11,30 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class ContactoComponent implements OnInit {
 
   form: FormGroup
+
   constructor(
     private message: NzMessageService,
     private router: Router
   ) { 
     this.form = new FormGroup({
-      nombres: new FormControl(null, [Validators.required]),
-      apellidos: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
-      clave: new FormControl(null, [Validators.required])
+      nombreC: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      telefonoC: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
+      emailC: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
+      mensajeC: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')])
     })
   }
 
   ngOnInit(): void {
+  }
+
+  validar() {
+    if(this.form.invalid) {
+      this.form.markAllAsTouched()
+      this.form.markAsDirty()
+      return
+    }else{
+      this.form.reset();
+    }
   }
 
 }

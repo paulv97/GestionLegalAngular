@@ -44,17 +44,57 @@
             <img src="/assets/images/imagenContacto.webp" alt="imagenContacto">
         </div>
         <div class="camposF border">
-            <form class="border2">
+            <form class="border2" [formGroup]="form">
                     <h1 class="font-bold mb-20 m-0 display-block">Escribános</h1><br>
+
                     <label for="nombreC" class="display-block m-0 mb-7">Nombre y Apellido</label>
-                    <input nz-input placeholder="Nombre y Apellido" class="text-md rounded px-15 py-12 w-full" type="text" name="nombreC" id="nombreC" required><br><br>
+                    <input nz-input placeholder="Nombre y Apellido" class="text-md rounded px-15 py-12 w-full" 
+                        type="text" formControlName="nombreC">
+                    <div *ngIf="form.get('nombreC')?.invalid && (form.get('nombreC')?.dirty || form.get('nombreC')?.touched)">
+                        <div *ngIf="form.get('nombreC')?.hasError('required')">El nombre y apellido es requerido.</div>
+                        <div *ngIf="form.get('nombreC')?.hasError('pattern')">No se acepta numeros.</div>
+                    </div><br><br>
+
                     <label for="emailC" class="display-block m-0 mb-7">E-mail</label>
-                    <input nz-input placeholder="Email" class="text-md rounded px-15 py-12 w-full" type="email" name="emailC" id="emailC" required><br><br>
+                    <input nz-input placeholder="Email" class="text-md rounded px-15 py-12 w-full" type="email" formControlName="emailC">
+                    <div *ngIf="form.get('emailC')?.invalid && (form.get('emailC')?.dirty || form.get('emailC')?.touched)">
+                        <div *ngIf="form.get('emailC')?.hasError('required')">El email es requerido.</div>
+                        <div *ngIf="form.get('emailC')?.hasError('pattern')">El email debe ser válido.</div>
+                    </div><br><br>
+
                     <label for="telefonoC" class="display-block m-0 mb-7">Telefono</label>
-                    <input nz-input placeholder="Telefono" class="text-md rounded px-15 py-12 w-full" type="text" name="telefonoC" id="telefonoC" pattern="[0-9]*" title="Ingresa solo números" required><br><br>
+                    <input nz-input placeholder="Telefono" class="text-md rounded px-15 py-12 w-full" type="text" formControlName="telefonoC" pattern="[0-9]*" title="Ingresa solo números">
+                    <div *ngIf="form.get('telefonoC')?.invalid && (form.get('telefonoC')?.dirty || form.get('telefonoC')?.touched)">
+                        <div *ngIf="form.get('telefonoC')?.hasError('required')">El teléfono es requerido.</div>
+                        <div *ngIf="form.get('telefonoC')?.hasError('pattern')">Solo se acepta numeros.</div>
+                    </div><br><br>
+
                     <label for="mensajeC" class="display-block m-0 mb-7">Mensaje o requerimiento</label>
-                    <textarea nz-input class="text-md rounded px-15 py-12 w-full" type="text" name="mensajeC" id="mensajeC" required ></textarea><br><br>
-                    <button nz-button nzType="primary" style="min-width: 30px;">Enviar</button>
+                    <textarea nz-input class="text-md rounded px-15 py-12 w-full" formControlName="mensajeC"></textarea>
+                    <div *ngIf="form.get('mensajeC')?.invalid && (form.get('mensajeC')?.dirty || form.get('mensajeC')?.touched)">
+                        <div *ngIf="form.get('mensajeC')?.hasError('required')">El mensaje es requerido.</div>
+                        <div *ngIf="form.get('mensajeC')?.hasError('pattern')">No se acepta numeros.</div>
+                    </div><br><br>
+
+                    <button nz-button nzType="primary" style="min-width: 30px" (click)="validar()">Enviar</button>
+
+                    <!-- <label for="nombreC" class="display-block m-0 mb-7">Nombre y Apellido</label>
+                    <input nz-input placeholder="Nombre y Apellido" class="text-md rounded px-15 py-12 w-full" 
+                        type="text" name="nombreC" id="nombreC" required><br><br>
+                     -->
+
+                    <!-- <label for="emailC" class="display-block m-0 mb-7">E-mail</label>
+                    <input nz-input placeholder="Email" class="text-md rounded px-15 py-12 w-full" 
+                        type="email" name="emailC" id="emailC" required><br><br>
+                    
+                        <label for="telefonoC" class="display-block m-0 mb-7">Telefono</label>
+                    <input nz-input placeholder="Telefono" class="text-md rounded px-15 py-12 w-full" 
+                        type="text" name="telefonoC" id="telefonoC" pattern="[0-9]*" title="Ingresa solo números" required><br><br>
+                    
+                        <label for="mensajeC" class="display-block m-0 mb-7">Mensaje o requerimiento</label>
+                    <textarea nz-input class="text-md rounded px-15 py-12 w-full" 
+                        type="text" name="mensajeC" id="mensajeC" required ></textarea><br><br>
+                    <button nz-button nzType="primary" style="min-width: 30px;">Enviar</button> -->
             </form>     
         </div>
     </section>
