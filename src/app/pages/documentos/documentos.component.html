@@ -6,14 +6,15 @@
               <!-- <h1>Documentos</h1> -->
               <h1 class="font-bold mb-20 m-0 display-block">Documentos</h1>
           </div>
-          <div class="busqueda border">
+          <!-- <div class="busqueda border">
               <input nz-input type="text" placeholder="BUSQUEDA" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full">
             
-          </div>
+          </div> -->
       </section>
       <section class="seccion2 border">
         <div class="camposD">
-            <form >
+            <form class="border2">
+                <h4 >Datos del Documento</h4><br>
                 <label class="m-0 mb-7">Tipo:</label><br>
                 <input nz-input placeholder="Tipo" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
                 <label class="m-0 mb-7">Nombre:</label><br>
@@ -24,12 +25,18 @@
             </form>
         </div>
         <div class="cargarD">
-            <form>
+            <form class="border2">
+                <h4 >Subir el Documento</h4><br>
                 <label class="m-0 mb-7">Documento:</label><br>
                 <input nz-input placeholder="Documento" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>        
                 <button nz-button nzType="primary" style="min-width: 30px;">Subir Documento</button>
             </form>
         </div>
+
+      </section>
+
+      <section class="busqueda">
+        <input nz-input type="text" placeholder="BUSQUEDA" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full">
 
       </section>
 

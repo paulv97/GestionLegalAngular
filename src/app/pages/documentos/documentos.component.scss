@@ -1,7 +1,7 @@
 .container{
     display: grid;
-    grid-template-areas:"seccion1" "seccion2" "seccion3";
-
+    grid-template-areas:"seccion1" "seccion2" "busqueda" "seccion3";
+    // grid-template-areas:"seccion1" "seccion2" "seccion3";
 
     grid-template-rows:135px auto auto;
     grid-template-columns: 100% ;
@@ -12,7 +12,8 @@
         margin-top: 30px;
         grid-area: seccion1;
         display: grid;
-        grid-template-areas: "docTitle" "busqueda";
+        // grid-template-areas: "docTitle" "busqueda";
+        grid-template-areas: "docTitle";
         grid-template-rows: auto auto;
 
         .docTitle{
@@ -22,25 +23,25 @@
             justify-content: center;
             
         }
-        .busqueda{
-            grid-area: busqueda;
-            display: flex;
-            // align-items: center;
-            justify-content: center;
+        // .busqueda{
+        //     grid-area: busqueda;
+        //     display: flex;
+        //     // align-items: center;
+        //     justify-content: center;
 
-            input[type="text"] {
-                width: 800px;
-                height: 45px;
-                padding-left: 30px; /* Para dejar espacio para el icono */
-                font-size: 16px;
-                background-image: url('/assets/images/buscar.svg'); /* Ruta a la imagen del icono */
-                background-size: 20px 20px;
-                background-repeat: no-repeat;
-                background-position: 5px center; /* Posición del icono */
+        //     input[type="text"] {
+        //         width: 800px;
+        //         height: 45px;
+        //         padding-left: 30px; /* Para dejar espacio para el icono */
+        //         font-size: 16px;
+        //         background-image: url('/assets/images/buscar.svg'); /* Ruta a la imagen del icono */
+        //         background-size: 20px 20px;
+        //         background-repeat: no-repeat;
+        //         background-position: 5px center; /* Posición del icono */
                 
-            }
+        //     }
             
-        }
+        // }
     }
 
     .seccion2{
@@ -49,7 +50,7 @@
         // align-items: center;
         // justify-content:center;
         // background-color: #f5f5f5;
-        padding: 20px;
+        // padding: 20px;
 
         display: grid;
         grid-template-areas:"camposD cargarD" ;
@@ -57,17 +58,23 @@
 
         .camposD{
             grid-area: camposD;
+
             display: flex;
             justify-content: center;
+            // flex-direction: column;
         }
 
         .cargarD{
             grid-area: cargarD;
+
             display: flex;
             justify-content: center;
+            // flex-direction: column;
         }
         
-
+        form{
+        padding: 50px;
+        border-radius: 10px;
         input{
             width: 400px;
             height: 45px;
@@ -76,7 +83,29 @@
         button{
             margin-left: 15px;
         }
+        
+        }
+    }
 
+    .busqueda{
+        grid-area: busqueda;
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+        padding: 15px;
+
+        input[type="text"] {
+            width: 800px;
+            height: 45px;
+            padding-left: 30px; /* Para dejar espacio para el icono */
+            font-size: 16px;
+            background-image: url('/assets/images/buscar.svg'); /* Ruta a la imagen del icono */
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: 5px center; /* Posición del icono */
+            
+        }
+        
     }
 
     .seccion3{
@@ -103,10 +132,10 @@
 
     .container{
 
-        .seccion1{
+        // .seccion1{
 
-            grid-template-areas: "docTitle" "busqueda";
-            grid-template-columns: 1fr;
+            // grid-template-areas: "docTitle" "busqueda";
+            // grid-template-columns: 1fr;
 
             .busqueda {
                 input[type="text"]{
@@ -114,13 +143,15 @@
                 }
 
             }
-        }
+        // }
 
         .seccion2{
             grid-template-areas: "cargarD" "camposD";
             grid-template-columns: 1fr;
+            form{
             input{
-                width: 350px;
+                width: 250px;
+            }
             }
         }
         
@@ -135,20 +166,22 @@
 
     .container{
 
-        .seccion1{
+        // .seccion1{
             .busqueda {
                 input[type="text"]{
                     width: 350px;
                 }
 
             }
-        }
+        // }
 
         .seccion2{
             grid-template-areas: "cargarD" "camposD";
             grid-template-columns: 1fr;
+            form{
             input{
-                width: 350px;
+                width: 250px;
+            }
             }
         }
 
