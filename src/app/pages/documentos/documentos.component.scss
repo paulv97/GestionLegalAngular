@@ -75,15 +75,30 @@
         form{
         padding: 50px;
         border-radius: 10px;
-        input{
-            width: 400px;
-            height: 45px;
-            margin-left: 15px;
-        }
-        button{
-            margin-left: 15px;
-        }
-        
+            input{
+                width: 400px;
+                height: 45px;
+                margin-left: 15px;
+            }
+            button{
+                margin-left: 15px;
+            }
+            select{
+                width: 400px;
+                height: 45px;
+                margin-left: 15px;
+                border: 1px solid rgb(173, 171, 171);
+
+            }
+
+            #comboCodigo:hover{
+                border-color: rgb(71, 147, 233);
+            }
+            #comboCodigo:focus, #comboCodigo:active{
+                outline: none;
+                border-color: rgb(71, 147, 233);
+            }
+ 
         }
     }
 
@@ -149,9 +164,16 @@
             grid-template-areas: "cargarD" "camposD";
             grid-template-columns: 1fr;
             form{
-            input{
-                width: 250px;
-            }
+                input{
+                    width: 250px;
+                }
+                select{
+                    width: 250px;
+                    // height: 45px;
+                    // margin-left: 15px;
+                    // border: 1px solid rgb(173, 171, 171);
+    
+                }
             }
         }
         
@@ -179,9 +201,16 @@
             grid-template-areas: "cargarD" "camposD";
             grid-template-columns: 1fr;
             form{
-            input{
-                width: 250px;
-            }
+                input{
+                    width: 250px;
+                }
+                select{
+                    width: 250px;
+                    // height: 45px;
+                    // margin-left: 15px;
+                    // border: 1px solid rgb(173, 171, 171);
+    
+                }
             }
         }
 

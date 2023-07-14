@@ -13,22 +13,47 @@
       </section>
       <section class="seccion2 border">
         <div class="camposD">
-            <form class="border2">
+            <form class="border2" [formGroup]="form">
                 <h4 >Datos del Documento</h4><br>
+                <label class="m-0 mb-7">Código juicio:</label><br>
+
+                <select class="text-md rounded px-15 py-12 w-full" [(ngModel)]="selectedOption" id="comboCodigo" formControlName="comboCodigo">
+                  <option value="null" disabled >Selecciona una opción</option>
+                  <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                </select>
+                <div *ngIf="form.get('comboCodigo')?.invalid && (form.get('comboCodigo')?.dirty || form.get('comboCodigo')?.touched)">
+                  <div *ngIf="form.get('comboCodigo')?.hasError('required')">Selecciona un codigo de juicio.</div>
+                </div><br><br>
+
                 <label class="m-0 mb-7">Tipo:</label><br>
-                <input nz-input placeholder="Tipo" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
+                <input nz-input placeholder="Tipo" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="tipoDoc">
+                <div *ngIf="form.get('tipoDoc')?.invalid && (form.get('tipoDoc')?.dirty || form.get('tipoDoc')?.touched)">
+                  <div *ngIf="form.get('tipoDoc')?.hasError('required')">El tipo de Doc es requerido.</div>
+                  <div *ngIf="form.get('tipoDoc')?.hasError('pattern')">No se acepta numeros.</div>
+                </div><br><br>
+                
                 <label class="m-0 mb-7">Nombre:</label><br>
-                <input nz-input placeholder="Nombre" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
+                <input nz-input placeholder="Nombre" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="nombreDoc">
+                <div *ngIf="form.get('nombreDoc')?.invalid && (form.get('nombreDoc')?.dirty || form.get('nombreDoc')?.touched)">
+                  <div *ngIf="form.get('nombreDoc')?.hasError('required')">El nombre es requerido.</div>
+                  <div *ngIf="form.get('nombreDoc')?.hasError('pattern')">No se acepta numeros.</div>
+                </div><br><br>
+                
                 <label class="m-0 mb-7">Descripción</label><br>
-                <input nz-input placeholder="Descripcion" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>         
-                <button nz-button nzType="primary" style="min-width: 30px;">Guardar</button>
+                <input nz-input placeholder="Descripcion" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="descripDoc">
+                <div *ngIf="form.get('descripDoc')?.invalid && (form.get('descripDoc')?.dirty || form.get('descripDoc')?.touched)">
+                  <div *ngIf="form.get('descripDoc')?.hasError('required')">Una descripcion es requerida.</div>
+                  <div *ngIf="form.get('descripDoc')?.hasError('pattern')">No se acepta numeros.</div>
+                </div><br><br>         
+                
+                <button nz-button nzType="primary" style="min-width: 30px" (click)="validar()">Guardar</button>
             </form>
         </div>
         <div class="cargarD">
             <form class="border2">
                 <h4 >Subir el Documento</h4><br>
                 <label class="m-0 mb-7">Documento:</label><br>
-                <input nz-input placeholder="Documento" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>        
+                <input nz-input placeholder="Documento" type="text" class="text-md rounded px-15 py-12 w-full" disabled><br><br>        
                 <button nz-button nzType="primary" style="min-width: 30px;">Subir Documento</button>
             </form>
         </div>

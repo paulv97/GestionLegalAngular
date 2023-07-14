@@ -51,7 +51,7 @@
                 <label for="comentarioB">Comentar *</label><br>
                 <textarea nz-input type="text" formControlName="comentarioB"></textarea>
                 <div *ngIf="form.get('comentarioB')?.invalid && (form.get('comentarioB')?.dirty || form.get('comentarioB')?.touched)">
-                    <div *ngIf="form.get('comentarioB')?.hasError('required')">El mensaje es requerido.</div>
+                    <div *ngIf="form.get('comentarioB')?.hasError('required')">El comentario es requerido.</div>
                     <div *ngIf="form.get('comentarioB')?.hasError('pattern')">No se acepta numeros.</div>
                 </div><br><br>
 
@@ -66,8 +66,8 @@
                 <input nz-input placeholder="Correo electrónico" class="text-md rounded px-15 py-12 w-full" 
                 type="email" formControlName="emailCom" >
                 <div *ngIf="form.get('emailCom')?.invalid && (form.get('emailCom')?.dirty || form.get('emailCom')?.touched)">
-                    <div *ngIf="form.get('emailCom')?.hasError('required')">El email es requerido.</div>
-                    <div *ngIf="form.get('emailCom')?.hasError('pattern')">El email debe ser válido.</div>
+                    <div *ngIf="form.get('emailCom')?.hasError('required')">El correo es requerido.</div>
+                    <div *ngIf="form.get('emailCom')?.hasError('pattern')">El correo debe ser válido.</div>
                 </div><br>
 
                 <button nz-button nzType="primary" style="min-width: 30px" (click)="validar()">PUBLICAR COMENTARIO</button>
