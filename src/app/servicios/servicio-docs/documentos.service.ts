@@ -1,0 +1,50 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DocumentosService {
+  // url='http://localhost:3000/api';
+  // url='/api';
+  url='/apidocumentos';
+  constructor(private http: HttpClient) { }
+
+  // get documentos
+  getDocumentos(){
+    return this.http.get(this.url);
+  }
+
+  // get documento
+  getDocumento(id:String){
+    return this.http.get(this.url+'/'+id);
+  }
+
+  // agregar documento
+  addDocumento(documento:Documento){
+    return this.http.post(this.url,documento);
+  }
+
+  // eliminar documento
+  deleteDocumento(id:String){
+    return this.http.delete(this.url+'/'+id);
+  }
+
+  // modificar documento
+  editDocumento(id:String, documento:Documento){
+    return this.http.put(this.url+'/'+id,documento);
+  }
+
+
+}
+
+export interface Documento{
+  id?:string;
+  codigo_juicio?:string;
+  tipo?:string;
+  nombre?:string;
+  descripcion?:string;
+  documento?:string;
+}
+
+

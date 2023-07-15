@@ -132,6 +132,12 @@
             overflow-x: auto;
             word-break: break-word;
         }
+        
+        th,
+        td {
+        text-align: center;
+        }
+
     }
     
     .border{
