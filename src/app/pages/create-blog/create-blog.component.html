@@ -43,6 +43,36 @@
 						</p>
 					</div>
 
+					<!-- imagen -->
+					<div class="grid-col-12 mb-20">
+						<p class="display-block m-0 mb-7">Imagen Blog</p>
+
+						<input
+							nz-input
+							placeholder="Url imagen Blog"
+							formControlName="imagenB"
+							nzSize="large"
+							class="text-md rounded px-15 py-12 w-full"
+							type="text"
+						/>
+					</div>
+					<div
+						*ngIf="
+							(form.get('imagenB')?.touched &&
+								form.get('imagenB')?.errors) ||
+							form.get('imagenB')?.dirty
+						"
+						class="mb-20"
+					>
+						<p
+							*ngIf="form.get('imagenB')?.hasError('required')"
+							class="m-0 mt-5 display-block text-red-700"
+						>
+							El campo es requerido
+						</p>
+					</div>
+
+
 					<!-- description -->
 					<p class="display-block m-0 mb-7">Descripción</p>
 					<div class="border-4" style="border: 1px dashed black">
@@ -139,6 +169,7 @@
 
 			<div class="grid-col-12 mb-20">
 				<button
+					routerLink="/blogs"
 					nz-button
 					nzType="primary"
 					nzSize="large"

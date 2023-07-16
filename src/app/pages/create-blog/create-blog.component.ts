@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-create-blog',
@@ -21,7 +21,8 @@ export class CreateBlogComponent implements OnInit {
     // redirect to the blogs page
     setTimeout(() => {
       this.isLoading = false
-      window.open('/assets/paginas-samuel/Paginas/BlogIndividual.html', '_blank')
+      // window.open('/assets/paginas-samuel/Paginas/BlogIndividual.html', '_blank')
+      
     }
       , 5000)
   }
@@ -42,6 +43,7 @@ export class CreateBlogComponent implements OnInit {
   ) {
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
+      imagenB: new FormControl(null, [Validators.required]),
       blogBody: new FormControl(null, [Validators.required])
     })
     this.date = new Date()
