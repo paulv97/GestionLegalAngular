@@ -23,15 +23,6 @@ export class DocumentosComponent implements OnInit {
     documento:''
   };
 
-  docEdit: Documento = {
-    id:'',
-    codigo_juicio:'',
-    tipo:'',
-    nombre:'',
-    descripcion:'',
-    documento:''
-  };
-
   form: FormGroup
   
   selectedOption: string = '' ;
@@ -98,7 +89,10 @@ export class DocumentosComponent implements OnInit {
     this.DocumentosServicio.getDocumentos().subscribe(
       res=>{
         console.log(res)
-        this.ListaDocumentos=<any>res;
+        // if(res.rows){
+          this.ListaDocumentos=<any>res;
+        // }
+        
       },
       err => console.log(err)
     );
