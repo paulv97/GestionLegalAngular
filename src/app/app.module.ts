@@ -18,6 +18,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { DocumentosComponent } from './pages/documentos/documentos.component';
+import { AuthInterceptorInterceptor } from './shared/services/interceptors/auth-interceptor.interceptor';
 
 registerLocaleData(es);
 
@@ -38,6 +39,11 @@ registerLocaleData(es);
 	providers: [
 		{ provide: LOCALE_ID, useValue: 'en-US' },
 		{ provide: NZ_I18N, useValue: es_ES },
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptorInterceptor,
+			multi: true // Add multi: true to indicate that this interceptor is part of a collection
+		  }
 	],
 	bootstrap: [AppComponent]
 })
