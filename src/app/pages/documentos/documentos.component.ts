@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { DocumentosService, Documento } from 'src/app/servicios/servicio-docs/documentos.service';
+import { DocumentosService, Documento } from 'src/app/shared/services/servicio-docs/documentos.service';
 
 @Component({
   selector: 'app-documentos',
