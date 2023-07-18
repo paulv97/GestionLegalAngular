@@ -11,10 +11,11 @@
 				<nz-select [(ngModel)]="categoriaSeleccionada" nzSize="large" nzMode="tags" nzShowSearch
 					class="text-md rounded w-full"
 					nzPlaceHolder="Buscar lugar">
-					<nz-option *ngFor="let option of categorias" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+					<nz-option *ngFor="let option of categorias" [nzLabel]="option.descripcion | titlecase" [nzValue]="option.id"></nz-option>
 				</nz-select>
 
-				<button (click)="buscar()" nz-button nzType="primary" nzSize="large" class="ml-7">
+				<button [nzLoading]="buscando"
+					(click)="buscar()" nz-button nzType="primary" nzSize="large" class="ml-7">
 					<span nz-icon nzType="search" nzTheme="outline"></span>
 				</button>
 			</div>
