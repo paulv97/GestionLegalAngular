@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	apiUrl: 'https://localhost:5001/api',
+	apiUrl: 'http://localhost:4000',
 	dateFormat: 'dd/MM/yyyy',
 	dateTimeFormat: 'dd/MM/yyyy HH:dd',
 	encriptacion: true,
