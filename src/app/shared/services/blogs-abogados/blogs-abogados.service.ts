@@ -16,6 +16,12 @@ export class BlogsAbogadosService {
       return this.http.get('/blogs-abogados/blogsconAbog')
     }
 
+    // get blog con datos del abogado
+    getBlogAbogado(id_Blog:string){
+      return this.http.get('/blogs-abogados/blogIndividualconAbog'+'/'+id_Blog);
+      
+    }
+
 }
 
 export interface BlogAbogado{

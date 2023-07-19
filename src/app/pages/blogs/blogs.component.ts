@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogsAbogadosService, BlogAbogado } from 'src/app/shared/services/blogs-abogados/blogs-abogados.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
@@ -12,6 +13,7 @@ export class BlogsComponent implements OnInit {
   listaBlogsAbogados: BlogAbogado[]= [];
 
   constructor(
+    private router: Router,
     private BlogsAbogadosServicio:BlogsAbogadosService
   ) { }
 
@@ -29,6 +31,11 @@ export class BlogsComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  // dirigir a la pagina blog y carga el blog
+  cargarBlog(idBlog:String){
+    this.router.navigate(['/blog/'+idBlog]);
   }
 
 }

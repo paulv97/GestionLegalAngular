@@ -109,12 +109,12 @@ export class DocumentosComponent implements OnInit {
     );
   }
 
-  // obtener un equipo
+  // obtener un documento
   obtenerDoc(id:string){
     this.DocumentosServicio.getDocumento(id).subscribe(
       (res: any) =>{
           this.doc = res[0];
-          console.log(res);
+          console.log(res[0]);
       },
         err=> console.log(err)
       );

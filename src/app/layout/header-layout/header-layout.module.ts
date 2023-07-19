@@ -15,7 +15,7 @@ const routes: Routes = [
 		{ path: 'about', loadChildren: () => import('../../pages/about/about.module').then(m => m.AboutModule) }, 
 		{ path: 'contacto', loadChildren: () => import('../../pages/contacto/contacto.module').then(m => m.ContactoModule) },
 		{ path: 'blogs', loadChildren: () => import('../../pages/blogs/blogs.module').then(m => m.BlogsModule) },
-		{ path: 'blog', loadChildren: () => import('../../pages/blog/blog.module').then(m => m.BlogModule) },] }
+		{ path: 'blog/:id_Blog', loadChildren: () => import('../../pages/blog/blog.module').then(m => m.BlogModule) },] }
 ]
 
 @NgModule({

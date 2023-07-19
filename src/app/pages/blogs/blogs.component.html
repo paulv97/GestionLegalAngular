@@ -24,7 +24,7 @@
             <h2  class="font-bold mb-20 m-0 display-block">{{blogA.nombres}} {{blogA.apellidos}} - {{blogA.titulo}}</h2>
             <img src="{{blogA.imagen}}" alt="Descripción de la imagen 1">
             <p>{{blogA.fecha | date:'medium'}}</p><br>
-            <button routerLink="/blog" nz-button nzType="primary" style="min-width: 30px;">Ver</button><br><br>
+            <button (click)="cargarBlog(blogA.id_blog!)" nz-button nzType="primary" style="min-width: 30px;">Ver</button><br><br>
         </div>
 
     </section>

@@ -3,16 +3,17 @@
     <section class="seccion1 border">
         <div class="tituloAutor border">
             <img src="/assets/images/fondoBlog.jpg" alt="fondoBlog">
+            <!-- <img src="{{blogA.imagen}}" alt="fondoBlog"> -->
             <div class="textoEncima">
-                <h1 class="font-bold mb-20 m-0 display-block">Blog Post Title</h1>
+                <h1 class="font-bold mb-20 m-0 display-block">{{blogA.titulo}}</h1>
                 <p>
-                    dia mes anio Por Autor Blog
+                    {{blogA.fecha | date:'medium'}} Por {{blogA.nombres}} {{blogA.apellidos}}
                 </p>
             </div>
             
         </div>
         <div class="imagenB border">
-            <img src="/assets/images/imagenBlog.jpg" alt="imagenBlog" >
+            <img src="{{blogA.imagen}}" alt="imagenBlog" >
         </div>
 
         <div class="compartir">
@@ -31,17 +32,17 @@
         </div>
     </section>
     <section class="seccion2 border">
-        <textarea type="text" name="informacionB" id="informacionB">
-            AQUI VA TODA LA INFORMACION DE UN BLOG CREADO
+        <textarea class="font-bold mb-20 m-0 display-block" type="text" name="informacionB" id="informacionB">
+            {{blogA.cuerpo}}
         </textarea>
     </section>
     <section class="seccion3 border">
         <div class="calificar border">
             <label for="califica">Califica este blog:</label>
             <img id="megusta" src="/assets/images/like.svg" alt="like">
-            <label id="Nmegusta"for="likes">346</label>
+            <label id="Nmegusta"for="likes">{{blogA.megusta}}</label>
             <img id="nomegusta" src="/assets/images/dislike.svg" alt="dislike">
-            <label id="Nnomegusta" for="dislikes">231</label>
+            <label id="Nnomegusta" for="dislikes">{{blogA.nomegusta}}</label>
         </div>
         <div class="comentario border">
             <form [formGroup]="form">
