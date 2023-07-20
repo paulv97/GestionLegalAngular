@@ -49,8 +49,8 @@ export class BlogComponent implements OnInit {
   ) { 
     this.form = new FormGroup({
       comentarioB: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      // nombreCom: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      nombreCom: new FormControl(),
+      nombreCom: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      // nombreCom: new FormControl(),
       emailCom: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
       
     })
@@ -78,7 +78,7 @@ export class BlogComponent implements OnInit {
       this.form.markAsDirty()
       return
     }else{
-      this.obtenerAbogado();
+      // this.obtenerAbogado();
       // this.form.reset();
     }
   }
@@ -90,8 +90,8 @@ export class BlogComponent implements OnInit {
           this.abogado = res[0];
           console.log(res[0]);
           this.nombreCompleto = this.abogado.nombres +' '+ this.abogado.apellidos;
-          this.message.success('Comentario realizado');
-          this.form.reset();
+          // this.message.success('Comentario realizado');
+          // this.form.reset();
 
         }else{
           this.message.error('Usted no puede comentar')
