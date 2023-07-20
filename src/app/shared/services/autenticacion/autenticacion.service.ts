@@ -10,7 +10,7 @@ export class AutenticacionService {
     private http: HttpClient
   ) { }
 
-  registrarse() {
-    
+  registrar(usuario: any) {
+    return this.http.post('/autenticacion/registro-usuario', usuario)
   }
 }

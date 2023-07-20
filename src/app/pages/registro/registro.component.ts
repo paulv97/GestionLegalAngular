@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { finalize } from 'rxjs';
+import { AutenticacionService } from 'src/app/shared/services/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-registro',
@@ -15,7 +17,8 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private message: NzMessageService,
-    private router: Router
+    private router: Router,
+    private autenticacionService: AutenticacionService,
   ) { 
     this.form = new FormGroup({
       nombres: new FormControl(null, [Validators.required]),
@@ -37,11 +40,19 @@ export class RegistroComponent implements OnInit {
 
     this.isLoading = true
 
-    setTimeout(() => {
-      this.isLoading = false
-      this.message.success('Registro exitoso.')
-      this.router.navigate(['/login'])
-    }, 5000)
+    this.autenticacionService.registrar(this.form.getRawValue())
+    .pipe(finalize(() => this.isLoading = false))
+    .subscribe(
+      (resp: any) => {
+        console.log(resp)
+        this.message.success(resp.mensaje)
+        this.router.navigate(['/plans'])
+      },
+      (err) => {
+        console.log(err)
+        this.message.error(err.error.mensaje)
+      }
+    )
   }
 
 }
