@@ -57,14 +57,14 @@
                 </div><br><br>
 
                 <label for="nombreCom" nombre="nombreBI" id="nombreBI">Nombre *</label>
-                <input nz-input placeholder="Nombre" id="nombreCom" class="text-md rounded px-15 py-12 w-full" type="text" formControlName="nombreCom">
+                <input nz-input [(ngModel)]="nombreCompleto" [readonly]="true" placeholder="Aparece al verificar su correo" id="nombreCom" class="text-md rounded px-15 py-12 w-full" type="text" formControlName="nombreCom">
                 <div *ngIf="form.get('nombreCom')?.invalid && (form.get('nombreCom')?.dirty || form.get('nombreCom')?.touched)">
                     <div *ngIf="form.get('nombreCom')?.hasError('required')">El nombre es requerido.</div>
                     <div *ngIf="form.get('nombreCom')?.hasError('pattern')">No se acepta numeros.</div>
                 </div><br>
 
                 <label for="emailCom">Correo electrónico *</label>
-                <input nz-input placeholder="Correo electrónico" class="text-md rounded px-15 py-12 w-full" 
+                <input [(ngModel)]="abogado.email" nz-input placeholder="Correo electrónico" class="text-md rounded px-15 py-12 w-full" 
                 type="email" formControlName="emailCom" >
                 <div *ngIf="form.get('emailCom')?.invalid && (form.get('emailCom')?.dirty || form.get('emailCom')?.touched)">
                     <div *ngIf="form.get('emailCom')?.hasError('required')">El correo es requerido.</div>
@@ -72,6 +72,7 @@
                 </div><br>
 
                 <button nz-button nzType="primary" style="min-width: 30px" (click)="validar()">PUBLICAR COMENTARIO</button>
+                <!-- <button (click)="obtenerAbogado()" nz-button nzType="primary" style="min-width: 30px">PUBLICAR COMENTARIO</button> -->
 
             </form>    
         </div>
