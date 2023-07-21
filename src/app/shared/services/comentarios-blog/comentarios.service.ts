@@ -36,7 +36,6 @@ export class ComentariosService {
     return this.http.delete('/comentarios/eliminarComment/'+id_comentario+'/'+id_blog);
   }
 
-
 }
 
 export interface Abogado{
