@@ -50,7 +50,7 @@
                 <h1 class="font-bold mb-20 m-0 display-block">Deja un comentario a continuacion:</h1>
 
                 <label for="comentarioB">Comentar *</label><br>
-                <textarea nz-input type="text" formControlName="comentarioB"></textarea>
+                <textarea [(ngModel)]="comentario.cuerpo" nz-input type="text" formControlName="comentarioB"></textarea>
                 <div *ngIf="form.get('comentarioB')?.invalid && (form.get('comentarioB')?.dirty || form.get('comentarioB')?.touched)">
                     <div *ngIf="form.get('comentarioB')?.hasError('required')">El comentario es requerido.</div>
                     <div *ngIf="form.get('comentarioB')?.hasError('pattern')">No se acepta numeros.</div>
@@ -60,7 +60,7 @@
                 <input nz-input [(ngModel)]="nombreCompleto" [readonly]="true" placeholder="Aparece al verificar su correo electrónico" id="nombreCom" class="text-md rounded px-15 py-12 w-full" type="text" formControlName="nombreCom">
                 <div *ngIf="form.get('nombreCom')?.invalid && (form.get('nombreCom')?.dirty || form.get('nombreCom')?.touched)">
                     <div *ngIf="form.get('nombreCom')?.hasError('required')">El nombre es requerido.</div>
-                    <div *ngIf="form.get('nombreCom')?.hasError('pattern')">No se acepta numeros.</div>
+                    <!-- <div *ngIf="form.get('nombreCom')?.hasError('pattern')">No se acepta numeros.</div> -->
                 </div><br>
 
                 <label for="emailCom">Correo electrónico *</label>
@@ -83,38 +83,20 @@
             <h1 class="font-bold mb-20 m-0 display-block" style="text-decoration: underline;">Comentarios</h1>
         </div>
 
-        <div class="comment">
+        <div class="comment" *ngFor="let comment of listaComentarios">
             <div class="comment-header">
               <img src="/assets/images/usuario.svg" alt="Avatar del autor">
-              <h4 class="comment-author">Autor1</h4>
-              <span class="comment-date">Abril 22, 2023 11:52:12 PM</span>
+              <h4 class="comment-author">{{comment.nombres}} {{comment.apellidos}}</h4><br>
+              <span class="comment-date">{{comment.fecha | date:'medium'}}</span>
             </div>
             <div class="comment-body">
-              <p>Contenido del comentario, este es un excelnete blog.........................</p>
+              <p>{{comment.cuerpo}}</p>
             </div>
+
+            <label (click)="ventanaE(comment.id_comentario!,comment.id_blog!,comment.id_abogado!)" class="corner-label">Eliminar</label>
+
         </div>
 
-        <div class="comment">
-            <div class="comment-header">
-              <img src="/assets/images/usuario.svg" alt="Avatar del autor">
-              <h4 class="comment-author">Autor2</h4>
-              <span class="comment-date">Abril 22, 2023 11:52:12 PM</span>
-            </div>
-            <div class="comment-body">
-              <p>Contenido del comentario, este es un excelnete blog.........................</p>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-header">
-              <img src="/assets/images/usuario.svg" alt="Avatar del autor">
-              <h4 class="comment-author">Autor3</h4>
-              <span class="comment-date">Abril 22, 2023 11:52:12 PM</span>
-            </div>
-            <div class="comment-body">
-              <p>Contenido del comentario, este es un excelnete blog.........................</p>
-            </div>
-        </div>
 
     </section>
 
