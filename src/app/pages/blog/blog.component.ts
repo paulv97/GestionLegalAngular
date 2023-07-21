@@ -72,7 +72,7 @@ export class BlogComponent implements OnInit {
 
   ) { 
     this.form = new FormGroup({
-      comentarioB: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      comentarioB: new FormControl(null, [Validators.required]),
       nombreCom: new FormControl(null, [Validators.required]),
       emailCom: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
       

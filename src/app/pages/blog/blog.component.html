@@ -53,7 +53,7 @@
                 <textarea [(ngModel)]="comentario.cuerpo" nz-input type="text" formControlName="comentarioB"></textarea>
                 <div *ngIf="form.get('comentarioB')?.invalid && (form.get('comentarioB')?.dirty || form.get('comentarioB')?.touched)">
                     <div *ngIf="form.get('comentarioB')?.hasError('required')">El comentario es requerido.</div>
-                    <div *ngIf="form.get('comentarioB')?.hasError('pattern')">No se acepta numeros.</div>
+                    <!-- <div *ngIf="form.get('comentarioB')?.hasError('pattern')">No se acepta numeros.</div> -->
                 </div><br><br>
 
                 <label for="nombreCom" nombre="nombreBI" id="nombreBI">Nombre *</label>
