@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AutenticacionService } from 'src/app/shared/services/autenticacion/autenticacion.service';
 import { finalize } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
     private message: NzMessageService, 
     private router: Router,
     private autenticacionService: AutenticacionService,
+    private localStorage: LocalStorageService,
   ) {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
@@ -48,7 +50,8 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (resp: any) => {
         console.log(resp)
-        this.message.success(resp.mensaje)
+        
+        this.localStorage.setStorage({ key: 'sesion' }, resp)
         this.router.navigate(['/busqueda'])
       },
       (err) => {
