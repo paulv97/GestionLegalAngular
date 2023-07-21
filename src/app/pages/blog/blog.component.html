@@ -39,9 +39,9 @@
     <section class="seccion3 border">
         <div class="calificar border">
             <label for="califica">Califica este blog:</label>
-            <img id="megusta" src="/assets/images/like.svg" alt="like">
+            <img (click)="aumentarLikes()" id="megusta" src="/assets/images/like.svg" alt="like">
             <label id="Nmegusta"for="likes">{{blogA.megusta}}</label>
-            <img id="nomegusta" src="/assets/images/dislike.svg" alt="dislike">
+            <img (click)="aumentarDislikes()"id="nomegusta" src="/assets/images/dislike.svg" alt="dislike">
             <label id="Nnomegusta" for="dislikes">{{blogA.nomegusta}}</label>
         </div>
         <div class="comentario border">

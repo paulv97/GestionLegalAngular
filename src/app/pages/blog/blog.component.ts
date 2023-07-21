@@ -1,11 +1,14 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { BlogsAbogadosService, BlogAbogado } from 'src/app/shared/services/blogs-abogados/blogs-abogados.service';
 import { NzModalService,NzModalRef } from 'ng-zorro-antd/modal';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { BlogsAbogadosService, BlogAbogado, LikesDislikes } from 'src/app/shared/services/blogs-abogados/blogs-abogados.service';
 import { ComentariosService,Abogado,Comentario,ComentarioAbog } from 'src/app/shared/services/comentarios-blog/comentarios.service';
+
+import { LocalStorageService
+ } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-blog',
@@ -54,10 +57,18 @@ export class BlogComponent implements OnInit {
     apellidos:''
   };
 
+  likeDislike: LikesDislikes ={
+    megusta:'',
+    nomegusta:''
+  };
+
   nombreCompleto: string ='';
   idBlog: string ='';
   listaComentarios: ComentarioAbog[]=[];
   correo: string = '';
+
+  likedBlogs: string[]=[];
+  dislikedBlogs: string[] = [];
 
   form: FormGroup;
   
@@ -78,6 +89,11 @@ export class BlogComponent implements OnInit {
       
     });
 
+    // const likedBlogsFromLocalStorage = localStorage.getItem('likedBlogs');
+    // if(likedBlogsFromLocalStorage){
+    //   this.likedBlogs = JSON.parse(likedBlogsFromLocalStorage);
+    // }
+
 
   }
 
@@ -95,6 +111,17 @@ export class BlogComponent implements OnInit {
         err => console.log(err)
       );
     }
+
+    const localStorageLikedBlogs = localStorage.getItem('likedBlogs');
+    const localStorageDislikedBlogs = localStorage.getItem('dislikedBlogs');
+
+    if (localStorageLikedBlogs) {
+      this.likedBlogs = JSON.parse(localStorageLikedBlogs);
+    }
+
+    if (localStorageDislikedBlogs) {
+      this.dislikedBlogs = JSON.parse(localStorageDislikedBlogs);
+    }
   }
 
   validar() {
@@ -111,21 +138,25 @@ export class BlogComponent implements OnInit {
 
   // verifica que un abogado pueda comentar
   obtenerAbogado(){
-    this.ComentariosServicio.getDatosAbog(this.abogado.email!).subscribe(
-      (res:any)=>{
-        if(Object.keys(res).length >0){
-          this.abogado = res[0];
-          console.log(res[0]);
-          this.nombreCompleto = this.abogado.nombres +' '+ this.abogado.apellidos;
+    if(this.abogado.email?.length){
+      this.ComentariosServicio.getDatosAbog(this.abogado.email!).subscribe(
+        (res:any)=>{
+          if(Object.keys(res).length >0){
+            this.abogado = res[0];
+            console.log(res[0]);
+            this.nombreCompleto = this.abogado.nombres +' '+ this.abogado.apellidos;
 
-        }else{
-          this.message.error('Usted no puede comentar')
-          console.log('no hay un abogado');
-          this.form.reset();
-        }
-      },
-      err => console.log(err)
-    );
+          }else{
+            this.message.error('Usted no puede comentar')
+            console.log('no hay un abogado');
+            this.form.reset();
+          }
+        },
+        err => console.log(err)
+      );
+    }else{
+      this.message.error('Ingrese un correo electronico')
+    }
   }
   // agrega un comentario al blog
   agregarComentario(){
@@ -175,12 +206,64 @@ export class BlogComponent implements OnInit {
             err => console.log(err)
           );
         }else{
-          this.message.error('Este no es su comentario')
+          this.message.error('Este no es su comentario');
           console.log('No es su comentario');
           this.form.reset();
         }
       },
       err => console.log(err)
+    );
+  }
+
+  aumentarLikes(){
+    this.obtenerLikesDislike();
+    if(!this.dislikedBlogs.includes(this.idBlog) && !this.likedBlogs.includes(this.idBlog)){
+
+      this.likedBlogs.push(this.idBlog);
+      localStorage.setItem('likedBlogs',JSON.stringify(this.likedBlogs));
+
+      this.BlogsAbogadosServicio.updateLikeBlog(this.idBlog).subscribe(
+        res => {
+          console.log(res);
+          this.message.success('Like guardado');
+          this.obtenerLikesDislike();
+        },
+        err => console.log(err)
+      );
+    }else{
+      this.message.warning('Ya diste like o dislike a este blog.');
+    }
+  }
+
+  aumentarDislikes(){
+    this.obtenerLikesDislike();
+    if(!this.dislikedBlogs.includes(this.idBlog) && !this.likedBlogs.includes(this.idBlog)){
+
+      this.dislikedBlogs.push(this.idBlog);
+      localStorage.setItem('dislikedBlogs',JSON.stringify(this.dislikedBlogs));
+
+      this.BlogsAbogadosServicio.updateDislikeBlog(this.idBlog).subscribe(
+        res => {
+          console.log(res);
+          this.message.success('Dislike guardado');
+          this.obtenerLikesDislike();
+        },
+        err => console.log(err)
+      );
+    }else{
+      this.message.warning('Ya diste like o dislike a este blog.');
+    }
+  }
+
+  obtenerLikesDislike(){
+    this.BlogsAbogadosServicio.getLikeDislike(this.idBlog).subscribe(
+      (res: any) => {
+        this.likeDislike = res[0];
+        console.log(res[0]);
+        this.blogA.megusta=this.likeDislike.megusta;
+        this.blogA.nomegusta=this.likeDislike.nomegusta;
+      },
+       err => console.log(err)
     );
   }
 
