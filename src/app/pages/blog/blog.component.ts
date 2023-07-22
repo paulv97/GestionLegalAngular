@@ -7,8 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BlogsAbogadosService, BlogAbogado, LikesDislikes } from 'src/app/shared/services/blogs-abogados/blogs-abogados.service';
 import { ComentariosService,Abogado,Comentario,ComentarioAbog } from 'src/app/shared/services/comentarios-blog/comentarios.service';
 
-import { LocalStorageService
- } from 'src/app/shared/services/local-storage/local-storage.service';
+import { LocalStorageService} from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-blog',
@@ -79,7 +78,8 @@ export class BlogComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     private BlogsAbogadosServicio:BlogsAbogadosService,
-    private ComentariosServicio:ComentariosService
+    private ComentariosServicio:ComentariosService,
+    private localStorage: LocalStorageService,
 
   ) { 
     this.form = new FormGroup({
@@ -88,12 +88,6 @@ export class BlogComponent implements OnInit {
       emailCom: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
       
     });
-
-    // const likedBlogsFromLocalStorage = localStorage.getItem('likedBlogs');
-    // if(likedBlogsFromLocalStorage){
-    //   this.likedBlogs = JSON.parse(likedBlogsFromLocalStorage);
-    // }
-
 
   }
 

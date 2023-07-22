@@ -19,6 +19,7 @@
 						<p class="display-block m-0 mb-7">Titulo del Blog</p>
 
 						<input
+							[(ngModel)]="blog.titulo"
 							nz-input
 							placeholder="Mi Blog"
 							formControlName="title"
@@ -48,6 +49,7 @@
 						<p class="display-block m-0 mb-7">Imagen Blog</p>
 
 						<input
+							[(ngModel)]="blog.imagen"
 							nz-input
 							placeholder="Url imagen Blog"
 							formControlName="imagenB"
@@ -99,6 +101,7 @@
 						</div>
 						<div>
 							<textarea
+							    [(ngModel)]="blog.cuerpo"
 								nz-input
 								placeholder="Contenido del Blog"
 								formControlName="blogBody"

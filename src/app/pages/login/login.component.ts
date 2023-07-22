@@ -5,7 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { AutenticacionService } from 'src/app/shared/services/autenticacion/autenticacion.service';
 import { finalize } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-
+import { DatoscompartidosService } from 'src/app/shared/services/servicio-compartido/datoscompartidos.service';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private autenticacionService: AutenticacionService,
     private localStorage: LocalStorageService,
+    private datosCompartidosServicio: DatoscompartidosService,
   ) {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
@@ -52,7 +53,15 @@ export class LoginComponent implements OnInit {
         console.log(resp)
         
         this.localStorage.setStorage({ key: 'sesion' }, resp)
+
+        //se comparte el email una vez que inica sesion
+        // con este email obtengo id del abogado 
+        this.datosCompartidosServicio.datoCompartido = formValue.email;
+
         this.router.navigate(['/busqueda'])
+
+        
+
       },
       (err) => {
         console.log(err)
