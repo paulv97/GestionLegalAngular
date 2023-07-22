@@ -267,5 +267,12 @@ export class BlogComponent implements OnInit {
     );
   }
 
+  // compartirBlogF(){
+  //   const urlActual = window.location.href;
+  //   console.log(urlActual);
+  //   // const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlActual)}`;
+  //   // window.open(facebookShareURL, '_blank', 'height=400,width=600');
+  // }
+
 
 }
