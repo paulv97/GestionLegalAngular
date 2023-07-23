@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 
 @Component({
 	selector: 'app-sidebar',
@@ -69,6 +70,7 @@ export class SidebarComponent implements OnInit {
 
 	constructor(
 		private router: Router,
+		private localStorage: LocalStorageService,
 	) { }
 
 	ngOnInit(): void {
@@ -80,6 +82,7 @@ export class SidebarComponent implements OnInit {
 	}
 
 	cerrarSesion() {
+		this.localStorage.clear({ key: 'sesion' })
 		this.router.navigate(['/']);
 	}
 }
