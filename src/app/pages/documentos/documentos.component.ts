@@ -15,9 +15,9 @@ export class DocumentosComponent implements OnInit {
   ListaDocumentos: Documento[]= [];
 
   doc: Documento = {
-    id:'',
-    codigo_juicio:'',
-    tipo:'',
+    id_documento:'',
+    id_juicio:'',
+    juicio:'',
     nombre:'',
     descripcion:'',
     documento:''
@@ -77,7 +77,7 @@ export class DocumentosComponent implements OnInit {
 
   // agrega un documento
   agregarDocumento(){
-    delete this.doc.id;
+    delete this.doc.id_documento;
     this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
       this.listarDocumentos();
     });
@@ -123,7 +123,7 @@ export class DocumentosComponent implements OnInit {
   // modifica un documento
   modificarDoc(){
     // this.router.navigate(['/edit'+id]);
-    this.DocumentosServicio.editDocumento(this.doc.id as string, this.doc).subscribe(
+    this.DocumentosServicio.editDocumento(this.doc.id_documento as string, this.doc).subscribe(
       res=>{
           console.log(res);
           this.listarDocumentos();

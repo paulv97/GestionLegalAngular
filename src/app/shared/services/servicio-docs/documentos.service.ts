@@ -12,27 +12,27 @@ export class DocumentosService {
 
   // get documentos
   getDocumentos(){
-    return this.http.get('/apidocumentos/documentos');
+    return this.http.get('/documentos/allDocumentos');
   }
 
   // get documento
-  getDocumento(id:String){
-    return this.http.get('/apidocumentos/documentos'+'/'+id);
+  getDocumento(idDoc:string){
+    return this.http.get('/documentos/oneDocumento'+'/'+idDoc);
   }
 
   // agregar documento
   addDocumento(documento:Documento){
-    return this.http.post('/apidocumentos/documentos',documento);
+    return this.http.post('/documentos/addDocumento',documento);
   }
 
   // eliminar documento
-  deleteDocumento(id:String){
-    return this.http.delete('/apidocumentos/documentos'+'/'+id);
+  deleteDocumento(idDoc:string){
+    return this.http.delete('/documentos/deleteDocumento'+'/'+idDoc);
   }
 
   // modificar documento
-  editDocumento(id:String, documento:Documento){
-    return this.http.put('/apidocumentos/documentos'+'/'+id,documento);
+  editDocumento(idDoc:string, documento:Documento){
+    return this.http.put('/apidocumentos/documentos'+'/'+idDoc,documento);
   }
 
 

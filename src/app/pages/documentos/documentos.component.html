@@ -18,11 +18,11 @@
                 
 
                 <label  class="m-0 mb-7">ID:</label><br>
-                <input [(ngModel)]="doc.id" [readonly]="true" nz-input placeholder="ID carga al editar un doc" 
+                <input [(ngModel)]="doc.id_documento" [readonly]="true" nz-input placeholder="ID carga al editar un doc" 
                   formControlName="idDoc" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
                 
                 <label class="m-0 mb-7">Juicio:</label><br>
-                <select [(ngModel)]="doc.codigo_juicio" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboJuicios">
+                <select [(ngModel)]="doc.juicio" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboJuicios">
                   <option value="null" disabled selected>Selecciona una opción</option>
                   <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                 </select>
@@ -77,8 +77,8 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Codigo Juicio</th>
-                <th scope="col">Tipo</th>
+                <th scope="col">ID Juicio</th>
+                <th scope="col">Juicio</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Documento</th>
@@ -88,17 +88,17 @@
             </thead>
             <tbody>
               <tr *ngFor="let doc of ListaDocumentos">
-                <th>{{doc.id}}</th>
-                <td>{{doc.codigo_juicio}}</td>
-                <td>{{doc.tipo}}</td>
+                <th>{{doc.id_documento}}</th>
+                <td>{{doc.id_juicio}}</td>
+                <td>{{doc.juicio}}</td>
                 <td>{{doc.nombre}}</td>
                 <td>{{doc.descripcion}}</td>
                 <td>{{doc.documento}}</td>
                 <td>
-                  <button (click)="obtenerDoc(doc.id!)" nz-button nzType="primary" style="min-width: 30px;">Editar</button>
+                  <button (click)="obtenerDoc(doc.id_documento!)" nz-button nzType="primary" style="min-width: 30px;">Editar</button>
                 </td>
                 <td>
-                  <button (click)="eliminarDoc(doc.id!)" nz-button nzType="primary" style="min-width: 30px;">Eliminar</button>
+                  <button (click)="eliminarDoc(doc.id_documento!)" nz-button nzType="primary" style="min-width: 30px;">Eliminar</button>
                 </td>
               </tr>
 
