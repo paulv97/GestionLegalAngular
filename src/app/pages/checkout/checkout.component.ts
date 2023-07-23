@@ -25,10 +25,10 @@ export class CheckoutComponent implements OnInit {
 		private route: ActivatedRoute,
     	private planesService: PlanesService,
 		private localStorage: LocalStorageService,
-	) { 
+	) {
 		this.form = new FormGroup({
 			idPlan: new FormControl(null, [Validators.required]),
-			numeroTarjeta: new FormControl(null, [Validators.required]),
+			numeroTarjeta: new FormControl(null, [Validators.required, Validators.pattern(/^(\d{4}){3}\d{4}$/)]),
 			expiracionTarjeta: new FormControl(null, [Validators.required]),
 			cvvTarjeta: new FormControl(null, [Validators.required]),
 			titularTarjeta: new FormControl(null, [Validators.required]),
@@ -70,20 +70,20 @@ export class CheckoutComponent implements OnInit {
 			const idUsuario = this.localStorage.getInformation().idUsuario
 
 			await firstValueFrom(this.planesService.registrarTarjeta({
-				numero: form.numeroTarjeta, 
-				fechaVence: form.expiracionTarjeta, 
+				numero: form.numeroTarjeta,
+				fechaVence: form.expiracionTarjeta,
 				cvc: form.cvvTarjeta,
 				titularTarjeta: form.titularTarjeta
 			}))
 
 			console.log('Despues de regitrar tarjeta')
 			await firstValueFrom(this.planesService.procesarPago({
-				idUsuario: idUsuario, 
-				idPlan: form.idPlan, 
-				renovacionAutomatica: 'N', 
-				numeroTarjeta: form.numeroTarjeta, 
-				nombreTitular: form.titularTarjeta, 
-				fechaExpiracion: form.expiracionTarjeta, 
+				idUsuario: idUsuario,
+				idPlan: form.idPlan,
+				renovacionAutomatica: 'N',
+				numeroTarjeta: form.numeroTarjeta,
+				nombreTitular: form.titularTarjeta,
+				fechaExpiracion: form.expiracionTarjeta,
 				cvv: form.cvvTarjeta
 			}))
 
@@ -95,6 +95,36 @@ export class CheckoutComponent implements OnInit {
 		finally {
 			this.isLoadingPago = false
 		}
+	}
+
+	obtenerTipoTarjeta(numeroTarjeta: any) {
+		const tiposTarjeta = [
+			{
+				tipo: 'Visa',
+				url: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Former_Visa_%28company%29_logo.svg',
+				patron: /^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/
+			},
+			{
+				tipo: 'Mastercard',
+				url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/1280px-MasterCard_Logo.svg.png',
+				patron: /^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/
+			},
+			{
+				tipo: 'American Express',
+				url: 'https://1000logos.net/wp-content/uploads/2016/10/American-Express-Color.png',
+				patron: /^3[47]\d{2}-?\d{6}-?\d{5}$/
+			},
+		];
+
+		const numeroLimpio = numeroTarjeta.replace(/[^0-9]/g, '');
+
+		for (const tipo of tiposTarjeta) {
+			if (tipo.patron.test(numeroLimpio)) {
+				return tipo.url;
+			}
+		}
+
+		return null;
 	}
 
 }

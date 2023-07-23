@@ -39,7 +39,19 @@
 				<p class="display-block m-0 text-black mb-7">Detalles de la tarjeta</p>
 
 				<div class="w-full grid" style="gap: 0.7rem">
-					<input formControlName="numeroTarjeta" placeholder="1234 1234 1234 1234" nz-input type="text" class="grid-col-12">
+					<nz-input-group [nzAddOnAfter]="cardImage" class="grid-col-12">
+						<input formControlName="numeroTarjeta" placeholder="1234 1234 1234 1234" nz-input type="text">
+					</nz-input-group>
+
+					<ng-template #cardImage>
+						<div class="flex items-center justify-center h-full" style="width: 2rem">
+							<img *ngIf="form.get('numeroTarjeta')?.value" [src]="obtenerTipoTarjeta(form.get('numeroTarjeta')?.value)" class="display-block" style="max-width: 100%; max-height: 100%;">
+
+							<ng-container *ngIf="!form.get('numeroTarjeta')?.value || !obtenerTipoTarjeta(form.get('numeroTarjeta')?.value)">
+								<span nz-icon nzType="credit-card" class="h-20 text-lg text-gray-800" nzTheme="outline"></span>
+							</ng-container>
+						</div>
+					</ng-template>
 
 					<input formControlName="expiracionTarjeta" placeholder="MM / YY" nz-input type="text" class="grid-col-6">
 
