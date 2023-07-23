@@ -76,7 +76,6 @@ export class CheckoutComponent implements OnInit {
 				titularTarjeta: form.titularTarjeta
 			}))
 
-			console.log('Despues de regitrar tarjeta')
 			await firstValueFrom(this.planesService.procesarPago({
 				idUsuario: idUsuario,
 				idPlan: form.idPlan,
@@ -87,7 +86,7 @@ export class CheckoutComponent implements OnInit {
 				cvv: form.cvvTarjeta
 			}))
 
-			console.log('Despues de procesar pago')
+			this.router.navigate(['busqueda'])
 		}
 		catch(err: any){
 			this.message.error(err.error.mensaje)
