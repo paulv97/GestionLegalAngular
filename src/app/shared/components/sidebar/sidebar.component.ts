@@ -19,6 +19,11 @@ export class SidebarComponent implements OnInit {
 			route: 'busqueda'
 		},
 		{
+			icon: 'user-add',
+			label: 'Clientes',
+			route: 'clientes'
+		},
+		{
 			icon: 'book',
 			label: 'Recursos',
 			route: 'recursos'
@@ -55,11 +60,6 @@ export class SidebarComponent implements OnInit {
 			icon: 'logout',
 			label: 'Salir',
 			click: () => { this.cerrarSesion() }
-		},
-		{
-			icon: 'info-circle',
-			label: 'Autor: Paul Villalta',
-			click: () => { }
 		},
 		{
 			icon: 'menu',
