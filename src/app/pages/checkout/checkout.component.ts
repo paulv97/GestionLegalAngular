@@ -29,8 +29,8 @@ export class CheckoutComponent implements OnInit {
 		this.form = new FormGroup({
 			idPlan: new FormControl(null, [Validators.required]),
 			numeroTarjeta: new FormControl(null, [Validators.required, Validators.pattern(/^(\d{4}){3}\d{4}$/)]),
-			expiracionTarjeta: new FormControl(null, [Validators.required]),
-			cvvTarjeta: new FormControl(null, [Validators.required]),
+			expiracionTarjeta: new FormControl(null, [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]),
+			cvvTarjeta: new FormControl(null, [Validators.required, Validators.pattern(/^\d{3,4}$/)]),
 			titularTarjeta: new FormControl(null, [Validators.required]),
 		})
 	}
