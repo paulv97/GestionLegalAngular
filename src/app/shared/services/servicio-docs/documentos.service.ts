@@ -32,7 +32,7 @@ export class DocumentosService {
 
   // modificar documento
   editDocumento(idDoc:string, documento:Documento){
-    return this.http.put('/apidocumentos/documentos'+'/'+idDoc,documento);
+    return this.http.put('/documentos/updateDocumento'+'/'+idDoc,documento);
   }
 
 

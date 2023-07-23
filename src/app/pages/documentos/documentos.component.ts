@@ -78,6 +78,7 @@ export class DocumentosComponent implements OnInit {
   // agrega un documento
   agregarDocumento(){
     delete this.doc.id_documento;
+    this.doc.id_juicio='1';
     this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
       this.listarDocumentos();
     });
@@ -123,14 +124,19 @@ export class DocumentosComponent implements OnInit {
   // modifica un documento
   modificarDoc(){
     // this.router.navigate(['/edit'+id]);
-    this.DocumentosServicio.editDocumento(this.doc.id_documento as string, this.doc).subscribe(
-      res=>{
-          console.log(res);
-          this.listarDocumentos();
-      },
-      err=>console.log(err)
-    );
+    if(this.doc.id_documento?.length){
+      this.doc.id_juicio='3';
+      this.DocumentosServicio.editDocumento(this.doc.id_documento as string, this.doc).subscribe(
+        res=>{
+            console.log(res);
+            this.listarDocumentos();
+        },
+        err=>console.log(err)
+      );
 
+    }else{
+      this.message.warning("Elija un documento para editar")
+    }
   }
 
 
