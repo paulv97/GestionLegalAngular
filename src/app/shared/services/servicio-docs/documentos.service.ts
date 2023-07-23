@@ -39,9 +39,9 @@ export class DocumentosService {
 }
 
 export interface Documento{
-  id?:string;
-  codigo_juicio?:string;
-  tipo?:string;
+  id_documento?:string;
+  id_juicio?:string;
+  juicio?:string;
   nombre?:string;
   descripcion?:string;
   documento?:string;
