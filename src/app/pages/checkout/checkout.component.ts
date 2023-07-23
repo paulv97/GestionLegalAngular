@@ -76,7 +76,7 @@ export class CheckoutComponent implements OnInit {
 				titularTarjeta: form.titularTarjeta
 			}))
 
-			await firstValueFrom(this.planesService.procesarPago({
+			const respPago = await firstValueFrom(this.planesService.procesarPago({
 				idUsuario: idUsuario,
 				idPlan: form.idPlan,
 				renovacionAutomatica: 'N',
@@ -85,6 +85,13 @@ export class CheckoutComponent implements OnInit {
 				fechaExpiracion: form.expiracionTarjeta,
 				cvv: form.cvvTarjeta
 			}))
+
+			this.localStorage.clear({ key: 'sesion' })
+
+			const sesion = respPago as any
+			delete sesion.mensaje
+
+			this.localStorage.setStorage({ key: 'sesion' }, sesion)
 
 			this.router.navigate(['busqueda'])
 		}

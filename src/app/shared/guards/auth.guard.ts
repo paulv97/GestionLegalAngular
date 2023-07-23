@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
@@ -9,7 +10,8 @@ import { LocalStorageService } from '../services/local-storage/local-storage.ser
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private router: Router,
   ) {
 
   }
@@ -19,18 +21,11 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     const sesion = this.localStorage.getInformation()
-    if(!sesion) {
+    if(!sesion || !sesion.token || !sesion.idSuscripcion) {
+      this.router.navigate(['/'])
       return false
     }
-
-    if(!sesion.token) {
-      return false
-    }
-
-    if(!sesion.idSuscripcion) {
-      return false
-    }
-
+    
     return true
   }
   
