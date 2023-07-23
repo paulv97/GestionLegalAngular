@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { HeaderModule } from "../../shared/components/header/header.module";
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,11 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     ]),
     NzInputModule,
     HeaderModule,
-    NzCardModule
+    NzCardModule,
+    NzSpinModule,
+  ],
+  providers: [
+    NzMessageService,
   ]
 })
 export class PlansModule { }

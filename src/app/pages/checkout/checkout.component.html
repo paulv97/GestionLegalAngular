@@ -27,8 +27,8 @@
 					<span nz-icon class="display-block m-0 text-xl h-25 text-theme-primary" nzType="container" nzTheme="outline"></span>
 
 					<div class="pl-10">
-						<p class="text-md display-block m-0 font-semibold">Plan premium - 10 usuarios</p>
-						<p class="display-block m-0 text-gray-700">Suscripción anual</p>
+						<p class="text-md display-block m-0 font-semibold">{{ plan?.nombre }} - {{ plan?.usuariospermitidos }} usuarios</p>
+						<p class="display-block m-0 text-gray-700">Periodo suscripción: {{ plan?.duracionmeses }} meses</p>
 					</div>
 				</div>
 			</div>
@@ -54,16 +54,13 @@
 			</div>
 
 			<div class="grid-col-12">
-				<p class="display-block m-0 text-black mb-7">Tipo de suscripción</p>
-
-				<input nz-input formControlName="subscripcion" type="text" class="w-full" value="Anual">
-			</div>
-
-			<div class="grid-col-12">
-				<button nz-button (click)="realizarPago()" nzType="primary" class="w-full">Pagar {{ 97.50 | currency }}</button>
+				<button  [nzLoading]="isLoadingPago" nz-button (click)="realizarPago()" nzType="primary" class="w-full">Pagar {{ plan?.precio | currency: 'USD' }}</button>
 			</div>
 		</form>
 
 		<p class="w-full">Desarrollado por Paul Villalta</p>
 	</div>
 </div>
+
+<nz-spin [nzSpinning]="isLoadingPlan" nzSize="large">
+</nz-spin>

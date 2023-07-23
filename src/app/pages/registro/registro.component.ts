@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { finalize } from 'rxjs';
 import { AutenticacionService } from 'src/app/shared/services/autenticacion/autenticacion.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,6 +20,7 @@ export class RegistroComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private autenticacionService: AutenticacionService,
+    private localStorage: LocalStorageService,
   ) { 
     this.form = new FormGroup({
       nombres: new FormControl(null, [Validators.required]),
@@ -45,7 +47,13 @@ export class RegistroComponent implements OnInit {
     .subscribe(
       (resp: any) => {
         console.log(resp)
-        this.message.success(resp.mensaje)
+        this.localStorage.clear({ key: 'sesion' })
+
+        const mensaje = resp.mensaje
+        const sesion = resp
+        delete sesion.mensaje
+        this.localStorage.setStorage({ key: 'sesion' }, sesion)
+        this.message.success(mensaje)
         this.router.navigate(['/plans'])
       },
       (err) => {
