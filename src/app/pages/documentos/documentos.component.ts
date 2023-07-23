@@ -17,8 +17,8 @@ export class DocumentosComponent implements OnInit {
 
   doc: Documento = {
     id_documento:'',
-    id_juicio:'',
-    juicio:'',
+    id_abogado:'',
+    tipo:'',
     nombre:'',
     descripcion:'',
     documento:''
@@ -37,9 +37,14 @@ export class DocumentosComponent implements OnInit {
   
   selectedOption: string = '' ;
   options: string[] = [
-    'Opcion 1',
-    'Opcion 2',
-    'Opcion 3'
+    'Juicio',
+    'Contratación',
+    'Facturación',
+    'Corporativos',
+    'Investigación jurídica',
+    'Consultoría legal',
+    'Propiedad intelectual',
+    'Otro'
   ];
 
   constructor(
@@ -53,14 +58,22 @@ export class DocumentosComponent implements OnInit {
       // tipoDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       nombreDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       descripDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      comboJuicios: new FormControl(null, Validators.required)
+      comboTipo: new FormControl(null, Validators.required)
     })
    }
 
   ngOnInit(): void {
 
     console.log(this.datosCompartidosServicio.datoCompartido);
-    this.listarDocumentos();
+    this.DocumentosServicio.getAbogado(this.datosCompartidosServicio.datoCompartido).subscribe(
+      (res:any)=>{
+        this.abogado = res[0];
+        console.log(res[0]);
+        this.listarDocumentos();
+      },
+      err => console.log(err)
+    );
+    
     
   }
   // valida que el form este completo
@@ -90,7 +103,7 @@ export class DocumentosComponent implements OnInit {
   // agrega un documento
   agregarDocumento(){
     delete this.doc.id_documento;
-    this.doc.id_juicio='3';
+    this.doc.id_abogado=this.abogado.id_abogado;
     this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
       this.listarDocumentos();
     });
@@ -99,7 +112,7 @@ export class DocumentosComponent implements OnInit {
 
   // lista todos los documentos
   listarDocumentos(){
-    this.DocumentosServicio.getDocumentos().subscribe(
+    this.DocumentosServicio.getDocumentos(this.abogado.id_abogado!).subscribe(
       res=>{
         console.log(res)
         // if(res.rows){
@@ -135,20 +148,21 @@ export class DocumentosComponent implements OnInit {
 
   // modifica un documento
   modificarDoc(){
-    // this.router.navigate(['/edit'+id]);
-    if(this.doc.id_documento?.length){
-      this.doc.id_juicio='3';
+    if(this.doc.id_documento!== null && this.doc.id_documento!==''){
+      delete this.doc.id_abogado
+      console.log('id documento'+this.doc.id_documento);
       this.DocumentosServicio.editDocumento(this.doc.id_documento as string, this.doc).subscribe(
         res=>{
             console.log(res);
+            
             this.listarDocumentos();
         },
         err=>console.log(err)
       );
-
     }else{
-      this.message.warning("Elija un documento para editar")
+      this.message.warning('Seleccione un documento para editar');
     }
+
   }
 
 

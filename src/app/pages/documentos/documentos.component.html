@@ -21,13 +21,13 @@
                 <input [(ngModel)]="doc.id_documento" [readonly]="true" nz-input placeholder="ID carga al editar un doc" 
                   formControlName="idDoc" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
                 
-                <label class="m-0 mb-7">Juicio:</label><br>
-                <select [(ngModel)]="doc.juicio" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboJuicios">
+                <label class="m-0 mb-7">Tipo:</label><br>
+                <select [(ngModel)]="doc.tipo" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboTipo">
                   <option value="null" disabled selected>Selecciona una opción</option>
                   <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                 </select>
-                <div *ngIf="form.get('comboJuicios')?.invalid && (form.get('comboJuicios')?.dirty || form.get('comboJuicios')?.touched)">
-                  <div *ngIf="form.get('comboJuicios')?.hasError('required')">Selecciona un juicio.</div>
+                <div *ngIf="form.get('comboTipo')?.invalid && (form.get('comboTipo')?.dirty || form.get('comboTipo')?.touched)">
+                  <div *ngIf="form.get('comboTipo')?.hasError('required')">Selecciona un tipo.</div>
                 </div><br><br>
 
                 <!-- <label  class="m-0 mb-7">Tipo:</label><br>
@@ -77,8 +77,7 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">ID Juicio</th>
-                <th scope="col">Juicio</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Documento</th>
@@ -89,8 +88,7 @@
             <tbody>
               <tr *ngFor="let doc of ListaDocumentos">
                 <th>{{doc.id_documento}}</th>
-                <td>{{doc.id_juicio}}</td>
-                <td>{{doc.juicio}}</td>
+                <td>{{doc.tipo}}</td>
                 <td>{{doc.nombre}}</td>
                 <td>{{doc.descripcion}}</td>
                 <td>{{doc.documento}}</td>

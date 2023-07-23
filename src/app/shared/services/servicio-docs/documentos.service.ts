@@ -11,8 +11,8 @@ export class DocumentosService {
   ) { }
 
   // get documentos
-  getDocumentos(){
-    return this.http.get('/documentos/allDocumentos');
+  getDocumentos(idAbog:string){
+    return this.http.get('/documentos/allDocumentos/'+idAbog);
   }
 
   // get documento
@@ -35,13 +35,18 @@ export class DocumentosService {
     return this.http.put('/documentos/updateDocumento'+'/'+idDoc,documento);
   }
 
+  //get Abogado
+  getAbogado(email:string){
+    return this.http.get('/documentos/obtenerAbogado/'+email);
+  }
+
 
 }
 
 export interface Documento{
   id_documento?:string;
-  id_juicio?:string;
-  juicio?:string;
+  id_abogado?:string;
+  tipo?:string;
   nombre?:string;
   descripcion?:string;
   documento?:string;
