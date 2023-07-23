@@ -18,6 +18,7 @@ export class CreateBlogComponent implements OnInit {
   form: FormGroup
   isLoading: boolean = false
 
+  // variable carga datos del blog 
   blog: Blog={
     id_abogado:'',
     titulo:'',
@@ -25,6 +26,7 @@ export class CreateBlogComponent implements OnInit {
     cuerpo:''
   };
 
+  // variable carga datos del abogado 
   abogado: Abogado={
     id_abogado:'',
     nombres:'',
@@ -53,6 +55,7 @@ export class CreateBlogComponent implements OnInit {
   user: { name: string; email: string; } = {
     name: 'John Doe',
     // email: 'john@email.com'
+    // aqui se obtiene el email del abogado que inicio sesion
     email: this.datosCompartidosServicio.datoCompartido
   }
 
@@ -90,8 +93,9 @@ export class CreateBlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // aqui se obtiene el email del abogado que inicio sesion
     console.log('dato compartido--->'+this.user.email)
-
+    // se obtiene los datos del abogado por el email
     this.blogServicio.getAbogado(this.user.email).subscribe(
       (res:any)=>{
         this.abogado = res[0];

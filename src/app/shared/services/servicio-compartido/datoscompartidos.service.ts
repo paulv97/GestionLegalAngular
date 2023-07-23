@@ -9,3 +9,11 @@ export class DatoscompartidosService {
 
   constructor() { }
 }
+
+export interface Abogado{
+  id_abogado?:string;
+  nombres?:string;
+  apellidos?:string;
+  email?:string;
+  password?:string;
+}

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { DocumentosService, Documento } from 'src/app/shared/services/servicio-docs/documentos.service';
+import { DatoscompartidosService, Abogado } from 'src/app/shared/services/servicio-compartido/datoscompartidos.service';
 
 @Component({
   selector: 'app-documentos',
@@ -23,7 +24,16 @@ export class DocumentosComponent implements OnInit {
     documento:''
   };
 
-  form: FormGroup
+  // variable carga datos del abogado 
+  abogado: Abogado={
+    id_abogado:'',
+    nombres:'',
+    apellidos:'',
+    email:'',
+    password:''
+  };
+
+  form: FormGroup;
   
   selectedOption: string = '' ;
   options: string[] = [
@@ -35,7 +45,8 @@ export class DocumentosComponent implements OnInit {
   constructor(
     private message: NzMessageService,
     private router: Router,
-    private DocumentosServicio:DocumentosService
+    private DocumentosServicio:DocumentosService,
+    private datosCompartidosServicio: DatoscompartidosService
   ) {
     this.form = new FormGroup({
       idDoc: new FormControl,
@@ -48,6 +59,7 @@ export class DocumentosComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log(this.datosCompartidosServicio.datoCompartido);
     this.listarDocumentos();
     
   }
@@ -78,7 +90,7 @@ export class DocumentosComponent implements OnInit {
   // agrega un documento
   agregarDocumento(){
     delete this.doc.id_documento;
-    this.doc.id_juicio='1';
+    this.doc.id_juicio='3';
     this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
       this.listarDocumentos();
     });
