@@ -39,10 +39,10 @@ export class DocumentosComponent implements OnInit {
   ) {
     this.form = new FormGroup({
       idDoc: new FormControl,
-      tipoDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      // tipoDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       nombreDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       descripDoc: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      comboCodigo: new FormControl(null, Validators.required)
+      comboJuicios: new FormControl(null, Validators.required)
     })
    }
 

@@ -21,21 +21,21 @@
                 <input [(ngModel)]="doc.id" [readonly]="true" nz-input placeholder="ID carga al editar un doc" 
                   formControlName="idDoc" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
                 
-                <label class="m-0 mb-7">Código juicio:</label><br>
-                <select [(ngModel)]="doc.codigo_juicio" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboCodigo">
+                <label class="m-0 mb-7">Juicio:</label><br>
+                <select [(ngModel)]="doc.codigo_juicio" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboJuicios">
                   <option value="null" disabled selected>Selecciona una opción</option>
                   <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                 </select>
-                <div *ngIf="form.get('comboCodigo')?.invalid && (form.get('comboCodigo')?.dirty || form.get('comboCodigo')?.touched)">
-                  <div *ngIf="form.get('comboCodigo')?.hasError('required')">Selecciona un codigo de juicio.</div>
+                <div *ngIf="form.get('comboJuicios')?.invalid && (form.get('comboJuicios')?.dirty || form.get('comboJuicios')?.touched)">
+                  <div *ngIf="form.get('comboJuicios')?.hasError('required')">Selecciona un juicio.</div>
                 </div><br><br>
 
-                <label  class="m-0 mb-7">Tipo:</label><br>
+                <!-- <label  class="m-0 mb-7">Tipo:</label><br>
                 <input [(ngModel)]="doc.tipo" nz-input placeholder="Tipo" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="tipoDoc">
                 <div *ngIf="form.get('tipoDoc')?.invalid && (form.get('tipoDoc')?.dirty || form.get('tipoDoc')?.touched)">
                   <div *ngIf="form.get('tipoDoc')?.hasError('required')">El tipo de Doc es requerido.</div>
                   <div *ngIf="form.get('tipoDoc')?.hasError('pattern')">No se acepta numeros.</div>
-                </div><br><br>
+                </div><br><br> -->
                 
                 <label class="m-0 mb-7">Nombre:</label><br>
                 <input [(ngModel)]="doc.nombre" nz-input placeholder="Nombre" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="nombreDoc">
@@ -44,7 +44,7 @@
                   <div *ngIf="form.get('nombreDoc')?.hasError('pattern')">No se acepta numeros.</div>
                 </div><br><br>
                 
-                <label class="m-0 mb-7">Descripción</label><br>
+                <label class="m-0 mb-7">Descripción:</label><br>
                 <input [(ngModel)]="doc.descripcion" nz-input placeholder="Descripcion" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="descripDoc">
                 <div *ngIf="form.get('descripDoc')?.invalid && (form.get('descripDoc')?.dirty || form.get('descripDoc')?.touched)">
                   <div *ngIf="form.get('descripDoc')?.hasError('required')">Una descripcion es requerida.</div>
