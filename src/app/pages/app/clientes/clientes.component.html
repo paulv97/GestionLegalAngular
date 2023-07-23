@@ -6,24 +6,35 @@
 			<button nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
 		</div>
 
-        <ng-container *ngFor="let c of [] | search:busqueda">
-			<div class="grid-col-3 md:grid-col-4 sm:grid-col-6 xs:grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
-				<p class="text-md display-block m-0 mb-5 font-bold">{{ c.nombre }}</p>
-
-				<p class="display-block m-0">Razón envío: {{ c.razon }}</p>
-				<p class="display-block m-0 text-gray-600 mb-7">{{ c.fecha| date:'dd-MM-yyyy hh:mm' }}</p>
-				<p class="display-block m-0 text-gray-600 mb-12">Providencia del juicio: {{ c.providencia }}</p>
-
-				<div class="w-full flex items-center justify-between">
-					<button nz-button nzShape="circle" nzType="text">
-						<span nz-icon nzType="info-circle" nzTheme="outline"></span>
-					</button>
-
-					<button style="min-width: 30%" nz-button>Editar</button>
-
-					<button style="min-width: 30%" nz-button nzType="primary">Ir a</button>
-				</div>
-			</div>
-		</ng-container>
+        <nz-table class="grid-col-12">
+            <thead>
+              <tr>
+                <th>Id. Cliente</th>
+                <th>Nro. Identificacion</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Tipo Persona</th>
+                <th>Actividad Comercial</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of [1, 2, 3] | search:busqueda">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>3</td>
+                <td>
+                  <a>Editar</a>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <a>Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
     </div>
 </div>
