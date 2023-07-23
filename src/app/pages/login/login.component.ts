@@ -58,10 +58,13 @@ export class LoginComponent implements OnInit {
         // con este email obtengo id del abogado 
         this.datosCompartidosServicio.datoCompartido = formValue.email;
 
-        this.router.navigate(['/busqueda'])
+        if(resp?.idSuscripcion) {
+          this.router.navigate(['/busqueda'])
+          return
+        }
 
-        
-
+        // Presenta ventana de suscripcion
+        this.router.navigate(['/plans'])
       },
       (err) => {
         console.log(err)
