@@ -37,10 +37,8 @@ export class LocalStorageService {
 			const data = window.localStorage.getItem(key);
 
 			if(data) {
-				console.log('if data', data)
 				const dataDecrypted = CryptoJS.AES.decrypt(data, this.secretKey).toString(CryptoJS.enc.Utf8);
-				console.log('Decrupted', dataDecrypted)
-				
+
 				try {
 					return JSON.parse(dataDecrypted)
 				} catch {
