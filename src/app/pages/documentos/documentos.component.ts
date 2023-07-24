@@ -108,7 +108,6 @@ export class DocumentosComponent implements OnInit {
     delete this.doc.id_documento;
     this.doc.id_abogado=this.abogado.id_abogado;
     delete this.doc.documento;
-    // this.doc.documento = this.fileTmp.fileRaw;
 
     // this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
     //   this.listarDocumentos();
