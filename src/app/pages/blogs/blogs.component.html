@@ -14,13 +14,13 @@
     </section>
 
     <section class="busqueda border">
-        <input nz-input type="text" name="buscar" id="buscarBlog" placeholder="BUSQUEDA" required>
+        <input [(ngModel)]="terminoBusqueda"  (keyup.enter)="filtrarBlogs()" nz-input type="text" name="buscar" id="buscarBlog" placeholder="BUSQUEDA" required>
     </section>
 
     <section id="seccionBlogs" class="seccion2 border2">
         
         
-        <div class="card" *ngFor="let blogA of listaBlogsAbogados">
+        <div class="card" *ngFor="let blogA of listaBlogsAbogadosF">
             <h2  class="font-bold mb-20 m-0 display-block">{{blogA.nombres}} {{blogA.apellidos}} - {{blogA.titulo}}</h2>
             <img src="{{blogA.imagen}}" alt="Descripción de la imagen 1">
             <p>{{blogA.fecha | date:'medium'}}</p><br>

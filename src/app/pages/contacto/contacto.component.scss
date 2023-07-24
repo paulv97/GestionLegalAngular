@@ -12,6 +12,7 @@
 
     height: 100vh;
     /*grid-gap: 20px;*/
+    padding: 15px;
 
     .seccion1{
         grid-area: tituloP;
@@ -123,6 +124,7 @@
                     textarea{
                         width: 400px;
                         height:200px;
+                        resize: none;
                         //border-radius: 5px;
                     }
 

@@ -18,24 +18,24 @@
                 
 
                 <label  class="m-0 mb-7">ID:</label><br>
-                <input [(ngModel)]="doc.id" [readonly]="true" nz-input placeholder="ID carga al editar un doc" 
+                <input [(ngModel)]="doc.id_documento" [readonly]="true" nz-input placeholder="ID carga al editar un doc" 
                   formControlName="idDoc" type="text" class="text-md rounded px-15 py-12 w-full"><br><br>
                 
-                <label class="m-0 mb-7">Código juicio:</label><br>
-                <select [(ngModel)]="doc.codigo_juicio" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboCodigo">
+                <label class="m-0 mb-7">Tipo:</label><br>
+                <select [(ngModel)]="doc.tipo" class="text-md rounded px-15 py-12 w-full" id="comboCodigo" formControlName="comboTipo">
                   <option value="null" disabled selected>Selecciona una opción</option>
                   <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                 </select>
-                <div *ngIf="form.get('comboCodigo')?.invalid && (form.get('comboCodigo')?.dirty || form.get('comboCodigo')?.touched)">
-                  <div *ngIf="form.get('comboCodigo')?.hasError('required')">Selecciona un codigo de juicio.</div>
+                <div *ngIf="form.get('comboTipo')?.invalid && (form.get('comboTipo')?.dirty || form.get('comboTipo')?.touched)">
+                  <div *ngIf="form.get('comboTipo')?.hasError('required')">Selecciona un tipo.</div>
                 </div><br><br>
 
-                <label  class="m-0 mb-7">Tipo:</label><br>
+                <!-- <label  class="m-0 mb-7">Tipo:</label><br>
                 <input [(ngModel)]="doc.tipo" nz-input placeholder="Tipo" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="tipoDoc">
                 <div *ngIf="form.get('tipoDoc')?.invalid && (form.get('tipoDoc')?.dirty || form.get('tipoDoc')?.touched)">
                   <div *ngIf="form.get('tipoDoc')?.hasError('required')">El tipo de Doc es requerido.</div>
                   <div *ngIf="form.get('tipoDoc')?.hasError('pattern')">No se acepta numeros.</div>
-                </div><br><br>
+                </div><br><br> -->
                 
                 <label class="m-0 mb-7">Nombre:</label><br>
                 <input [(ngModel)]="doc.nombre" nz-input placeholder="Nombre" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="nombreDoc">
@@ -44,7 +44,7 @@
                   <div *ngIf="form.get('nombreDoc')?.hasError('pattern')">No se acepta numeros.</div>
                 </div><br><br>
                 
-                <label class="m-0 mb-7">Descripción</label><br>
+                <label class="m-0 mb-7">Descripción:</label><br>
                 <input [(ngModel)]="doc.descripcion" nz-input placeholder="Descripcion" type="text" class="text-md rounded px-15 py-12 w-full" formControlName="descripDoc">
                 <div *ngIf="form.get('descripDoc')?.invalid && (form.get('descripDoc')?.dirty || form.get('descripDoc')?.touched)">
                   <div *ngIf="form.get('descripDoc')?.hasError('required')">Una descripcion es requerida.</div>
@@ -60,16 +60,24 @@
             <form class="border2">
                 <h4 >Subir el Documento</h4><br>
                 <label class="m-0 mb-7">Documento:</label><br>
-                <input nz-input placeholder="Documento" type="text" class="text-md rounded px-15 py-12 w-full" disabled><br><br>        
-                <button nz-button nzType="primary" style="min-width: 30px;">Subir Documento</button>
+                
+                <!-- <input [value]="nameFile" nz-input placeholder="Documento" class="text-md rounded px-15 py-12 w-full" readonly><br><br> -->
+                <!-- <span>Adjunta tu file</span> -->
+                <input type="file" (change)="getFile($event)">
+                <!-- <label for="fileInput" class="custom-file-input">
+                  <input type="file" id="fileInput" (change)="getFile($event)">
+                  Selecionar archivo
+                </label>   -->
+                <!-- <button nz-button type="file" (change)="getFile($event)"
+                  nzType="primary" style="min-width: 30px;">Subir Documento</button> -->
             </form>
         </div>
 
       </section>
 
       <section class="busqueda">
-        <input nz-input type="text" placeholder="BUSQUEDA" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full">
-
+        <!-- <input [(ngModel)]="terminoBusqueda"  (keyup.enter)="filtrarDocumentos()" nz-input type="text" placeholder="BUSQUEDA" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full"> -->
+        <input [(ngModel)]="terminoBusqueda"  (keyup.enter)="filtrarDocumentos()" nz-input type="text" name="buscar" id="buscar" placeholder="BUSQUEDA" required>
       </section>
 
       <section id="seccionDocs" class="seccion3 border2">
@@ -77,28 +85,30 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Codigo Juicio</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Documento</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
+                <th scope="col">Descargar</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let doc of ListaDocumentos">
-                <th>{{doc.id}}</th>
-                <td>{{doc.codigo_juicio}}</td>
+              <tr *ngFor="let doc of listaDocumentosF">
+                <th>{{doc.id_documento}}</th>
                 <td>{{doc.tipo}}</td>
                 <td>{{doc.nombre}}</td>
                 <td>{{doc.descripcion}}</td>
                 <td>{{doc.documento}}</td>
                 <td>
-                  <button (click)="obtenerDoc(doc.id!)" nz-button nzType="primary" style="min-width: 30px;">Editar</button>
+                  <button (click)="obtenerDoc(doc.id_documento!)" nz-button nzType="primary" style="min-width: 30px;">Editar</button>
                 </td>
                 <td>
-                  <button (click)="eliminarDoc(doc.id!)" nz-button nzType="primary" style="min-width: 30px;">Eliminar</button>
+                  <button (click)="eliminarDoc(doc.id_documento!)" nz-button nzType="primary" style="min-width: 30px;">Eliminar</button>
+                </td>
+                <td>
+                  <button (click)="descargarArchivo(doc.documento!)" nz-button nzType="primary" style="min-width: 30px;">Descargar</button>
                 </td>
               </tr>
 

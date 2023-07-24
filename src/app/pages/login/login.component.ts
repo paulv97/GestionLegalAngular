@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { LoginService } from 'src/app/shared/services/login/login.service';
+import { AutenticacionService } from 'src/app/shared/services/autenticacion/autenticacion.service';
+import { finalize } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { DatoscompartidosService } from 'src/app/shared/services/servicio-compartido/datoscompartidos.service';import { LoginService } from 'src/app/shared/services/login/login.service';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
@@ -26,7 +29,13 @@ export class LoginComponent implements OnInit {
   form: FormGroup
   isLoading: boolean = false
 
-  constructor(private message: NzMessageService, private router: Router, private loginService: LoginService, private formBuilder: FormBuilder,
+  constructor(
+    private message: NzMessageService, 
+    private router: Router,
+    private autenticacionService: AutenticacionService,
+    private localStorage: LocalStorageService,
+    private datosCompartidosServicio: DatoscompartidosService,
+  , private loginService: LoginService, private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService) {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
@@ -35,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.form.invalid) {
+    if(this.form.invalid) {
       this.form.markAllAsTouched()
       this.form.markAsDirty()
       return
@@ -43,25 +52,31 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true
 
-    // redirect to busqueda
-    this.loginService.checkLogin(this.form.value.email, this.form.value.password).subscribe(
-      (res: any) => {
-        console.log("res")
-        console.log(res)
-        // if (res.length > 0) {
-        if (res.status == 200) {
-          this.isLoading = false
-          this.message.success('Login exitoso.')
+    const formValue = this.form.getRawValue()
+    this.autenticacionService.login(formValue.email, formValue.password)
+    .pipe(finalize(() => this.isLoading = false))
+    .subscribe(
+      (resp: any) => {
+        console.log(resp)
+        
+        this.localStorage.setStorage({ key: 'sesion' }, resp)
+
+        //se comparte el email una vez que inica sesion
+        // con este email obtengo id del abogado 
+        this.datosCompartidosServicio.datoCompartido = formValue.email;
+        this.datosCompartidosServicio.guardarDatoCompartido();
+
+        if(resp?.idSuscripcion) {
           this.router.navigate(['/busqueda'])
-        } else {
-          this.isLoading = false
-          this.message.error('Usuario o contraseña incorrectos.')
+          return
         }
+
+        // Presenta ventana de suscripcion
+        this.router.navigate(['/plans'])
       },
-      (err: any) => {
+      (err) => {
         console.log(err)
-        this.isLoading = false
-        this.message.error('Error al iniciar sesión.')
+        this.message.error(err.error.mensaje)
       }
     )
   }

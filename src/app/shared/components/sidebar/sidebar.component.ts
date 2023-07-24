@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 
 @Component({
 	selector: 'app-sidebar',
@@ -16,6 +17,11 @@ export class SidebarComponent implements OnInit {
 			icon: 'apartment',
 			label: 'Juicios',
 			route: 'busqueda'
+		},
+		{
+			icon: 'user-add',
+			label: 'Clientes',
+			route: 'clientes'
 		},
 		{
 			icon: 'book',
@@ -38,6 +44,11 @@ export class SidebarComponent implements OnInit {
 			route: 'documentos'
 		},
 		{
+			icon: 'notification',
+			label: 'Boletin',
+			route: 'boletin'
+		},
+		{
 			icon: 'setting',
 			label: 'Configuración',
 			route: ''
@@ -56,11 +67,6 @@ export class SidebarComponent implements OnInit {
 			click: () => { this.cerrarSesion() }
 		},
 		{
-			icon: 'info-circle',
-			label: 'Autor: Paul Villalta',
-			click: () => { }
-		},
-		{
 			icon: 'menu',
 			label: 'Cerrar menú',
 			click: () => { this.toggleMenu() }
@@ -69,6 +75,7 @@ export class SidebarComponent implements OnInit {
 
 	constructor(
 		private router: Router,
+		private localStorage: LocalStorageService,
 	) { }
 
 	ngOnInit(): void {
@@ -80,6 +87,7 @@ export class SidebarComponent implements OnInit {
 	}
 
 	cerrarSesion() {
+		this.localStorage.clear({ key: 'sesion' })
 		this.router.navigate(['/']);
 	}
 }

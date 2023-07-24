@@ -1,0 +1,43 @@
+<div class="w-full h-full p-25">
+    <nz-spin [nzSpinning]="isLoadingEliminarCliente" nzSize="large">
+    </nz-spin>
+
+    <div class="grid w-full">
+        <div class="grid-col-12 flex items-center flex-no-wrap" style="gap: 1.5rem">
+			<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" (ngModelChange)="buscarClientes($event)" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
+
+			<button (click)="abrirModalClienteNuevo()" nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
+		</div>
+
+        <nz-table #tablaClientes class="grid-col-12" [nzData]="clientes">
+            <thead>
+              <tr>
+                <th>Id. Cliente</th>
+                <th>Nro. Identificacion</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Tipo Persona</th>
+                <th>Actividad Comercial</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of tablaClientes.data">
+                <td>{{ c.idcliente }}</td>
+                <td>{{ c.nroidentificacion }}</td>
+                <td>{{ c.razonsocial }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.phone }}</td>
+                <td>{{ c.tipopersona }}</td>
+                <td>{{ c.actividadcomercial }}</td>
+                <td>
+                  <!-- <a>Editar</a>
+                  <nz-divider nzType="vertical"></nz-divider> -->
+                  <a class="text-red" (click)="eliminarCliente(c.idcliente)">Eliminar</a>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+    </div>
+</div>

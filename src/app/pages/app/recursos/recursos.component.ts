@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-recursos',
@@ -6,20 +8,13 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./recursos.component.scss']
 })
 export class RecursosComponent implements OnInit {
+	safeSrc: SafeResourceUrl;
 
-	busqueda: string = ''
-
-	public readonly RECURSOS = [
-		'Reglamento General a la Ley Orgánica de Telecomunicaciones',
-		'Normativa SEPS Actualización a 2023',
-		'Normativa Central de Bancos - Actualización a 2023',
-		'Reglamento General a la Ley Orgánica de Telecomunicaciones',
-		'Normativa SEPS Actualización a 2023',
-		'Normativa Central de Bancos - Actualización a 2023',
-	]
-
-	constructor() { }
-
+	constructor(private sanitizer: DomSanitizer,private router: Router) {
+	  
+	  this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://pruebaiframe-wg7upc524q-uc.a.run.app/archivos");
+	}
+  
 	ngOnInit(): void {
 	}
 

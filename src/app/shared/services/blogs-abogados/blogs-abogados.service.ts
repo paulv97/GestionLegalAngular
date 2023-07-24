@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -13,6 +13,7 @@ export class BlogsAbogadosService {
 
     // get blogs con datos del abogado
     getBlogsAbogado(){
+    
       return this.http.get('/blogs-abogados/blogsconAbog')
     }
 
@@ -20,6 +21,21 @@ export class BlogsAbogadosService {
     getBlogAbogado(id_Blog:string){
       return this.http.get('/blogs-abogados/blogIndividualconAbog'+'/'+id_Blog);
       
+    }
+
+    // update like de blog
+    updateLikeBlog(id_Blog:string){
+      return this.http.put('/blogs-abogados/blogLike/'+id_Blog,{});
+    }
+
+    // update like de blog
+    updateDislikeBlog(id_Blog:string){
+      return this.http.put('/blogs-abogados/blogDislike/'+id_Blog,{});
+    }
+
+    // get like dislike blog
+    getLikeDislike(id_Blog:string){
+      return this.http.get('/blogs-abogados/blogLikeDislike/'+id_Blog);
     }
 
 }
@@ -35,4 +51,9 @@ export interface BlogAbogado{
   nomegusta?:string;
   nombres?:string;
   apellidos?:string;
+}
+
+export interface LikesDislikes{
+  megusta?:string;
+  nomegusta?:string;
 }

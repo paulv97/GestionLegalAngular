@@ -1,59 +1,27 @@
 <div class="mt-40 mx-auto" style="max-width: 80%">
 	<h1 class="font-bold mb-20 m-0 display-block text-center">Elige tu Plan</h1>
 	<div class="w-full grid flex flex-wrap justify-center">
-		<!-- card 1 -->
-		<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
-			<nz-card-meta nzTitle="Básico" nzDescription="Plan Personal">
-			</nz-card-meta>
-			<h1>$5</h1>
-
-			<ul>
-				<li *ngFor="let item of basicPlanItems; let i = index">
-					{{ i + 1 + ". " + item }}
-				</li>
-			</ul>
-			<div class="flex justify-center">
-				<button (click)="choosePlan('basic')" class="btn btn-primary">
-					Elegir Plan
-				</button>
-			</div>
-		</nz-card>
-		<!-- card 2 -->
-		<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
-			<nz-card-meta nzTitle="Premium" nzDescription="Plan Recomendado">
-			</nz-card-meta>
-			<h1>$10</h1>
-
-			<ul>
-				<li *ngFor="let item of basicPlanItems; let i = index">
-					{{ i + 1 + ". " + item }}
-				</li>
-			</ul>
-			<div class="flex justify-center">
-				<button (click)="choosePlan('premium')" class="btn btn-primary">
-					Elegir Plan
-				</button>
-			</div>
-		</nz-card>
-		<!-- card 3 -->
-		<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
-			<nz-card-meta nzTitle="Para Empresas" nzDescription="Plan Empresarial">
-			</nz-card-meta>
-			<h1>$15</h1>
-
-			<ul>
-				<li *ngFor="let item of basicPlanItems; let i = index">
-					{{ i + 1 + ". " + item }}
-				</li>
-			</ul>
-			<div class="flex justify-center">
-				<button
-					(click)="choosePlan('enterprise')"
-					class="btn btn-primary"
-				>
-					Elegir Plan
-				</button>
-			</div>
-		</nz-card>
+		<ng-container *ngFor="let p of planes">
+			<nz-card nzHoverable class="grid-col-4" style="border-radius: 10px">
+				<nz-card-meta [nzTitle]="p.nombre" [nzDescription]="p.descripcion">
+				</nz-card-meta>
+				<h1>{{ p.precio | currency: 'USD' }}</h1>
+	
+				<ul>
+					<li *ngFor="let item of p.items.split(';'); let i = index">
+						{{ i + 1 + ". " + item }}
+					</li>
+				</ul>
+				<div class="flex justify-center">
+					<button (click)="choosePlan(p.id)" class="btn btn-primary">
+						Elegir Plan
+					</button>
+				</div>
+			</nz-card>
+		</ng-container>
 	</div>
 </div>
+
+
+<nz-spin [nzSpinning]="isLoading" nzSize="large">
+</nz-spin>
