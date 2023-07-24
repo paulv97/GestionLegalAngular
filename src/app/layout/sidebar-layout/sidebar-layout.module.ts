@@ -37,6 +37,11 @@ const routes: Routes = [
 			loadChildren: () => import('../../pages/documentos/documentos.module').then(m => m.DocumentosModule),
 			canActivate: [AuthGuard] 
 		},
+		{
+			path: 'boletin',
+			loadChildren: () => import('../../pages/app/boletin/boletin.module').then(m => m.BoletinModule),
+			canActivate: [AuthGuard]
+		},
 	] }
 ]
 

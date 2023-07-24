@@ -44,6 +44,11 @@ export class SidebarComponent implements OnInit {
 			route: 'documentos'
 		},
 		{
+			icon: 'notification',
+			label: 'Boletin',
+			route: 'boletin'
+		},
+		{
 			icon: 'setting',
 			label: 'Configuración',
 			route: ''
