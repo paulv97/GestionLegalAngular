@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { DocumentosService, Documento } from 'src/app/shared/services/servicio-docs/documentos.service';
-import { DatoscompartidosService, Abogado } from 'src/app/shared/services/servicio-compartido/datoscompartidos.service';
+// import { DatoscompartidosService, Abogado } from 'src/app/shared/services/servicio-compartido/datoscompartidos.service';
 
 @Component({
   selector: 'app-documentos',
@@ -31,13 +31,13 @@ export class DocumentosComponent implements OnInit {
   };
 
   // variable carga datos del abogado 
-  abogado: Abogado={
-    id_abogado:'',
-    nombres:'',
-    apellidos:'',
-    email:'',
-    password:''
-  };
+  // abogado: Abogado={
+  //   id_abogado:'',
+  //   nombres:'',
+  //   apellidos:'',
+  //   email:'',
+  //   password:''
+  // };
 
   form: FormGroup;
   
@@ -57,7 +57,7 @@ export class DocumentosComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private DocumentosServicio:DocumentosService,
-    private datosCompartidosServicio: DatoscompartidosService
+    // private datosCompartidosServicio: DatoscompartidosService
   ) {
     this.form = new FormGroup({
       idDoc: new FormControl,
@@ -70,16 +70,16 @@ export class DocumentosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.datosCompartidosServicio.datoCompartido);
-    this.DocumentosServicio.getAbogado(this.datosCompartidosServicio.datoCompartido).subscribe(
-      (res:any)=>{
-        this.abogado = res[0];
-        console.log(res[0]);
-        this.listarDocumentos();
-      },
-      err => console.log(err)
-    );
-    
+    // console.log(this.datosCompartidosServicio.datoCompartido);
+    // this.DocumentosServicio.getAbogado(this.datosCompartidosServicio.datoCompartido).subscribe(
+    //   (res:any)=>{
+    //     this.abogado = res[0];
+    //     console.log(res[0]);
+    //     this.listarDocumentos();
+    //   },
+    //   err => console.log(err)
+    // );
+    this.listarDocumentos();
     
   }
   // valida que el form este completo
@@ -109,8 +109,9 @@ export class DocumentosComponent implements OnInit {
   // agrega un documento
   agregarDocumento(){
     delete this.doc.id_documento;
-    this.doc.id_abogado=this.abogado.id_abogado;
+    // this.doc.id_abogado=this.abogado.id_abogado;
     delete this.doc.documento;
+    delete this.doc.id_abogado;
 
     // this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
     //   this.listarDocumentos();
@@ -131,7 +132,8 @@ export class DocumentosComponent implements OnInit {
 
   // lista todos los documentos
   listarDocumentos(){
-    this.DocumentosServicio.getDocumentos(this.abogado.id_abogado!).subscribe(
+    // this.DocumentosServicio.getDocumentos(this.abogado.id_abogado!).subscribe(
+    this.DocumentosServicio.getDocumentos().subscribe(
       res=>{
         console.log(res)
         // if(res.rows){

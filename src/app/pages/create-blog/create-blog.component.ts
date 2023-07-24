@@ -4,7 +4,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router, RouterLink } from '@angular/router';
 
 import { BlogService, Blog, Abogado } from 'src/app/shared/services/blog/blog.service';
-import { DatoscompartidosService } from 'src/app/shared/services/servicio-compartido/datoscompartidos.service';
 
 @Component({
   selector: 'app-create-blog',
@@ -20,7 +19,7 @@ export class CreateBlogComponent implements OnInit {
 
   // variable carga datos del blog 
   blog: Blog={
-    id_abogado:'',
+    // id_abogado:'',
     titulo:'',
     imagen:'',
     cuerpo:''
@@ -54,16 +53,15 @@ export class CreateBlogComponent implements OnInit {
 
   user: { name: string; email: string; } = {
     name: 'John Doe',
-    // email: 'john@email.com'
+    email: 'john@email.com'
     // aqui se obtiene el email del abogado que inicio sesion
-    email: this.datosCompartidosServicio.datoCompartido
+    // email: this.datosCompartidosServicio.datoCompartido
   }
 
   constructor(
     private message: NzMessageService,
     private router: Router,
     private blogServicio: BlogService,
-    private datosCompartidosServicio: DatoscompartidosService,
   ) {
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
@@ -93,14 +91,15 @@ export class CreateBlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // aqui se obtiene el email del abogado que inicio sesion
-    console.log('dato compartido--->'+this.user.email)
-    // se obtiene los datos del abogado por el email
-    this.blogServicio.getAbogado(this.user.email).subscribe(
+
+    // this.blogServicio.getAbogado(this.user.email).subscribe();
+
+    this.blogServicio.getAbogado().subscribe(
       (res:any)=>{
         this.abogado = res[0];
         console.log(res[0]);
         this.user.name = this.abogado.nombres +' '+this.abogado.apellidos;
+        this.user.email = this.abogado.email+'';
       },
       err => console.log(err)
     );
@@ -108,7 +107,7 @@ export class CreateBlogComponent implements OnInit {
   }
 
   agregarBlog(){
-    this.blog.id_abogado = this.abogado.id_abogado;
+    // this.blog.id_abogado = this.abogado.id_abogado;
     this.blogServicio.addBlog(this.blog).subscribe(()=>{
         console.log(this.blog)
     });
