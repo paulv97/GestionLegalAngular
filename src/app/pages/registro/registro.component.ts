@@ -60,7 +60,8 @@ export class RegistroComponent implements OnInit {
         //se comparte el email una vez que inica sesion
         // con este email obtengo id del abogado
         const formValue = this.form.getRawValue() 
-        this.datosCompartidosServicio.datoCompartido = formValue.email 
+        this.datosCompartidosServicio.datoCompartido = formValue.email
+        this.datosCompartidosServicio.guardarDatoCompartido(); 
 
         this.router.navigate(['/plans'])
       },

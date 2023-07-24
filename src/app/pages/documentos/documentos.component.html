@@ -76,8 +76,8 @@
       </section>
 
       <section class="busqueda">
-        <input nz-input type="text" placeholder="BUSQUEDA" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full">
-
+        <!-- <input [(ngModel)]="terminoBusqueda"  (keyup.enter)="filtrarDocumentos()" nz-input type="text" placeholder="BUSQUEDA" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full"> -->
+        <input [(ngModel)]="terminoBusqueda"  (keyup.enter)="filtrarDocumentos()" nz-input type="text" name="buscar" id="buscar" placeholder="BUSQUEDA" required>
       </section>
 
       <section id="seccionDocs" class="seccion3 border2">
@@ -95,7 +95,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let doc of ListaDocumentos">
+              <tr *ngFor="let doc of listaDocumentosF">
                 <th>{{doc.id_documento}}</th>
                 <td>{{doc.tipo}}</td>
                 <td>{{doc.nombre}}</td>

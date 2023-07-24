@@ -14,6 +14,9 @@ export class DocumentosComponent implements OnInit {
 
   // variable
   ListaDocumentos: Documento[]= [];
+  listaDocumentosF: Documento[]= [];
+  terminoBusqueda:string='';
+
   nameFile:string='';
   
   private fileTmp:any;
@@ -133,6 +136,7 @@ export class DocumentosComponent implements OnInit {
         console.log(res)
         // if(res.rows){
           this.ListaDocumentos=<any>res;
+          this.listaDocumentosF=<any>res;
         // }
         
       },
@@ -227,6 +231,31 @@ export class DocumentosComponent implements OnInit {
 
   }
 
+  filtrarDocumentos() {
+    if (!this.terminoBusqueda || this.terminoBusqueda.trim() === '') {
+      this.listaDocumentosF = this.ListaDocumentos;
+    } else {
+      const terminoBusquedaLowerCase =this.quitarTildes( this.terminoBusqueda.toLowerCase().trim());
+      this.listaDocumentosF = this.ListaDocumentos.filter(documento =>{
+      
+        return ( 
+          this.quitarTildes(documento.tipo!)?.toLowerCase().includes(terminoBusquedaLowerCase) ||
+          this.quitarTildes(documento.nombre!)?.toLowerCase().includes(terminoBusquedaLowerCase) ||
+          this.quitarTildes(documento.descripcion!)?.toLowerCase().includes(terminoBusquedaLowerCase) ||
+          this.quitarTildes(documento.documento!)?.toLowerCase().includes(terminoBusquedaLowerCase)
+        );
+      });
+    }
+  }
+
+  quitarTildes(texto: string): string {
+    const mapaTildes: any = {
+      á: 'a', é: 'e', í: 'i', ó: 'o', ú: 'u',
+      Á: 'A', É: 'E', Í: 'I', Ó: 'O', Ú: 'U'
+    };
+    
+    return texto.replace(/[áéíóúÁÉÍÓÚ]/g, letra => mapaTildes[letra]);
+  }
 
 
 

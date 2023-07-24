@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
         //se comparte el email una vez que inica sesion
         // con este email obtengo id del abogado 
         this.datosCompartidosServicio.datoCompartido = formValue.email;
+        this.datosCompartidosServicio.guardarDatoCompartido();
 
         if(resp?.idSuscripcion) {
           this.router.navigate(['/busqueda'])
