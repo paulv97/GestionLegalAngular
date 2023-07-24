@@ -3,5 +3,77 @@
 </div>
 
 <form [formGroup]="form" class="w-full grid">
+    <div class="grid-col-6">
+		<p class="display-block m-0 mb-7">Tipo de identificacion</p>
+        <nz-select formControlName="tipoIdentificacion" nzShowSearch
+            class="rounded w-full"
+            nzPlaceHolder="">
+            <nz-option *ngFor="let option of tiposIdentificacion" [nzLabel]="option.descripcion | titlecase" [nzValue]="option.codigo"></nz-option>
+        </nz-select>
+	</div>
     
+	<div class="grid-col-6">
+		<p class="display-block m-0 mb-7">Nro. Identificacion</p>
+		<input class="w-full" formControlName="nroIdentificacion" nz-input>
+	</div>
+
+    <div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Nombre o razon social</p>
+		<input nz-input type="text" formControlName="razonSocial" class="w-full">
+	</div>
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Pais nacimiento</p>
+		<input nz-input type="text" formControlName="lugarNaci" class="w-full">
+	</div>	
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Email</p>
+		<input nz-input type="text" formControlName="email" class="w-full">
+	</div>
+
+	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Telefono</p>
+		<input nz-input type="text" formControlName="phone" class="w-full">
+	</div>
+
+    <div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Direccion</p>
+		<input nz-input type="text" formControlName="address" class="w-full">
+	</div>
+
+    <div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Fecha Nacimiento</p>
+		<input nz-input type="text" formControlName="fechaNaci" class="w-full">
+	</div>
+
+    <div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Tipo Persona</p>
+        <nz-select formControlName="tipoPersona" nzShowSearch
+            class="rounded w-full"
+            nzPlaceHolder="">
+            <nz-option *ngFor="let option of tiposPersona" [nzLabel]="option.descripcion | titlecase" [nzValue]="option.codigo"></nz-option>
+        </nz-select>
+	</div>
+
+    <div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Actividad Comercial</p>
+		<input nz-input type="text" formControlName="actividadComercial" class="w-full">
+	</div>
+
+    <div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Genero</p>
+        <nz-select formControlName="genero" nzShowSearch
+            class="rounded w-full"
+            nzPlaceHolder="">
+            <nz-option *ngFor="let option of generos" [nzLabel]="option.descripcion | titlecase" [nzValue]="option.codigo"></nz-option>
+        </nz-select>
+	</div>
+
+	<div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
+
+	<div class="grid-col-12 grid">
+		<button class="grid-col-6" (click)="cerrarModal()" nz-button>Cancelar</button>
+		<button class="grid-col-6" (click)="guardarCliente()" nz-button nzType="primary">Guardar</button>
+	</div>
 </form>

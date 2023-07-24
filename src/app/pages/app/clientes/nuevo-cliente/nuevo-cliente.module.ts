@@ -6,6 +6,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 
 
@@ -24,6 +25,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 		NzButtonModule,
 		NzModalModule,
 		NzMessageModule,
+    NzSelectModule,
   ]
 })
 export class NuevoClienteModule { }
