@@ -83,4 +83,12 @@ export class JuiciosService {
       }
     ]
   }
+
+  obtenerJuiciosPorAbogado(filtro: string) {
+    return this.http.get(`/juicios?filtro=${filtro}`)
+  }
+
+  guardarJuicio(juicio: any) {
+    return this.http.post(`/juicios`, juicio)
+  }
 }

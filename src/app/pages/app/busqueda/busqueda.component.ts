@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NuevoJuicioComponent } from './nuevo-juicio/nuevo-juicio.component';
+import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service';
+import { finalize } from 'rxjs';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
 	selector: 'app-busqueda',
@@ -12,82 +15,16 @@ export class BusquedaComponent implements OnInit {
 	busqueda: string = ''
 	fecha = new Date()
 
-	CASOS = [
-		{
-			nombre: 'Calle Aracely',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Paul Balarezo',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Juan Cardenas',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Paul Villalta',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Paul Villalta',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Paul Villalta',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Paul Villalta',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Juan Yumbla',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Pedro Andrade',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Benito Perez',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-		{
-			nombre: 'Patricia Abad',
-			razon: '...',
-			fecha: new Date(),
-			providencia: Math.floor(Date.now() / 1000)
-		},
-	]
-
-	
+	juicios: any[] = []
 
 	constructor(
 		private _modalService: NzModalService,
+		private juiciosService: JuiciosService,
+		private message: NzMessageService,
 	) { }
 
 	ngOnInit(): void {
+		this.buscarJuicios("")
 	}
 
 	abrirModalNuevoJuicio() {
@@ -99,8 +36,23 @@ export class BusquedaComponent implements OnInit {
 		modal.afterClose.subscribe(data => {
 			if (!data) return
 
-			this.CASOS = [data, ...this.CASOS]
+			this.buscarJuicios("")
 		})
 	}
+
+	buscarJuicios(filtro: any) {
+		this.juiciosService.obtenerJuiciosPorAbogado(filtro)
+		.pipe(finalize(() => console.log('juicio cargado')))
+		.subscribe(
+		  (juicios: any) => {
+			console.log(juicios)
+			this.juicios = juicios
+		  },
+		  (err) => {
+			console.log(err)
+			this.message.error(err.error.mensaje)
+		  }
+		)
+	  }
 
 }

@@ -64,7 +64,7 @@
 
 	<div class="grid-col-12 grid">
 		<button class="grid-col-6" (click)="cerrarModal()" nz-button>Cancelar</button>
-		<button class="grid-col-6" (click)="guardarJuicio()" nz-button nzType="primary">Guardar</button>
+		<button class="grid-col-6" [nzLoading]="isLoadingGuardar" (click)="guardarJuicio()" nz-button nzType="primary">Guardar</button>
 	</div>
 
 </form>

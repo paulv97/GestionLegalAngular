@@ -20,6 +20,8 @@ export class NuevoJuicioComponent implements OnInit {
 	tiposJuicios: any[] = []
 	estadosJuicios: any[] = []
 
+	isLoadingGuardar: boolean = false
+
 	constructor(
 		private _modalRef: NzModalRef,
 		private _messageService: NzMessageService,
@@ -73,8 +75,19 @@ export class NuevoJuicioComponent implements OnInit {
 			return
 		}
 
-		this._messageService.success('Juicio agregado exitosamente')
-		this._modalRef.close(this.form.getRawValue())
+		this.isLoadingGuardar = true
+		const form = this.form.getRawValue()
+		this.juiciosService.guardarJuicio(form)
+		.pipe(finalize(() => this.isLoadingGuardar = false))
+		.subscribe(
+			(resp: any) => {
+				this._messageService.success(resp.mensaje)
+				this._modalRef.close(true)
+			},
+			(err) => {
+				this._messageService.error(err?.mensaje ? err.mensaje : err)
+			}
+		)
 	}
 
 }
