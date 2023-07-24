@@ -6,7 +6,20 @@
 
 	<div class="grid-col-12">
 		<p class="display-block m-0 mb-7">Nombre del cliente</p>
-		<input nz-input formControlName="nombre" type="text" class="w-full">
+		<nz-select formControlName="idCliente" nzShowSearch
+            class="rounded w-full"
+			[nzNotFoundContent]="notFoundContent"
+            nzPlaceHolder="">
+            <nz-option *ngFor="let option of clientes" (nzSearchChange)="onSearchSelect($event)" [nzLabel]="option.razonsocial | titlecase" [nzValue]="option.idcliente"></nz-option>
+        </nz-select>
+		<ng-template #notFoundContent>
+			<div class="not-found-message">
+			  No se encontraron coincidencias!
+			</div>
+			<div class="grid-col-12 grid">
+				<button class="grid-col-12" (click)="irAClientes()" nz-button>Crear nuevo cliente</button>
+			</div>
+		</ng-template>
 	</div>
 
 	<div class="grid-col-12">

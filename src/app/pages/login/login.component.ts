@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     private autenticacionService: AutenticacionService,
     private localStorage: LocalStorageService,
     private datosCompartidosServicio: DatoscompartidosService,
-  , private loginService: LoginService, private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private socialAuthService: SocialAuthService) {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
     
-    this.socialAuthService.authState.subscribe((user) => {
+    this.socialAuthService.authState.subscribe((user: any) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
       console.log(this.socialUser);

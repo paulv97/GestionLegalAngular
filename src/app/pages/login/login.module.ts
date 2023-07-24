@@ -42,7 +42,7 @@ import { GoogleSigninButtonModule, SocialLoginModule, GoogleLoginProvider, Socia
                         )
                     }
                 ],
-                onError: (err) => {
+                onError: (err: any) => {
                     console.error(err);
                 }
             } as SocialAuthServiceConfig,
