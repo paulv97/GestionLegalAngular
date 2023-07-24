@@ -12,6 +12,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NuevoClienteModule } from './nuevo-cliente/nuevo-cliente.module';
 
 
 
@@ -32,6 +33,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzTableModule,
     NzDividerModule,
     NzSpinModule,
+    NuevoClienteModule,
   ]
 })
 export class ClientesModule { }
