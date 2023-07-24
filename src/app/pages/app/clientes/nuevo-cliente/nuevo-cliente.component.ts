@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-nuevo-cliente',
@@ -7,7 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoClienteComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup
+
+  constructor(
+		private _modalRef: NzModalRef,
+		private _messageService: NzMessageService,
+	) {
+    this.form = new FormGroup({
+
+    })
+  }
 
   ngOnInit(): void {
   }

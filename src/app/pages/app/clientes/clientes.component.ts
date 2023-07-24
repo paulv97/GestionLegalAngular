@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { finalize } from 'rxjs';
 import { ClientesService } from 'src/app/shared/services/clientes/clientes.service';
+import { NuevoClienteComponent } from './nuevo-cliente/nuevo-cliente.component';
 
 @Component({
   selector: 'app-clientes',
@@ -18,6 +20,7 @@ export class ClientesComponent implements OnInit {
   constructor(
     private message: NzMessageService,
     private clientesService: ClientesService,
+    private _modalService: NzModalService,
   ) { }
 
   ngOnInit(): void {
@@ -53,5 +56,18 @@ export class ClientesComponent implements OnInit {
       }
     )
   }
+
+  abrirModalClienteNuevo() {
+		const modal = this._modalService.create({
+			nzContent: NuevoClienteComponent,
+			nzFooter: null,
+		})
+
+		modal.afterClose.subscribe(data => {
+			if (!data) return
+
+			this.buscarClientes("")
+		})
+	}
 
 }

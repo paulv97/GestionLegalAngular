@@ -6,7 +6,7 @@
         <div class="grid-col-12 flex items-center flex-no-wrap" style="gap: 1.5rem">
 			<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" (ngModelChange)="buscarClientes($event)" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
 
-			<button nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
+			<button (click)="abrirModalClienteNuevo()" nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
 		</div>
 
         <nz-table class="grid-col-12">

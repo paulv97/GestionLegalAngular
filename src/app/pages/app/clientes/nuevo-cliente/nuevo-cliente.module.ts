@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NuevoClienteComponent } from './nuevo-cliente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 
 
@@ -8,8 +13,17 @@ import { NuevoClienteComponent } from './nuevo-cliente.component';
   declarations: [
     NuevoClienteComponent
   ],
+  exports: [
+    NuevoClienteComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
+		NzInputModule,
+		NzButtonModule,
+		NzModalModule,
+		NzMessageModule,
   ]
 })
 export class NuevoClienteModule { }
