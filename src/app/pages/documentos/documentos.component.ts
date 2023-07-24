@@ -24,7 +24,7 @@ export class DocumentosComponent implements OnInit {
     tipo:'',
     nombre:'',
     descripcion:'',
-    documento:null,
+    documento:'',
   };
 
   // variable carga datos del abogado 
@@ -87,7 +87,7 @@ export class DocumentosComponent implements OnInit {
       return
     }else{
       this.agregarDocumento();
-      this.form.reset();
+      // this.form.reset();
     }
   }
 
@@ -112,9 +112,16 @@ export class DocumentosComponent implements OnInit {
     // this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
     //   this.listarDocumentos();
     // });
+    if (!this.fileTmp || !this.fileTmp.fileRaw) {
+      this.message.warning('Seleccione un archivo antes de guardar');
+      return;
+    }
 
     this.DocumentosServicio.addDocumento(this.doc, this.fileTmp.fileRaw).subscribe(() => {
       this.listarDocumentos();
+      this.form.reset();
+      this.fileTmp = null;
+      
     });
 
   }
@@ -155,19 +162,55 @@ export class DocumentosComponent implements OnInit {
       );
   }
 
+  // descargar archivo
+  descargarArchivo(name:string){
+
+    this.DocumentosServicio.downloadDoc(name).subscribe(
+      (res: Blob) => {
+        // Crear una URL local para el archivo blob
+        const url = window.URL.createObjectURL(res);
+
+        // Crear un enlace temporal y hacer clic en él para iniciar la descarga
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+
+        // Liberar la URL del blob
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        console.error('Error al descargar el archivo:', error);
+      }
+    );
+  }
+
   // modifica un documento
   modificarDoc(){
     if(this.doc.id_documento!== null && this.doc.id_documento!==''){
-      delete this.doc.id_abogado
+      delete this.doc.id_abogado;
+      delete this.doc.documento;
       console.log('id documento'+this.doc.id_documento);
-      this.DocumentosServicio.editDocumento(this.doc.id_documento as string, this.doc).subscribe(
-        res=>{
+      if (!this.fileTmp || !this.fileTmp.fileRaw){
+        this.DocumentosServicio.editDocumento(this.doc.id_documento as string, this.doc).subscribe(
+          res=>{
+              console.log(res);
+              
+              this.listarDocumentos();
+          },
+          err=>console.log(err)
+        );
+      }else{
+        this.DocumentosServicio.editDocumentoFile(this.doc.id_documento as string, this.doc, this.fileTmp.fileRaw)
+          .subscribe(res => {
             console.log(res);
-            
             this.listarDocumentos();
-        },
-        err=>console.log(err)
-      );
+            this.fileTmp = null;
+          }, 
+          err => console.log(err));
+      }
+
     }else{
       this.message.warning('Seleccione un documento para editar');
     }

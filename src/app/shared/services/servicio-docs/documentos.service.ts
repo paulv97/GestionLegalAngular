@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +45,29 @@ export class DocumentosService {
     return this.http.put('/documentos/updateDocumento'+'/'+idDoc,documento);
   }
 
+  // modificar documento
+  editDocumentoFile(idDoc:string, documento:Documento, file: File){
+    // return this.http.put('/documentos/updateDocumentoFile'+'/'+idDoc,documento);
+    const formData = new FormData();
+    formData.append('tipo', documento.tipo || '');
+    formData.append('nombre', documento.nombre || '');
+    formData.append('descripcion', documento.descripcion || '');
+    formData.append('documento', file);
+
+    return this.http.put(`/documentos/updateDocumentoFile/${idDoc}`, formData);
+  
+  }
+
+
   //get Abogado
   getAbogado(email:string){
     return this.http.get('/documentos/obtenerAbogado/'+email);
+  }
+
+  downloadDoc(nombre: string): Observable<Blob> {
+    return this.http.get('/documentos/downloadDocumento/' + nombre, {
+      responseType: 'blob' // Indicar que esperamos una respuesta de tipo Blob
+    });
   }
 
 
@@ -58,7 +79,7 @@ export interface Documento{
   tipo?:string;
   nombre?:string;
   descripcion?:string;
-  documento?:File |null ;
+  documento?:string ;
 }
 
 
