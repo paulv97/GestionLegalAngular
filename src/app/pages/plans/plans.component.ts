@@ -43,11 +43,14 @@ export class PlansComponent implements OnInit {
   choosePlan(idPlan: number) {
     const sesion = this.localStorage.getInformation()
 
-    if(!sesion || !sesion?.idSuscripcion) {
+    if(!sesion || sesion.idSuscripcion) {
       this.router.navigate([`/login`])
       return
     }
 
-    this.router.navigate([`checkout/${idPlan}`])   
+    if(!sesion?.idSuscripcion) {
+      this.router.navigate([`checkout/${idPlan}`])
+      return
+    }
   }
 }
