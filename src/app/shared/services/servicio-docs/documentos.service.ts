@@ -21,8 +21,17 @@ export class DocumentosService {
   }
 
   // agregar documento
-  addDocumento(documento:Documento){
-    return this.http.post('/documentos/addDocumento',documento);
+  // addDocumento(documento:Documento){
+  addDocumento(documento: Documento, archivo: File) {
+    // return this.http.post('/documentos/addDocumento',documento);
+    const formData = new FormData();
+    formData.append('id_abogado', documento.id_abogado || '');
+    formData.append('tipo', documento.tipo || '');
+    formData.append('nombre', documento.nombre || '');
+    formData.append('descripcion', documento.descripcion || '');
+    formData.append('documento', archivo);
+
+    return this.http.post('/documentos/addDocumento', formData);
   }
 
   // eliminar documento
@@ -49,7 +58,7 @@ export interface Documento{
   tipo?:string;
   nombre?:string;
   descripcion?:string;
-  documento?:string;
+  documento?:File |null ;
 }
 
 

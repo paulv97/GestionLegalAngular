@@ -60,8 +60,16 @@
             <form class="border2">
                 <h4 >Subir el Documento</h4><br>
                 <label class="m-0 mb-7">Documento:</label><br>
-                <input nz-input placeholder="Documento" type="text" class="text-md rounded px-15 py-12 w-full" disabled><br><br>        
-                <button nz-button nzType="primary" style="min-width: 30px;">Subir Documento</button>
+                
+                <!-- <input [value]="nameFile" nz-input placeholder="Documento" class="text-md rounded px-15 py-12 w-full" readonly><br><br> -->
+                <!-- <span>Adjunta tu file</span> -->
+                <input type="file" (change)="getFile($event)">
+                <!-- <label for="fileInput" class="custom-file-input">
+                  <input type="file" id="fileInput" (change)="getFile($event)">
+                  Selecionar archivo
+                </label>   -->
+                <!-- <button nz-button type="file" (change)="getFile($event)"
+                  nzType="primary" style="min-width: 30px;">Subir Documento</button> -->
             </form>
         </div>
 

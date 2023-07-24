@@ -14,6 +14,9 @@ export class DocumentosComponent implements OnInit {
 
   // variable
   ListaDocumentos: Documento[]= [];
+  nameFile:string='';
+  
+  private fileTmp:any;
 
   doc: Documento = {
     id_documento:'',
@@ -21,7 +24,7 @@ export class DocumentosComponent implements OnInit {
     tipo:'',
     nombre:'',
     descripcion:'',
-    documento:''
+    documento:null,
   };
 
   // variable carga datos del abogado 
@@ -104,7 +107,14 @@ export class DocumentosComponent implements OnInit {
   agregarDocumento(){
     delete this.doc.id_documento;
     this.doc.id_abogado=this.abogado.id_abogado;
-    this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
+    delete this.doc.documento;
+    // this.doc.documento = this.fileTmp.fileRaw;
+
+    // this.DocumentosServicio.addDocumento(this.doc).subscribe(()=>{
+    //   this.listarDocumentos();
+    // });
+
+    this.DocumentosServicio.addDocumento(this.doc, this.fileTmp.fileRaw).subscribe(() => {
       this.listarDocumentos();
     });
 
@@ -164,6 +174,18 @@ export class DocumentosComponent implements OnInit {
     }
 
   }
+
+  getFile($event:any):void{
+    console.log($event);
+    const [ file ] = $event.target.files;
+    this.fileTmp = {
+      fileRaw:file,
+      fileName:file.name
+    }
+
+  }
+
+
 
 
 }

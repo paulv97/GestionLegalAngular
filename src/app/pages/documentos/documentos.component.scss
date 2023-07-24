@@ -45,6 +45,19 @@
     }
 
     .seccion2{
+
+        .custom-file-input {
+            background-color: blue;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .custom-file-input input[type="file"] {
+        display: none;
+        }
+
         grid-area: seccion2;
         // display: flex;
         // align-items: center;
@@ -98,7 +111,7 @@
                 outline: none;
                 border-color: rgb(71, 147, 233);
             }
- 
+            
         }
     }
 
