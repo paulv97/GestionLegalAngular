@@ -5,16 +5,20 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptorInterceptor implements HttpInterceptor {
 
   constructor(
     private localStorage: LocalStorageService,
+    private router: Router
   ) {}
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -26,6 +30,15 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', `Bearer ${token}`)
     });
 
-    return next.handle(modifiedReq);
+    return next.handle(modifiedReq).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          console.log('Entro en 401')
+          this.router.navigate(['/login']);
+          this.localStorage.clear({ key: 'sesion' })
+        }
+        return throwError(error);
+      })
+    );
   }
 }

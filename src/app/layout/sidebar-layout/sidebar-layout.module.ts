@@ -12,6 +12,11 @@ const routes: Routes = [
 			loadChildren: () => import('../../pages/app/busqueda/busqueda.module').then(m => m.BusquedaModule), 
 			canActivate: [AuthGuard] 
 		},
+		{
+			path: 'clientes', 
+			loadChildren: () => import('../../pages/app/clientes/clientes.module').then(m => m.ClientesModule), 
+			canActivate: [AuthGuard] 
+		},
 		{ 
 			path: 'recursos', 
 			loadChildren: () => import('../../pages/app/recursos/recursos.module').then(m => m.RecursosModule),

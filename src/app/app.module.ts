@@ -19,6 +19,7 @@ import { BlogsComponent } from './pages/blogs/blogs.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { DocumentosComponent } from './pages/documentos/documentos.component';
 import { AuthInterceptorInterceptor } from './shared/services/interceptors/auth-interceptor.interceptor';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(es);
 
@@ -43,7 +44,7 @@ registerLocaleData(es);
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthInterceptorInterceptor,
 			multi: true // Add multi: true to indicate that this interceptor is part of a collection
-		  }
+		}
 	],
 	bootstrap: [AppComponent]
 })
