@@ -1,7 +1,7 @@
 <div class="w-full h-full p-25">
     <div class="grid w-full">
         <div class="grid-col-12 flex items-center flex-no-wrap" style="gap: 1.5rem">
-			<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
+			<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" (ngModelChange)="buscarClientes($event)" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
 
 			<button nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
 		</div>
@@ -20,14 +20,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of [1, 2, 3] | search:busqueda">
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>3</td>
+              <tr *ngFor="let c of clientes">
+                <td>{{ c.idcliente }}</td>
+                <td>{{ c.nroidentificacion }}</td>
+                <td>{{ c.razonsocial }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.phone }}</td>
+                <td>{{ c.tipopersona }}</td>
+                <td>{{ c.actividadcomercial }}</td>
                 <td>
                   <a>Editar</a>
                   <nz-divider nzType="vertical"></nz-divider>
