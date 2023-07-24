@@ -10,7 +10,7 @@
             class="rounded w-full"
 			[nzNotFoundContent]="notFoundContent"
             nzPlaceHolder="">
-            <nz-option *ngFor="let option of clientes" (nzSearchChange)="onSearchSelect($event)" [nzLabel]="option.razonsocial | titlecase" [nzValue]="option.idcliente"></nz-option>
+            <nz-option *ngFor="let option of clientes" [nzLabel]="option.razonsocial | titlecase" [nzValue]="option.idcliente"></nz-option>
         </nz-select>
 		<ng-template #notFoundContent>
 			<div class="not-found-message">
@@ -23,28 +23,41 @@
 	</div>
 
 	<div class="grid-col-12">
-		<p class="display-block m-0 mb-7">Razón envío / motivo</p>
-		<textarea class="w-full" formControlName="razon" nz-input></textarea>
+		<p class="display-block m-0 mb-7">Tipo de juicio</p>
+		<nz-select formControlName="tipoJuicio" nzShowSearch
+            class="rounded w-full"
+            nzPlaceHolder="">
+            <nz-option *ngFor="let option of tiposJuicios" [nzLabel]="option.tipoJuicio | titlecase" [nzValue]="option.idTipo"></nz-option>
+        </nz-select>
 	</div>
 
-	<div class="grid-col-7">
+	<div class="grid-col-12">
 		<p class="display-block m-0 mb-7">Código de dependencia</p>
 		<input nz-input type="text" formControlName="codigoDependencia" class="w-full">
 	</div>
 
 	<div class="grid-col-5">
-		<p class="display-block m-0 mb-7">Año</p>
-		<input nz-input type="text" formControlName="anio" class="w-full">
+		<p class="display-block m-0 mb-7">Fecha Inicio</p>
+		<nz-date-picker formControlName="fechaInicio" class="w-full" nzFormat="yyyy/MM/dd"></nz-date-picker>
+	</div>
+
+	<div class="grid-col-5">
+		<p class="display-block m-0 mb-7">Fecha Fin</p>
+		<nz-date-picker formControlName="fechaFin" class="w-full" nzFormat="yyyy/MM/dd"></nz-date-picker>
 	</div>
 
 	<div class="grid-col-12">
 		<p class="display-block m-0 mb-7">Número secuencial</p>
-		<input nz-input type="text" formControlName="providencia" class="w-full">
+		<input nz-input type="text" formControlName="numeroSecuencial" class="w-full">
 	</div>
 
 	<div class="grid-col-12">
-		<p class="display-block m-0 mb-7">Contacto</p>
-		<input nz-input type="text" formControlName="contacto" class="w-full">
+		<p class="display-block m-0 mb-7">Estado del juicio</p>
+		<nz-select formControlName="estado" nzShowSearch
+            class="rounded w-full"
+            nzPlaceHolder="">
+            <nz-option *ngFor="let option of estadosJuicios" [nzLabel]="option.descripcion | titlecase" [nzValue]="option.codigo"></nz-option>
+        </nz-select>
 	</div>
 
 	<div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>

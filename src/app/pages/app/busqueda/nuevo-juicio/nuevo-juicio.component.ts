@@ -5,6 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { finalize } from 'rxjs';
 import { ClientesService } from 'src/app/shared/services/clientes/clientes.service';
+import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service';
 
 @Component({
 	selector: 'app-nuevo-juicio',
@@ -16,25 +17,31 @@ export class NuevoJuicioComponent implements OnInit {
 	form: FormGroup
 	clientes: any[] = []
 
+	tiposJuicios: any[] = []
+	estadosJuicios: any[] = []
+
 	constructor(
 		private _modalRef: NzModalRef,
 		private _messageService: NzMessageService,
 		private clientesService: ClientesService,
+		private juiciosService: JuiciosService,
 		private router: Router,
 	) {
 		this.form = new FormGroup({
 			idCliente: new FormControl(null, [Validators.required]),
-			razon: new FormControl(null, [Validators.required]),
+			tipoJuicio: new FormControl(null, [Validators.required]),
 			codigoDependencia: new FormControl(null, [Validators.required]),
-			anio: new FormControl(null, [Validators.required]),
-			fecha: new FormControl(new Date(), [Validators.required]),
-			providencia: new FormControl(null, [Validators.required]),
-			contacto: new FormControl(null, [Validators.required]),
+			fechaInicio: new FormControl(null, [Validators.required]),
+			fechaFin: new FormControl(null),
+			numeroSecuencial: new FormControl(null, [Validators.required]),
+			estado: new FormControl(null, [Validators.required]),
 		})
 	}
 
 	ngOnInit(): void {
 		this.buscarClientes("")
+		this.tiposJuicios = this.juiciosService.obtenerTiposJuicios()
+		this.estadosJuicios = this.juiciosService.obtenerEstados()
 	}
 
 	cerrarModal() {
@@ -58,10 +65,6 @@ export class NuevoJuicioComponent implements OnInit {
 			this._messageService.error(err.error.mensaje)
 		  }
 		)
-	}
-
-	onSearchSelect(event: any) {
-		console.log('El evento', event)
 	}
 
 	guardarJuicio() {
