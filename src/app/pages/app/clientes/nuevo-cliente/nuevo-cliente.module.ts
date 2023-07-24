@@ -7,6 +7,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 
 
@@ -26,6 +27,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 		NzModalModule,
 		NzMessageModule,
     NzSelectModule,
+    NzDatePickerModule,
   ]
 })
 export class NuevoClienteModule { }

@@ -14,7 +14,7 @@
     
 	<div class="grid-col-6">
 		<p class="display-block m-0 mb-7">Nro. Identificacion</p>
-		<input class="w-full" formControlName="nroIdentificacion" nz-input>
+		<input class="w-full" (blur)="verificarExistenciaCliente()" formControlName="nroIdentificacion" nz-input>
 	</div>
 
     <div class="grid-col-12">
@@ -44,7 +44,7 @@
 
     <div class="grid-col-12">
 		<p class="display-block m-0 mb-7">Fecha Nacimiento</p>
-		<input nz-input type="text" formControlName="fechaNaci" class="w-full">
+        <nz-date-picker formControlName="fechaNaci" class="w-full" nzFormat="yyyy/MM/dd"></nz-date-picker>
 	</div>
 
     <div class="grid-col-12">
@@ -74,6 +74,6 @@
 
 	<div class="grid-col-12 grid">
 		<button class="grid-col-6" (click)="cerrarModal()" nz-button>Cancelar</button>
-		<button class="grid-col-6" (click)="guardarCliente()" nz-button nzType="primary">Guardar</button>
+		<button [nzLoading]="isLoadingGuardar" class="grid-col-6" (click)="submit()" nz-button nzType="primary">Guardar</button>
 	</div>
 </form>

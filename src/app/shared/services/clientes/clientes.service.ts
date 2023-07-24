@@ -14,6 +14,10 @@ export class ClientesService {
     return this.http.get(`/clientes?filtro=${filtro}`)
   }
 
+  verificarExistenciaCliente(nroIdentificacion: string) {
+    return this.http.get(`/clientes/verificarExistencia/${nroIdentificacion}`)
+  }
+
   crearCliente(cliente: any) {
     return this.http.post(`/clientes`, cliente)
   }
