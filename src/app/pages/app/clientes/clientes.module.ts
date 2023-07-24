@@ -11,6 +11,7 @@ import { NuevoJuicioModule } from '../busqueda/nuevo-juicio/nuevo-juicio.module'
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 
 
@@ -30,6 +31,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 		NzModalModule,
     NzTableModule,
     NzDividerModule,
+    NzSpinModule,
   ]
 })
 export class ClientesModule { }

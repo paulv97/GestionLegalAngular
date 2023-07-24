@@ -1,4 +1,7 @@
 <div class="w-full h-full p-25">
+    <nz-spin [nzSpinning]="isLoadingEliminarCliente" nzSize="large">
+    </nz-spin>
+
     <div class="grid w-full">
         <div class="grid-col-12 flex items-center flex-no-wrap" style="gap: 1.5rem">
 			<input nz-input placeholder="Buscar..." [(ngModel)]="busqueda" (ngModelChange)="buscarClientes($event)" nzSize="large" class="border-purplegray bg-purplegray text-theme-primary text-md rounded px-15 py-10 w-full" type="text">
@@ -31,7 +34,7 @@
                 <td>
                   <a>Editar</a>
                   <nz-divider nzType="vertical"></nz-divider>
-                  <a>Delete</a>
+                  <a class="text-red" (click)="eliminarCliente(c.idcliente)">Eliminar</a>
                 </td>
               </tr>
             </tbody>

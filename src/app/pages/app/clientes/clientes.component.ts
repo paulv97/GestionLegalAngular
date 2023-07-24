@@ -13,6 +13,8 @@ export class ClientesComponent implements OnInit {
   busqueda: string = ""
   clientes: any[] = []
 
+  isLoadingEliminarCliente: boolean = false
+
   constructor(
     private message: NzMessageService,
     private clientesService: ClientesService,
@@ -33,6 +35,21 @@ export class ClientesComponent implements OnInit {
       (err) => {
         console.log(err)
         this.message.error(err.error.mensaje)
+      }
+    )
+  }
+
+  eliminarCliente(idCliente: any) {
+    this.isLoadingEliminarCliente = true
+    this.clientesService.eliminarCliente(idCliente)
+    .pipe(finalize(() => this.isLoadingEliminarCliente = false))
+    .subscribe(
+      (resp: any) => {
+        this.buscarClientes("")
+      },
+      (err) => {
+        console.log(err)
+        this.message.error(err.mensaje)
       }
     )
   }

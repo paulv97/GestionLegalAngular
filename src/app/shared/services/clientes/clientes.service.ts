@@ -13,4 +13,12 @@ export class ClientesService {
   obtenerClientesPorAbogado(filtro: string) {
     return this.http.get(`/clientes?filtro=${filtro}`)
   }
+
+  crearCliente(cliente: any) {
+    return this.http.post(`/clientes`, cliente)
+  }
+
+  eliminarCliente(idCliente: any) {
+    return this.http.delete(`/clientes/${idCliente}`)
+  }
 }
