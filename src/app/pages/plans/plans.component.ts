@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { finalize } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { PlanesService } from 'src/app/shared/services/planes/planes.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class PlansComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private planesService: PlanesService,
+    private localStorage: LocalStorageService,
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,13 @@ export class PlansComponent implements OnInit {
   }
 
   choosePlan(idPlan: number) {
-    this.router.navigate([`checkout/${idPlan}`])
+    const sesion = this.localStorage.getInformation()
+
+    if(!sesion || !sesion?.idSuscripcion) {
+      this.router.navigate([`/login`])
+      return
+    }
+
+    this.router.navigate([`checkout/${idPlan}`])   
   }
 }
