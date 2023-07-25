@@ -3,8 +3,7 @@
 	[style.width]="isOpen ? '20rem' : 'calc(4.5rem + 2.6rem)'">
 	<div>
 		<div class="w-45 h-45 relative mb-15">
-			<img src="https://randomuser.me/api/portraits/men/40.jpg" class="display-block w-45 h-45 rounded-full bg-gray-200">
-
+				<img [src]="getProfilePicture()" class="display-block w-45 h-45 rounded-full bg-gray-200">
 			<div class="absolute w-15 h-15 rounded-full border-2 border-solid border-white bg-purple-500 right-0 bottom-0"></div>
 		</div>
 

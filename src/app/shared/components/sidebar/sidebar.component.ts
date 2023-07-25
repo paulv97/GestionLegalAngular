@@ -90,4 +90,12 @@ export class SidebarComponent implements OnInit {
 		this.localStorage.clear({ key: 'sesion' })
 		this.router.navigate(['/']);
 	}
+
+	getProfilePicture() {
+		let profile_pic= this.localStorage.getStorage({ key: 'preferences' })
+		if (!profile_pic)
+			profile_pic ="https://randomuser.me/api/portraits/men/40.jpg"
+
+		return profile_pic
+	}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AutenticacionService } from 'src/app/shared/services/autenticacion/autenticacion.service';
 import { finalize } from 'rxjs';
@@ -57,6 +57,8 @@ export class LoginComponent implements OnInit {
 
         if(resp?.idSuscripcion) {
           this.router.navigate(['/busqueda'])
+          // console.log("login success...")
+          // console.log(this.localStorage.getInformation())
           return
         }
 
@@ -89,9 +91,12 @@ export class LoginComponent implements OnInit {
 
           console.log("success login with google...")
 
-          console.log(resp)
+          // console.log(resp)
 
           this.localStorage.setStorage({ key: 'sesion' }, resp)
+
+          // store the user profile picture in local storage
+          this.localStorage.setStorage({ key: 'preferences' }, this.user.photoUrl)
 
           //se comparte el email una vez que inica sesion
           // con este email obtengo id del abogado 
