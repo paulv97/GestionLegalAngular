@@ -8,7 +8,7 @@
 			<button (click)="abrirModalNuevoJuicio()" nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
 		</div>
 
-		<ng-container *ngFor="let j of juicios | search:busqueda">
+		<ng-container *ngFor="let j of juicios">
 			<div class="grid-col-3 md:grid-col-4 sm:grid-col-6 xs:grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
 				<p class="text-md display-block m-0 mb-5 font-bold">{{ j.razonsocial }} ID {{ j.idjuicio }}</p>
 
