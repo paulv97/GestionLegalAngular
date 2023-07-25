@@ -1,5 +1,5 @@
 # Etapa 1: Construir la aplicación Angular
-FROM node:lts as builder
+FROM node:14 as builder
 
 WORKDIR /app
 
