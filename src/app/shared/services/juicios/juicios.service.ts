@@ -92,6 +92,9 @@ export class JuiciosService {
       `https://api.funcionjudicial.gob.ec/informacion/getIncidenteJudicatura/${codigoDependencia}${anio}${nroSecuencial}`,
       {
         headers: {
+          'Host': 'api.funcionjudicial.gob.ec',
+          'Origin': 'https://procesosjudiciales.funcionjudicial.gob.ec',
+          'Referer': 'https://procesosjudiciales.funcionjudicial.gob.ec/',
           'No-Interceptor': 'true'
         }
       }
