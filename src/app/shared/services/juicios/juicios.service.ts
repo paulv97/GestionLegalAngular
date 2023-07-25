@@ -111,9 +111,15 @@ export class JuiciosService {
 
     (payload as any).aplicativo = "web"
 
+    const headers = {
+      'Content-Type': 'application/json',
+      'No-Interceptor': 'true'
+    }
+
     return this.http.post(
-      `https://pruebaiframe-wg7upc524q-uc.a.run.app/detalles`,
+      `https://pruebaiframe-wg7upc524q-uc.a.run.app/detalles/`,
       payload,
+      { headers }
     )
   }
 }
