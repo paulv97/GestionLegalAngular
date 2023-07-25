@@ -10,10 +10,11 @@ import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
 import { NuevoJuicioModule } from './nuevo-juicio/nuevo-juicio.module';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { JudicaturaModule } from './judicatura/judicatura.module';
+import { DetalleJuicioModule } from './detalle-juicio/detalle-juicio.module';
 
 @NgModule({
 	declarations: [
-		BusquedaComponent
+		BusquedaComponent,
 	],
 	imports: [
 		CommonModule,
@@ -25,7 +26,8 @@ import { JudicaturaModule } from './judicatura/judicatura.module';
 		SearchPipeModule,
 		NuevoJuicioModule,
 		NzModalModule,
-		JudicaturaModule,
+		JudicaturaModule,		
+		DetalleJuicioModule,
 	]
 })
 export class BusquedaModule { }

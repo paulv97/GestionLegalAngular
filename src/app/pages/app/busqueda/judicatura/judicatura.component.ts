@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-
+import { DetalleJuicioComponent } from '../detalle-juicio/detalle-juicio.component';
 
 @Component({
   selector: 'app-judicatura',
@@ -34,5 +34,15 @@ export class JudicaturaComponent implements OnInit {
   handleCancel(): void {
     this.isVisible = false;
   }
+
+  abrirDetalle() {
+		const modal = this.modalService.create({
+			nzContent: DetalleJuicioComponent,
+			nzFooter: null,
+			nzWidth: 1000,
+		})
+
+
+	}
 
 }
