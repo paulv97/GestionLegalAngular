@@ -22,7 +22,7 @@
 						<span nz-icon nzType="info-circle" nzTheme="outline"></span>
 					</button>
 
-					<button style="min-width: 30%" nz-button nzDanger>Eliminar</button>
+					<button (click)="eliminarJuicio(j)" [nzLoading]="isLoadingEliminarJuicio" style="min-width: 30%" nz-button nzDanger>Eliminar</button>
 
 					<button style="min-width: 30%" nz-button nzType="primary">Editar</button>
 				</div>

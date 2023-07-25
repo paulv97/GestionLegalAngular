@@ -18,6 +18,8 @@ export class BusquedaComponent implements OnInit {
 
 	juicios: any[] = []
 
+	isLoadingEliminarJuicio: boolean = false
+
 	constructor(
 		private _modalService: NzModalService,
 		private juiciosService: JuiciosService,
@@ -55,6 +57,22 @@ export class BusquedaComponent implements OnInit {
 		  }
 		)
 	  }
+
+	eliminarJuicio(j: any) {
+		this.isLoadingEliminarJuicio = true
+		this.juiciosService.eliminarJuicio(j?.idjuicio)
+		.pipe(finalize(() => this.isLoadingEliminarJuicio = false))
+		.subscribe(
+			(resp: any) => {
+			  console.log(resp)
+			  this.buscarJuicios("")
+			},
+			(err) => {
+			  console.log(err)
+			  this.message.error(err.error.mensaje)
+			}
+		  )
+	}
 
 	abrirJudicatura(juicio: any) {
 		const modal = this._modalService.create({

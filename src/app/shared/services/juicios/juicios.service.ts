@@ -79,6 +79,10 @@ export class JuiciosService {
     return this.http.post(`/juicios`, juicio)
   }
 
+  eliminarJuicio(idJuicio: any) {
+    return this.http.delete(`/juicios/${idJuicio}`)
+  }
+
   obtenerIncidentesJudicatura(codigoDependencia: any, anio: any, nroSecuencial: any) {
     return this.http.get(
       `https://api.funcionjudicial.gob.ec/informacion/getIncidenteJudicatura/${codigoDependencia}${anio}${nroSecuencial}`,
