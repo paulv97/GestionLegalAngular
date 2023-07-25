@@ -16,7 +16,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copiar los archivos construidos desde la etapa anterior
-COPY --from=builder /app/dist/GestionLegal /usr/share/nginx/html
+COPY --from=builder /dist/GestionLegal /usr/share/nginx/html
 
 # Configuración opcional para Angular con rutas (p.ej. Angular Router)
 # Si estás usando rutas en tu aplicación Angular, descomenta las siguientes líneas
