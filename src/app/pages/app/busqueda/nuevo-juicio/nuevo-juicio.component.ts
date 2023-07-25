@@ -18,7 +18,6 @@ export class NuevoJuicioComponent implements OnInit {
 	clientes: any[] = []
 
 	tiposJuicios: any[] = []
-	estadosJuicios: any[] = []
 
 	isLoadingGuardar: boolean = false
 
@@ -32,18 +31,16 @@ export class NuevoJuicioComponent implements OnInit {
 		this.form = new FormGroup({
 			idCliente: new FormControl(null, [Validators.required]),
 			tipoJuicio: new FormControl(null, [Validators.required]),
+			nombreJuicio: new FormControl(null, [Validators.required]),
 			codigoDependencia: new FormControl(null, [Validators.required]),
-			fechaInicio: new FormControl(null, [Validators.required]),
-			fechaFin: new FormControl(null),
-			numeroSecuencial: new FormControl(null, [Validators.required]),
-			estado: new FormControl(null, [Validators.required]),
+			anio: new FormControl(null, [Validators.required]),
+			numeroSecuencial: new FormControl(null, [Validators.required])
 		})
 	}
 
 	ngOnInit(): void {
 		this.buscarClientes("")
 		this.tiposJuicios = this.juiciosService.obtenerTiposJuicios()
-		this.estadosJuicios = this.juiciosService.obtenerEstados()
 	}
 
 	cerrarModal() {

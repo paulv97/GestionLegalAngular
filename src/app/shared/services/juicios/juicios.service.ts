@@ -71,19 +71,6 @@ export class JuiciosService {
     ]
   }
 
-  obtenerEstados() {
-    return [
-      {
-        codigo: 'Activo',
-        descripcion: 'Activo'
-      },
-      {
-        codigo: 'Finalizado',
-        descripcion: 'Finalizado'
-      }
-    ]
-  }
-
   obtenerJuiciosPorAbogado(filtro: string) {
     return this.http.get(`/juicios?filtro=${filtro}`)
   }

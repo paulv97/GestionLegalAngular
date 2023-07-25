@@ -32,32 +32,23 @@
 	</div>
 
 	<div class="grid-col-12">
+		<p class="display-block m-0 mb-7">Nombre juicio</p>
+		<input nz-input type="text" formControlName="nombreJuicio" class="w-full">
+	</div>
+
+	<div class="grid-col-5">
 		<p class="display-block m-0 mb-7">Código de dependencia</p>
 		<input nz-input type="text" formControlName="codigoDependencia" class="w-full">
 	</div>
 
-	<div class="grid-col-5">
-		<p class="display-block m-0 mb-7">Fecha Inicio</p>
-		<nz-date-picker formControlName="fechaInicio" class="w-full" nzFormat="yyyy/MM/dd"></nz-date-picker>
+	<div class="grid-col-2">
+		<p class="display-block m-0 mb-7">Año</p>
+		<input nz-input type="text" formControlName="anio" class="w-full">
 	</div>
 
 	<div class="grid-col-5">
-		<p class="display-block m-0 mb-7">Fecha Fin</p>
-		<nz-date-picker formControlName="fechaFin" class="w-full" nzFormat="yyyy/MM/dd"></nz-date-picker>
-	</div>
-
-	<div class="grid-col-12">
 		<p class="display-block m-0 mb-7">Número secuencial</p>
 		<input nz-input type="text" formControlName="numeroSecuencial" class="w-full">
-	</div>
-
-	<div class="grid-col-12">
-		<p class="display-block m-0 mb-7">Estado del juicio</p>
-		<nz-select formControlName="estado" nzShowSearch
-            class="rounded w-full"
-            nzPlaceHolder="">
-            <nz-option *ngFor="let option of estadosJuicios" [nzLabel]="option.descripcion | titlecase" [nzValue]="option.codigo"></nz-option>
-        </nz-select>
 	</div>
 
 	<div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
