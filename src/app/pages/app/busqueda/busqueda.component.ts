@@ -4,6 +4,7 @@ import { NuevoJuicioComponent } from './nuevo-juicio/nuevo-juicio.component';
 import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service';
 import { finalize } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { JudicaturaComponent } from './judicatura/judicatura.component';
 
 @Component({
 	selector: 'app-busqueda',
@@ -54,5 +55,15 @@ export class BusquedaComponent implements OnInit {
 		  }
 		)
 	  }
+
+	abrirJudicatura() {
+		const modal = this._modalService.create({
+			nzContent: JudicaturaComponent,
+			nzFooter: null,
+			nzWidth: 1000,
+		})
+
+
+	}
 
 }

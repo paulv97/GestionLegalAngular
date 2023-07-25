@@ -21,7 +21,6 @@ import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
     NzModalModule, // Añade NzModalModule a la lista de importaciones
     NzInputModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: JudicaturaComponent },]),
     NzButtonModule,
     NzIconModule,
     SearchPipeModule,

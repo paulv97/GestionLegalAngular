@@ -9,6 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
 import { NuevoJuicioModule } from './nuevo-juicio/nuevo-juicio.module';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { JudicaturaModule } from './judicatura/judicatura.module';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 		SearchPipeModule,
 		NuevoJuicioModule,
 		NzModalModule,
+		JudicaturaModule,
 	]
 })
 export class BusquedaModule { }
