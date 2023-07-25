@@ -1,15 +1,16 @@
-<h5 class="font-bold m-0 display-block">Consejos de la judicatura</h5>
+<div *nzModalTitle>
+	<h5 class="font-bold m-0 display-block">Consejos de la judicatura</h5>
+</div>
 
- 
+<div class="w-full grid">
+    <ng-container *ngFor="let c of casos">
+        <div (click)="abrirDetalle()" class="grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
+            <p class="display-block m-0 mb-7 font-bold">Nombre de la judicatura: {{ c.nombreJudicatura }}</p>
+            <p cl   ass="display-block m-0">Ciudad: {{ c.ciudad }}</p>
+        </div>
+    </ng-container>
+</div>
 
-        <ng-container *ngFor="let c of casos">
-            <div  (click)="abrirDetalle()" class="grid-col-3 md:grid-col-4 sm:grid-col-6 xs:grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
-                <p class="display-block m-0 mb-7 font-bold">Nombre de la judicatura: {{ c.nombre }}</p>
-                <p cl   ass="display-block m-0">Ciudad: {{ c.ciudad }}</p>
-            </div>
-        </ng-container>
+<div class="grid-col-12 border-b-1 border-solid border-gray-400 mb-12 mt-12"></div>
 
-  
-    <div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
-  
-
+<button class="w-full" (click)="cerrarModal()" nz-button nzDanger>Cancelar</button>

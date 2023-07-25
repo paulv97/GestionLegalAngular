@@ -56,14 +56,17 @@ export class BusquedaComponent implements OnInit {
 		)
 	  }
 
-	abrirJudicatura() {
+	abrirJudicatura(juicio: any) {
 		const modal = this._modalService.create({
 			nzContent: JudicaturaComponent,
 			nzFooter: null,
 			nzWidth: 1000,
+			nzComponentParams: {
+				codigoDependencia: juicio?.codigodependencia,
+				anio: juicio?.anio,
+				nroSecuencial: juicio?.numerosecuencial
+			}
 		})
-
-
 	}
 
 }

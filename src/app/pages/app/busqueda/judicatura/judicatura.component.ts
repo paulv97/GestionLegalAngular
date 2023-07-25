@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { Component, Input, OnInit } from '@angular/core';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { DetalleJuicioComponent } from '../detalle-juicio/detalle-juicio.component';
+import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service';
+import { finalize } from 'rxjs';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-judicatura',
@@ -10,29 +13,23 @@ import { DetalleJuicioComponent } from '../detalle-juicio/detalle-juicio.compone
 
 export class JudicaturaComponent implements OnInit {
 
-  casos = [
-    { nombre: 'Judicatura 1', ciudad: 'Ciudad 1' },
-    { nombre: 'Judicatura 2', ciudad: 'Ciudad 2' },
-    // Añade más casos según sea necesario
-  ];
+  @Input() codigoDependencia: any
+  @Input() anio: any
+  @Input() nroSecuencial: any
 
-  isVisible = false;
+  isLoadingCasos: boolean = false
 
-  constructor(private modalService: NzModalService) { }
+  casos: any[] = []
+
+  constructor(
+    private _modalRef: NzModalRef,
+    private modalService: NzModalService,
+    private message: NzMessageService,
+    private juiciosService: JuiciosService,
+  ) { }
 
   ngOnInit(): void {
-  }
-
-  abrirModal(): void {
-    this.isVisible = true;
-  }
-
-  handleOk(): void {
-    this.isVisible = false;
-  }
-
-  handleCancel(): void {
-    this.isVisible = false;
+    this.obtenerCasos()
   }
 
   abrirDetalle() {
@@ -41,8 +38,29 @@ export class JudicaturaComponent implements OnInit {
 			nzFooter: null,
 			nzWidth: 1000,
 		})
-
-
 	}
+
+  cerrarModal() {
+		this._modalRef.close(false)
+	}
+
+  obtenerCasos() {
+    this.isLoadingCasos = true
+    this.juiciosService.obtenerIncidentesJudicatura(this.codigoDependencia, this.anio, this.nroSecuencial)
+    .pipe(finalize(() => this.isLoadingCasos = false))
+    .subscribe(
+      (casos: any) => {
+        this.casos = casos
+      },
+      (err: any) => {
+        if(typeof err === 'string') {
+          this.message.error(err)
+          return
+        }
+
+        this.message.error(JSON.stringify(err))
+      }
+    )
+  }
 
 }
