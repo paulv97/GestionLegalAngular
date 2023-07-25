@@ -79,6 +79,10 @@ export class JuiciosService {
     return this.http.post(`/juicios`, juicio)
   }
 
+  modificarJuicio(juicio: any) {
+    return this.http.put(`/juicios`, juicio)
+  }
+
   eliminarJuicio(idJuicio: any) {
     return this.http.delete(`/juicios/${idJuicio}`)
   }

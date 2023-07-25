@@ -30,10 +30,15 @@ export class BusquedaComponent implements OnInit {
 		this.buscarJuicios("")
 	}
 
-	abrirModalNuevoJuicio() {
+	abrirModalNuevoJuicio(data: any = null) {
+		console.log('Juicio', data)
+
 		const modal = this._modalService.create({
 			nzContent: NuevoJuicioComponent,
 			nzFooter: null,
+			nzComponentParams: {
+				data: data
+			}
 		})
 
 		modal.afterClose.subscribe(data => {

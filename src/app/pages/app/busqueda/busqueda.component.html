@@ -24,7 +24,7 @@
 
 					<button (click)="eliminarJuicio(j)" [nzLoading]="isLoadingEliminarJuicio" style="min-width: 30%" nz-button nzDanger>Eliminar</button>
 
-					<button style="min-width: 30%" nz-button nzType="primary">Editar</button>
+					<button (click)="abrirModalNuevoJuicio(j)" style="min-width: 30%" nz-button nzType="primary">Editar</button>
 				</div>
 			</div>
 		</ng-container>
