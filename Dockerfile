@@ -12,6 +12,10 @@ COPY . .
 # Construir la aplicación en modo de producción
 RUN npm run build --prod
 
+RUN ls
+
+RUN ls /dist
+
 # Etapa 2: Ejecutar la aplicación con un servidor HTTP ligero
 FROM nginx:alpine
 
