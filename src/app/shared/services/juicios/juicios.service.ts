@@ -89,11 +89,11 @@ export class JuiciosService {
 
   obtenerIncidentesJudicatura(codigoDependencia: any, anio: any, nroSecuencial: any) {
     return this.http.get(
-      `https://api.funcionjudicial.gob.ec/informacion/getIncidenteJudicatura/${codigoDependencia}${anio}${nroSecuencial}`,
+      `https://cors-anywhere.herokuapp.com/https://api.funcionjudicial.gob.ec/informacion/getIncidenteJudicatura/${codigoDependencia}${anio}${nroSecuencial}`,
       {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          // 'Access-Control-Allow-Origin': '*',
           'No-Interceptor': 'true'
         }
       }
