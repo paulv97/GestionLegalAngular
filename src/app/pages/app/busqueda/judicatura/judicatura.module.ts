@@ -8,6 +8,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { SearchPipeModule } from 'src/app/shared/pipes/search/search.module';
 import { DetalleJuicioModule } from '../detalle-juicio/detalle-juicio.module';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 
 
@@ -25,6 +26,7 @@ import { DetalleJuicioModule } from '../detalle-juicio/detalle-juicio.module';
     NzIconModule,
     SearchPipeModule,
     DetalleJuicioModule,
+    NzSpinModule,
   ]
 })
 export class JudicaturaModule { }
