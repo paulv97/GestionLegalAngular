@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	apiUrl: 'http://localhost:4000',
+	apiUrl: 'https://apinodejs-wg7upc524q-uc.a.run.app',
 	dateFormat: 'dd/MM/yyyy',
 	dateTimeFormat: 'dd/MM/yyyy HH:dd',
 	encriptacion: true,
