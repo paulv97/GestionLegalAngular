@@ -43,6 +43,14 @@
             <p *ngIf="form.get('clave')?.hasError('required')" class="m-0 mt-5 display-block text-red-700">El campo es requerido</p>
         </div>
 
+        <div class="w-full mb-5">
+			<asl-google-signin-button type='standard' size='medium'>
+				<div *ngIf="user !== null && logged === false">
+					{{ googleSignup() }}
+				</div>
+			</asl-google-signin-button>
+		</div>
+
         <div class="grid-col-12">
             <button 
                 nz-button nzType="primary" 
