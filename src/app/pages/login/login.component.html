@@ -77,7 +77,15 @@
 			</button>
 		</div>
 
-		<div class="grid-col-12 mb-5">
+		<div class="w-45 mb-5 center">
+			<asl-google-signin-button type='standard' size='medium' locale="es_Es">
+				<div *ngIf="user !== null && logged === false">
+					{{ googleLogin() }}
+				</div>
+			</asl-google-signin-button>
+		</div>
+
+		<!-- <div class="grid-col-12 mb-5">
 			<button
 				nz-button
 				nzType="primary"
@@ -88,20 +96,7 @@
 			>
 				Inicia sesión con Google
 			</button>
-		</div>
-
-		<div class="grid-col-12 mb-5">
-			<button
-				nz-button
-				nzType="primary"
-				nzSize="large"
-				class="w-full"
-				[nzLoading]="isLoading"
-				(click)="facebookLogin()"
-			>
-				Inicia sesión con Facebook
-			</button>
-		</div>
+		</div> -->
 
 		<!-- signup link -->
 		<div class="grid-col-12 justify-center text-center">
@@ -116,39 +111,13 @@
 	</form>
 </div>
 
+
+<!-- <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button> -->
 <!--  -->
 
-<h1>Google Login</h1>
-
-<asl-google-signin-button type='standard' size='medium'>
-	Iniciar sesión con Google
-</asl-google-signin-button>
-
-<!--  -->
-
-
-<div class="container" style="max-width: 550px">
-  <h2 class="text-center mb-5">Angular Login with Google</h2>
-  <div *ngIf="isLoggedin === false">
-    <div>
-      <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
-    </div>
-  </div>
-  <div *ngIf="isLoggedin === true">
-    <div class="form-group">
-      <label>First Name</label>
-      <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
-    </div>
-    <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
-  </div>
-  <h2 class="text-center mb-5">Angular Login with Google</h2>
-
-</div>
+<!-- <img src="{{ user.photoUrl }}" referrerpolicy="no-referrer">
+<div>
+  <h4>{{ user.name }}</h4>
+  <p>{{ user.email }}</p>
+  <pre>{{ user | json }}</pre>
+</div> -->
