@@ -32,11 +32,19 @@ export class JudicaturaComponent implements OnInit {
     this.obtenerCasos()
   }
 
-  abrirDetalle() {
+  abrirDetalle(caso: any) {
 		const modal = this.modalService.create({
 			nzContent: DetalleJuicioComponent,
 			nzFooter: null,
 			nzWidth: 1000,
+      nzComponentParams: {
+        idMovimientoJuicioIncidente: caso?.lstIncidenteJudicatura[0]?.idMovimientoJuicioIncidente,
+        idJuicio: `${this.codigoDependencia}${this.anio}${this.nroSecuencial}`,
+        idJudicatura: caso?.idJudicatura,
+        idIncidenteJudicatura: caso?.lstIncidenteJudicatura[0]?.idIncidenteJudicatura,
+        nombreJudicatura: caso?.lstIncidenteJudicatura[0]?.nombreJudicatura,
+        incidente: caso?.lstIncidenteJudicatura[0]?.incidente
+      }
 		})
 	}
 

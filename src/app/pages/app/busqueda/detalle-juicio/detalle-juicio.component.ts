@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { Component, Input, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { finalize } from 'rxjs';
+import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service';
 
 @Component({
   selector: 'app-detalle-juicio',
@@ -8,29 +11,55 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 })
 export class DetalleJuicioComponent implements OnInit {
 
-  casos = [
-    { tipo: 'RAZON', actividad: 'RAZÓN.- Siento por tal que la documentación escaneada, adjunta, guarda conformidad con los originales constantes de autos, tomadas del deprecatorio No. 01333202100658; y, dando cumplimiento a lo dispuesto en auto de sustanciación inmediato anterior, en esta fecha procedo a la devolución del deprecatorio en línea; con los documentos anexos trámite web, pertinentes. Particular que siento para los fines de Ley. Lo certifico. Ambato, diciembre 9 del 2022',fecha:'2022-12-09T14:24:54.000+00:00'},
-    { tipo: 'RAZON', actividad: 'RAZÓN.- Siento por tal que la documentación escaneada, adjunta, guarda conformidad con los originales constantes de autos, tomadas del deprecatorio No. 01333202100658; y, dando cumplimiento a lo dispuesto en auto de sustanciación inmediato anterior, en esta fecha procedo a la devolución del deprecatorio en línea; con los documentos anexos trámite web, pertinentes. Particular que siento para los fines de Ley. Lo certifico. Ambato, diciembre 9 del 2022',fecha:'2022-12-09T14:24:54.000+00:00' },
-    // Añade más casos según sea necesario
-  ];
+  @Input() idMovimientoJuicioIncidente: number = 0
+  @Input() idJuicio: string = ''
+  @Input() idJudicatura: string = ''
+  @Input() idIncidenteJudicatura: number = 0
+  @Input() nombreJudicatura: string = ''
+  @Input() incidente: number = 0
 
-  isVisible = false;
+  isLoadingDetalle: boolean = false
 
-  constructor(private modalService: NzModalService) { }
+  detalle: any[] = []
+
+  constructor(
+    private _modalRef: NzModalRef,
+    private message: NzMessageService,
+    private juiciosService: JuiciosService,
+  ) { }
 
   ngOnInit(): void {
+    this.obtenerDetalle()
   }
 
-  abrirModal(): void {
-    this.isVisible = true;
-  }
+  cerrarModal() {
+		this._modalRef.close(false)
+	}
 
-  handleOk(): void {
-    this.isVisible = false;
-  }
+  obtenerDetalle() {
+    this.isLoadingDetalle = true
+    this.juiciosService.obtenerActualizacionJudicatura({
+      idMovimientoJuicioIncidente: this.idMovimientoJuicioIncidente,
+      idJuicio: this.idJuicio,
+      idJudicatura: this.idJudicatura,
+      idIncidenteJudicatura: this.idIncidenteJudicatura,
+      nombreJudicatura: this.nombreJudicatura,
+      incidente: this.incidente
+    })
+    .pipe(finalize(() => this.isLoadingDetalle = false))
+    .subscribe(
+      (detalle: any) => {
+        this.detalle = detalle
+      },
+      (err: any) => {
+        if(typeof err === 'string') {
+          this.message.error(err)
+          return
+        }
 
-  handleCancel(): void {
-    this.isVisible = false;
+        this.message.error(JSON.stringify(err))
+      }
+    )
   }
 
 }

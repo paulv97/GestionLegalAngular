@@ -1,15 +1,20 @@
-<h5 class="font-bold m-0 display-block">Consejos de la judicatura</h5>
-
- 
-
-        <ng-container *ngFor="let c of casos">
-            <div class="grid-col-3 md:grid-col-4 sm:grid-col-6 xs:grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
-                <p class="display-block m-0 mb-7 font-bold">Tipo: {{ c.tipo }}</p>
-                <p cl   ass="display-block m-0">Fecha: {{ c.fecha }}</p>
-                <p cl   ass="display-block m-0">Actividad: {{ c.actividad }}</p>
+<div *nzModalTitle>
+    <h5 class="font-bold m-0 display-block">Detalle del juicio</h5>
+</div>
+  
+<div class="w-full grid">
+    <ng-container *ngFor="let d of detalle">
+        <div class="grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
+            <p class="display-block m-0 mb-7 font-bold">Tipo: {{ d.tipo }}</p>
+            <p class="display-block m-0">Fecha: {{ d.fecha | date:'yyyy/MM/dd' }}</p>
+            <div class="w-full">
+                <p class="display-block m-0 mb-5">Actividad:</p>
+                <div [innerHTML]="d.actividad"></div>
             </div>
-        </ng-container>
+        </div>
+    </ng-container>
+</div>
 
-  
-    <div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
-  
+<div class="grid-col-12 border-b-1 border-solid border-gray-400 mb-12 mt-12"></div>
+
+<button class="w-full" (click)="cerrarModal()" nz-button nzDanger>Cancelar</button>
