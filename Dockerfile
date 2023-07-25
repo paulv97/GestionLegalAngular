@@ -1,5 +1,5 @@
 # Etapa 1: Construir la aplicación Angular
-FROM node:14 as builder
+FROM node:20 as builder
 
 WORKDIR /app
 
@@ -12,13 +12,13 @@ COPY . .
 # Construir la aplicación en modo de producción
 RUN npm run build --prod
 
-RUN ls
+#RUN ls
 
 # Etapa 2: Ejecutar la aplicación con un servidor HTTP ligero
 FROM nginx:alpine
 
 # Copiar los archivos construidos desde la etapa anterior
-COPY --from=builder /app/dist/GestionLegal/ /usr/share/nginx/html
+#COPY --from=builder /app/dist/GestionLegal/ /usr/share/nginx/html
 
 # Configuración opcional para Angular con rutas (p.ej. Angular Router)
 # Si estás usando rutas en tu aplicación Angular, descomenta las siguientes líneas
