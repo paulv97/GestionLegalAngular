@@ -1,0 +1,17 @@
+<h5 class="font-bold m-0 display-block">Formulario de registro</h5>
+
+ 
+
+        <ng-container *ngFor="let c of casos">
+            <div class="grid-col-12">
+                <p class="display-block m-0 mb-7 font-bold">Nombre de la judicatura: {{ c.nombre }}</p>
+                <p class="display-block m-0">Ciudad: {{ c.ciudad }}</p>
+            </div>
+        </ng-container>
+
+  
+    <div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
+  
+    <div class="grid-col-12 grid">
+        <button class="grid-col-12" (click)="handleCancel()" nz-button>Cerrar</button>
+    </div>

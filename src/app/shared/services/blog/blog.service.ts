@@ -17,14 +17,13 @@ export class BlogService {
   }
 
   //get Abogado
-  getAbogado(email:string){
-    return this.http.get('/blog/obtenerAbogado/'+email);
+  getAbogado(){
+    return this.http.get('/blog/obtenerAbogado/');
   }
 
 }
 
 export interface Blog{
-  id_abogado?:string;
   titulo?:string;
   imagen?:string;
   cuerpo?:string;

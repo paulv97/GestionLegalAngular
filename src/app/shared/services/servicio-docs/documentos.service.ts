@@ -12,8 +12,13 @@ export class DocumentosService {
   ) { }
 
   // get documentos
-  getDocumentos(idAbog:string){
-    return this.http.get('/documentos/allDocumentos/'+idAbog);
+  // getDocumentos(idAbog:string){
+  //   return this.http.get('/documentos/allDocumentos/'+idAbog);
+  // }
+
+  // get documentos
+  getDocumentos(){
+    return this.http.get('/documentos/allDocumentos/');
   }
 
   // get documento
@@ -26,7 +31,7 @@ export class DocumentosService {
   addDocumento(documento: Documento, archivo: File) {
     // return this.http.post('/documentos/addDocumento',documento);
     const formData = new FormData();
-    formData.append('id_abogado', documento.id_abogado || '');
+    // formData.append('id_abogado', documento.id_abogado || '');
     formData.append('tipo', documento.tipo || '');
     formData.append('nombre', documento.nombre || '');
     formData.append('descripcion', documento.descripcion || '');
@@ -60,9 +65,9 @@ export class DocumentosService {
 
 
   //get Abogado
-  getAbogado(email:string){
-    return this.http.get('/documentos/obtenerAbogado/'+email);
-  }
+  // getAbogado(email:string){
+  //   return this.http.get('/documentos/obtenerAbogado/'+email);
+  // }
 
   downloadDoc(nombre: string): Observable<Blob> {
     return this.http.get('/documentos/downloadDocumento/' + nombre, {
