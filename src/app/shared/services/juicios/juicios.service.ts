@@ -111,28 +111,9 @@ export class JuiciosService {
 
     (payload as any).aplicativo = "web"
 
-    const headers = {
-      'Content-Type': 'application/json',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Accept-Language': 'es-ES,es;q=0.9',
-      'Connection': 'keep-alive',
-      'Host': 'api.funcionjudicial.gob.ec',
-      'Origin': 'https://procesosjudiciales.funcionjudicial.gob.ec',
-      'Referer': 'https://procesosjudiciales.funcionjudicial.gob.ec/',
-      'sec-ch-ua': 'Opera GX;v=99, Chromium;v=113, Not-A.Brand;v=24',
-      'sec-ch-ua-mobile': '?0',
-      'sec-ch-ua-platform': 'Windows',
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Site': 'same-site',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 OPR/99.0.0.0',
-      'No-Interceptor': 'true'
-    }
-
     return this.http.post(
-      `https://api.funcionjudicial.gob.ec/informacion/actuacionesJudiciales`,
+      `https://pruebaiframe-wg7upc524q-uc.a.run.app/detalles`,
       payload,
-      { headers }
     )
   }
 }
