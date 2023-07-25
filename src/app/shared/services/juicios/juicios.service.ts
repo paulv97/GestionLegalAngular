@@ -1,5 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+const NO_INTERCEPTOR_HEADERS = {
+  headers: new HttpHeaders().set('No-Interceptor', 'true')
+}
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +81,12 @@ export class JuiciosService {
 
   guardarJuicio(juicio: any) {
     return this.http.post(`/juicios`, juicio)
+  }
+
+  obtenerIncidentesJudicatura(codigoDependencia: any, anio: any, nroSecuencial: any) {
+    return this.http.get(
+      `https://api.funcionjudicial.gob.ec/informacion/getIncidenteJudicatura/${codigoDependencia}${anio}${nroSecuencial}`,
+      NO_INTERCEPTOR_HEADERS
+    )
   }
 }

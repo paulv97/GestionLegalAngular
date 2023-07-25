@@ -22,6 +22,14 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (req.headers.has('No-Interceptor')) {
+      const headers = req.headers.delete('No-Interceptor')
+      const newReq = req.clone({
+        headers: headers
+      })
+      return next.handle(newReq);
+    }
+
     const modifiedUrl = `${environment.apiUrl}${req.url}`;
     const token = this.localStorage.getInformation()?.token
 
