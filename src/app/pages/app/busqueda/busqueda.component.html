@@ -8,7 +8,7 @@
 			<button (click)="abrirModalNuevoJuicio()" nz-button class="rounded-smd m-0" nzSize="large" nzType="primary">Nuevo</button>
 		</div>
 
-		<ng-container *ngFor="let j of juicios | search:busqueda">
+		<ng-container *ngFor="let j of juicios">
 			<div class="grid-col-3 md:grid-col-4 sm:grid-col-6 xs:grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
 				<p class="text-md display-block m-0 mb-5 font-bold">{{ j.razonsocial }} ID {{ j.idjuicio }}</p>
 
@@ -18,13 +18,13 @@
 				<p class="display-block m-0 text-gray-600 mb-12">Providencia del juicio: {{ j.numerosecuencial }}</p>
 
 				<div class="w-full flex items-center justify-between">
-					<button nz-button nzShape="circle" nzType="text">
+					<button (click)="abrirJudicatura(j)" nz-button nzShape="circle" nzType="text">
 						<span nz-icon nzType="info-circle" nzTheme="outline"></span>
 					</button>
 
-					<button style="min-width: 30%" nz-button>Editar</button>
+					<button (click)="eliminarJuicio(j)" [nzLoading]="isLoadingEliminarJuicio" style="min-width: 30%" nz-button nzDanger>Eliminar</button>
 
-					<button style="min-width: 30%" nz-button nzType="primary">Ir a</button>
+					<button (click)="abrirModalNuevoJuicio(j)" style="min-width: 30%" nz-button nzType="primary">Editar</button>
 				</div>
 			</div>
 		</ng-container>

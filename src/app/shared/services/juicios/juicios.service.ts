@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -77,5 +77,60 @@ export class JuiciosService {
 
   guardarJuicio(juicio: any) {
     return this.http.post(`/juicios`, juicio)
+  }
+
+  modificarJuicio(juicio: any) {
+    return this.http.put(`/juicios`, juicio)
+  }
+
+  eliminarJuicio(idJuicio: any) {
+    return this.http.delete(`/juicios/${idJuicio}`)
+  }
+
+  obtenerIncidentesJudicatura(codigoDependencia: any, anio: any, nroSecuencial: any) {
+    return this.http.get(
+      `https://api.funcionjudicial.gob.ec/informacion/getIncidenteJudicatura/${codigoDependencia}${anio}${nroSecuencial}`,
+      {
+        headers: {
+          'No-Interceptor': 'true'
+        }
+      }
+    )
+  }
+
+  obtenerActualizacionJudicatura(payload: {
+    idMovimientoJuicioIncidente: number,
+    idJuicio: string,
+    idJudicatura: string,
+    idIncidenteJudicatura: number,
+    nombreJudicatura: string,
+    incidente: number
+  }) {
+
+    (payload as any).aplicativo = "web"
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Accept-Language': 'es-ES,es;q=0.9',
+      'Connection': 'keep-alive',
+      'Host': 'api.funcionjudicial.gob.ec',
+      'Origin': 'https://procesosjudiciales.funcionjudicial.gob.ec',
+      'Referer': 'https://procesosjudiciales.funcionjudicial.gob.ec/',
+      'sec-ch-ua': 'Opera GX;v=99, Chromium;v=113, Not-A.Brand;v=24',
+      'sec-ch-ua-mobile': '?0',
+      'sec-ch-ua-platform': 'Windows',
+      'Sec-Fetch-Dest': 'empty',
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Site': 'same-site',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 OPR/99.0.0.0',
+      'No-Interceptor': 'true'
+    }
+
+    return this.http.post(
+      `https://api.funcionjudicial.gob.ec/informacion/actuacionesJudiciales`,
+      payload,
+      { headers }
+    )
   }
 }

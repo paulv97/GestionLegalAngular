@@ -4,6 +4,7 @@ import { NuevoJuicioComponent } from './nuevo-juicio/nuevo-juicio.component';
 import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service';
 import { finalize } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { JudicaturaComponent } from './judicatura/judicatura.component';
 
 @Component({
 	selector: 'app-busqueda',
@@ -17,6 +18,8 @@ export class BusquedaComponent implements OnInit {
 
 	juicios: any[] = []
 
+	isLoadingEliminarJuicio: boolean = false
+
 	constructor(
 		private _modalService: NzModalService,
 		private juiciosService: JuiciosService,
@@ -27,10 +30,15 @@ export class BusquedaComponent implements OnInit {
 		this.buscarJuicios("")
 	}
 
-	abrirModalNuevoJuicio() {
+	abrirModalNuevoJuicio(data: any = null) {
+		console.log('Juicio', data)
+
 		const modal = this._modalService.create({
 			nzContent: NuevoJuicioComponent,
 			nzFooter: null,
+			nzComponentParams: {
+				data: data
+			}
 		})
 
 		modal.afterClose.subscribe(data => {
@@ -54,5 +62,34 @@ export class BusquedaComponent implements OnInit {
 		  }
 		)
 	  }
+
+	eliminarJuicio(j: any) {
+		this.isLoadingEliminarJuicio = true
+		this.juiciosService.eliminarJuicio(j?.idjuicio)
+		.pipe(finalize(() => this.isLoadingEliminarJuicio = false))
+		.subscribe(
+			(resp: any) => {
+			  console.log(resp)
+			  this.buscarJuicios("")
+			},
+			(err) => {
+			  console.log(err)
+			  this.message.error(err.error.mensaje)
+			}
+		  )
+	}
+
+	abrirJudicatura(juicio: any) {
+		const modal = this._modalService.create({
+			nzContent: JudicaturaComponent,
+			nzFooter: null,
+			nzWidth: 1000,
+			nzComponentParams: {
+				codigoDependencia: juicio?.codigodependencia,
+				anio: juicio?.anio,
+				nroSecuencial: juicio?.numerosecuencial
+			}
+		})
+	}
 
 }

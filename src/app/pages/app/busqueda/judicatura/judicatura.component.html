@@ -1,17 +1,20 @@
-<h5 class="font-bold m-0 display-block">Formulario de registro</h5>
+<div *nzModalTitle>
+	<h5 class="font-bold m-0 display-block">Consejos de la judicatura</h5>
+</div>
 
- 
+<div class="w-full">
+    <nz-spin class="w-full" style="min-height: 10rem;" [nzSpinning]="isLoadingCasos" nzSize="large">
+        <div class="w-full grid">
+            <ng-container *ngFor="let c of casos">
+                <div (click)="abrirDetalle(c)" class="grid-col-12 rounded bg-white border-1 border-solid border-gray-500 hover:border-theme-primary px-15 py-10">
+                    <p class="display-block m-0 mb-7 font-bold">Nombre de la judicatura: {{ c.nombreJudicatura }}</p>
+                    <p class="display-block m-0">Ciudad: {{ c.ciudad }}</p>
+                </div>
+            </ng-container>
+        </div>
+    </nz-spin>
+</div>
 
-        <ng-container *ngFor="let c of casos">
-            <div class="grid-col-12">
-                <p class="display-block m-0 mb-7 font-bold">Nombre de la judicatura: {{ c.nombre }}</p>
-                <p class="display-block m-0">Ciudad: {{ c.ciudad }}</p>
-            </div>
-        </ng-container>
+<div class="grid-col-12 border-b-1 border-solid border-gray-400 mb-12 mt-12"></div>
 
-  
-    <div class="grid-col-12 border-b-1 border-solid border-gray-400"></div>
-  
-    <div class="grid-col-12 grid">
-        <button class="grid-col-12" (click)="handleCancel()" nz-button>Cerrar</button>
-    </div>
+<button class="w-full" (click)="cerrarModal()" nz-button nzDanger>Cancelar</button>

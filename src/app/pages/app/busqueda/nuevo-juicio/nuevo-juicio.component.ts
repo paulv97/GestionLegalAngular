@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -13,6 +13,21 @@ import { JuiciosService } from 'src/app/shared/services/juicios/juicios.service'
 	styleUrls: ['./nuevo-juicio.component.scss']
 })
 export class NuevoJuicioComponent implements OnInit {
+
+	@Input()
+	set data(val: any) {
+		if(!val) return
+		this.form.setValue({
+			accion: 'M',
+			idJuicio: val.idjuicio,
+			idCliente: val.idcliente,
+			tipoJuicio: val.idtipo,
+			nombreJuicio: val.nombrejuicio,
+			codigoDependencia: val.codigodependencia,
+			anio: val.anio,
+			numeroSecuencial: val.numerosecuencial
+		})
+	}
 
 	form: FormGroup
 	clientes: any[] = []
@@ -29,6 +44,8 @@ export class NuevoJuicioComponent implements OnInit {
 		private router: Router,
 	) {
 		this.form = new FormGroup({
+			accion: new FormControl('N'),
+			idJuicio: new FormControl(null),
 			idCliente: new FormControl(null, [Validators.required]),
 			tipoJuicio: new FormControl(null, [Validators.required]),
 			nombreJuicio: new FormControl(null, [Validators.required]),
@@ -72,9 +89,36 @@ export class NuevoJuicioComponent implements OnInit {
 			return
 		}
 
+		const accion = this.form.get('accion')?.value
+
+		if(accion == 'N') {
+			this.crearNuevoJuicio()
+			return
+		}
+
+		this.modificarJuicio()
+	}
+
+	crearNuevoJuicio() {
 		this.isLoadingGuardar = true
 		const form = this.form.getRawValue()
 		this.juiciosService.guardarJuicio(form)
+		.pipe(finalize(() => this.isLoadingGuardar = false))
+		.subscribe(
+			(resp: any) => {
+				this._messageService.success(resp.mensaje)
+				this._modalRef.close(true)
+			},
+			(err) => {
+				this._messageService.error(err?.mensaje ? err.mensaje : err)
+			}
+		)
+	}
+
+	modificarJuicio() {
+		this.isLoadingGuardar = true
+		const form = this.form.getRawValue()
+		this.juiciosService.modificarJuicio(form)
 		.pipe(finalize(() => this.isLoadingGuardar = false))
 		.subscribe(
 			(resp: any) => {
